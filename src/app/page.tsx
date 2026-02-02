@@ -20,16 +20,14 @@ const HomePage = () => {
           <Link href="/" className="hover:text-blue-300">
             HOME
           </Link>
-          <Link href="#" className="hover:text-blue-300">
-            Skills
-          </Link>
-          <Link href="#" className="hover:text-blue-300">
+
+          <Link href="#projects" className="hover:text-blue-300">
             Projects
           </Link>
-          <Link href="#" className="hover:text-blue-300">
+          <Link href="#blog" className="hover:text-blue-300">
             Blog
           </Link>
-          <Link href="#" className="hover:text-blue-300">
+          <Link href="#contact" className="hover:text-blue-300">
             Contact
           </Link>
         </nav>

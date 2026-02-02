@@ -40,7 +40,7 @@ const HeroSection = () => {
             <Badge
               key={tech}
               variant="secondary"
-              className="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all duration-300 text-xs sm:text-sm"
+              className="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 transition-all duration-300 text-xs sm:text-sm"
             >
               {tech}
             </Badge>
@@ -52,7 +52,7 @@ const HeroSection = () => {
       <div className="relative order-1 lg:order-2">
         <div className="relative w-full h-64 sm:h-80 lg:h-96 flex items-center justify-center">
           {/* Floating Icons with Glass Effect */}
-          <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-16 sm:w-20 h-10 sm:h-12 bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden rounded-xl flex items-center justify-center animate-bounce shadow-xl">
+          <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-16 sm:w-20 h-10 sm:h-12 bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden rounded-xl flex items-center justify-center animate-bounce shadow-xl">
             <Image
               src="/images/mongoose.png"
               alt="Mongoose Icon"
@@ -61,7 +61,7 @@ const HeroSection = () => {
               className="object-contain"
             />
           </div>
-          <div className="absolute top-12 sm:top-20 left-4 sm:left-10 w-8 sm:w-10 h-8 sm:h-10 bg-green-500/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center animate-pulse shadow-xl">
+          <div className="absolute top-12 sm:top-20 left-4 sm:left-10 w-8 sm:w-10 h-8 sm:h-10 bg-green-500/80 backdrop-blur-lg border border-white/20 rounded-full flex items-center justify-center animate-pulse shadow-xl">
             <span className="text-white">
               <SiNextdotjs size={20} className="sm:w-7 sm:h-7" />
             </span>
