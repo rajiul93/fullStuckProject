@@ -1,31 +1,29 @@
+'use client';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import React from 'react';
+import SkillCard from './skills-card';
+import { TSkill } from '@/type/front/skills-type';
 
 const SkillsSection = () => {
-  const skills = [
+  const skills: TSkill[] = [
     {
-      icon: '📱',
-      bgColor: 'bg-yellow-500',
+      imageUrl: '',
       title: 'React Native',
       description: 'React, Next.js, Tailwind, Animation',
     },
     {
-      icon: '⚛️',
-      bgColor: 'bg-blue-500',
+      imageUrl: '',
       title: 'Next.js & React',
       description: 'Components, Hooks, State Management',
     },
     {
-      icon: '🎨',
-      bgColor: 'bg-purple-500',
+      imageUrl: '',
       title: 'Mongoose',
       description: 'Modern UI Design & Smooth Animation',
     },
     {
-      icon: '💖',
-      bgColor: 'bg-pink-500',
+      imageUrl: '',
       title: 'Express & Node.js',
       description: 'MERN Stack & Modern Web Technologies',
     },
@@ -68,20 +66,7 @@ const SkillsSection = () => {
           <h2 className="text-3xl font-bold mb-8">SKILLS</h2>
           <div className="grid grid-cols-2 gap-6">
             {skills.map((skill, index) => (
-              <Card
-                key={index}
-                className="bg-white/10 backdrop-blur-md border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300"
-              >
-                <CardContent className="p-6 text-center">
-                  <div
-                    className={`w-16 h-16 ${skill.bgColor} rounded-full mx-auto mb-4 flex items-center justify-center text-2xl shadow-lg`}
-                  >
-                    {skill.icon}
-                  </div>
-                  <h3 className="font-bold mb-2 text-white">{skill.title}</h3>
-                  <p className="text-sm text-gray-300">{skill.description}</p>
-                </CardContent>
-              </Card>
+              <SkillCard key={index} skill={skill} />
             ))}
           </div>
         </div>

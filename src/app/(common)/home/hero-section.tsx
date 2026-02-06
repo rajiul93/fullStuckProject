@@ -1,3 +1,4 @@
+'use client';
 import CustomButton from '@/components/common-component/coustom-button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
@@ -21,7 +22,16 @@ const HeroSection = () => {
         />
 
         {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 pt-4 sm:pt-8 justify-center lg:justify-start">
+        <motion.div
+          className="flex flex-wrap gap-2 pt-4 sm:pt-8 justify-center lg:justify-start"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: 'easeOut',
+            staggerChildren: 0.1,
+          }}
+        >
           {[
             'JS',
             'REACT',
@@ -36,12 +46,23 @@ const HeroSection = () => {
             'TAILWIND',
             'JAVASCRIPT',
             'GIT',
-          ].map((tech) => (
-            <Badge key={tech} variant="secondary" className="cursor-pointer">
-              {tech}
-            </Badge>
+          ].map((tech, index) => (
+            <motion.div
+              key={tech}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.05,
+                ease: 'easeOut',
+              }}
+            >
+              <Badge variant="secondary" className="cursor-pointer">
+                {tech}
+              </Badge>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Hero Illustration */}

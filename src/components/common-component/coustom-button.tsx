@@ -9,6 +9,8 @@ interface CustomButtonProps {
 const CustomButton = ({ title, className }: CustomButtonProps) => {
   return (
     <motion.div
+      initial={{ x: 20, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
       whileTap={{ scale: 0.9 }}
       whileHover={{ scale: 1.05 }}
       transition={{
