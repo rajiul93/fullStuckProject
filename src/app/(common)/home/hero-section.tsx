@@ -16,10 +16,12 @@ const HeroSection = () => {
           Building the Future, One Line of Code at Time.
         </p>
 
-        <CustomButton
-          title=" VIEW MY WORK"
-          className="text-xl font-medium h-12 text-white hover:text-slate-100"
-        />
+        <div className="flex justify-center lg:justify-start">
+          <CustomButton
+            title=" VIEW MY WORK"
+            className="text-xl font-medium h-12 text-white hover:text-slate-100"
+          />
+        </div>
 
         {/* Tech Stack */}
         <motion.div

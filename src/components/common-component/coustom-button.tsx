@@ -22,7 +22,7 @@ const CustomButton = ({ title, className }: CustomButtonProps) => {
     >
       <Button
         variant="outline"
-        className={`text-cyan-400 border-cyan-400 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 ${className}`}
+        className={`text-cyan-400 w-fit border-cyan-400 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 ${className}`}
       >
         {title}
       </Button>
