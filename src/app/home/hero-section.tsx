@@ -1,24 +1,24 @@
+import CustomButton from '@/components/common-component/coustom-button';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import React from 'react';
 import { SiNextdotjs } from 'react-icons/si';
+import { motion } from 'framer-motion';
+import CoustomTitle from '@/components/common-component/couston-title';
+
 const HeroSection = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ">
-      <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-          MERN STUCK DEVELOPER
-        </h1>
-        <p className="text-lg sm:text-xl text-gray-300 max-w-lg mx-auto lg:mx-0">
+      <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1 ">
+        <CoustomTitle title="MERN STACK DEVELOPER" />
+        <p className="text-lg sm:text-xl text-gray-300 max-w-lg mx-auto lg:mx-0 ">
           Building the Future, One Line of Code at Time.
         </p>
-        <Button
-          size="lg"
-          className="bg-gradient-to-r from-cyan-500/80 to-purple-500/80 hover:from-cyan-500 hover:to-purple-500 backdrop-blur-sm border border-white/20 text-white px-6 sm:px-8 py-3 rounded-full text-base sm:text-lg transition-all duration-300 shadow-xl"
-        >
-          VIEW MY WORK
-        </Button>
+
+        <CustomButton
+          title=" VIEW MY WORK"
+          className="text-xl font-medium h-12 text-white hover:text-slate-100"
+        />
 
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 pt-4 sm:pt-8 justify-center lg:justify-start">
@@ -37,11 +37,7 @@ const HeroSection = () => {
             'JAVASCRIPT',
             'GIT',
           ].map((tech) => (
-            <Badge
-              key={tech}
-              variant="secondary"
-              className="bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 transition-all duration-300 text-xs sm:text-sm"
-            >
+            <Badge key={tech} variant="secondary" className="cursor-pointer">
               {tech}
             </Badge>
           ))}

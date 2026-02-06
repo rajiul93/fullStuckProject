@@ -11,25 +11,45 @@ const ContactSection = () => {
           <h2 className="text-3xl font-bold mb-8">CONTACT</h2>
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium mb-2 text-white">
+              <label
+                htmlFor="contact-name"
+                className="block text-sm font-medium mb-2 text-white"
+              >
                 Name
               </label>
-              <Input className="bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-gray-400 focus:bg-white/20 transition-all duration-300" />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2 text-white">
-                Email
-              </label>
               <Input
-                type="email"
+                id="contact-name"
+                name="name"
+                placeholder="Your name"
                 className="bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-gray-400 focus:bg-white/20 transition-all duration-300"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2 text-white">
+              <label
+                htmlFor="contact-email"
+                className="block text-sm font-medium mb-2 text-white"
+              >
+                Email
+              </label>
+              <Input
+                id="contact-email"
+                name="email"
+                type="email"
+                placeholder="your.email@example.com"
+                className="bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-gray-400 focus:bg-white/20 transition-all duration-300"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="contact-message"
+                className="block text-sm font-medium mb-2 text-white"
+              >
                 Message
               </label>
               <Textarea
+                id="contact-message"
+                name="message"
+                placeholder="Tell me about your project..."
                 className="bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-gray-400 focus:bg-white/20 transition-all duration-300"
                 rows={4}
               />
@@ -45,6 +65,7 @@ const ContactSection = () => {
               size="sm"
               variant="ghost"
               className="w-10 h-10 p-0 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300"
+              aria-label="Email contact"
             >
               📧
             </Button>
@@ -52,6 +73,7 @@ const ContactSection = () => {
               size="sm"
               variant="ghost"
               className="w-10 h-10 p-0 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300"
+              aria-label="Phone contact"
             >
               📱
             </Button>
@@ -59,6 +81,7 @@ const ContactSection = () => {
               size="sm"
               variant="ghost"
               className="w-10 h-10 p-0 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300"
+              aria-label="LinkedIn profile"
             >
               💼
             </Button>
@@ -66,6 +89,7 @@ const ContactSection = () => {
               size="sm"
               variant="ghost"
               className="w-10 h-10 p-0 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300"
+              aria-label="YouTube channel"
             >
               📺
             </Button>
