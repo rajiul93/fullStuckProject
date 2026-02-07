@@ -66,7 +66,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
               >
                 <Globe className="w-4 h-4 mr-2" aria-hidden="true" />
                 Live Demo
-                <ExternalLink className="w-3 h-3 ml-1" aria-hidden="true" />
               </Link>
             </Button>
           )}
@@ -85,7 +84,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
               >
                 <Server className="w-4 h-4 mr-2" aria-hidden="true" />
                 Source Code
-                <ExternalLink className="w-3 h-3 ml-1" aria-hidden="true" />
               </Link>
             </Button>
           )}

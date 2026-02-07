@@ -3,24 +3,26 @@ import CustomButton from '@/components/common-component/coustom-button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import React from 'react';
-import { SiNextdotjs } from 'react-icons/si';
+import { SiNextdotjs, SiReact, SiTypescript } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import CoustomTitle from '@/components/common-component/couston-title';
 
 const HeroSection = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ">
-      <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1 ">
+      <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-1 lg:order-1 ">
         <CoustomTitle title="MERN STACK DEVELOPER" />
-        <p className="text-lg sm:text-xl text-gray-300 max-w-lg mx-auto lg:mx-0 ">
-          Building the Future, One Line of Code at Time.
+        <p className="text-sm sm:text-lg text-gray-300 max-w-lg mx-auto lg:mx-0 ">
+          Passionate and detail-oriented Frontend Developer with 1 year of
+          experience building responsive and user-friendly web applications.
+          Skilled in translating design mockups into high-quality code using
+          modern frontend technologies. Adept at collaborating with
+          cross-functional teams to deliver high-performance digital
+          experiences.
         </p>
 
         <div className="flex justify-center lg:justify-start">
-          <CustomButton
-            title=" VIEW MY WORK"
-            className="text-xl font-medium h-12 text-white hover:text-slate-100"
-          />
+          <CustomButton title=" MY WORK" className="text-sm h-12 " />
         </div>
 
         {/* Tech Stack */}
@@ -68,54 +70,72 @@ const HeroSection = () => {
       </div>
 
       {/* Hero Illustration */}
-      <div className="relative order-1 lg:order-2">
-        <div className="relative w-full h-64 sm:h-80 lg:h-96 flex items-center justify-center">
+      <div className="relative order-2 lg:order-2">
+        <div className="relative w-full h-80 sm:h-96 lg:h-96 flex items-center justify-center">
           {/* Floating Icons with Glass Effect */}
-          <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-16 sm:w-20 h-10 sm:h-12 bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden rounded-xl flex items-center justify-center animate-bounce shadow-xl">
-            <Image
-              src="/images/mongoose.png"
-              alt="Mongoose Icon"
-              width={80}
-              height={48}
-              className="object-contain"
-            />
-          </div>
-          <div className="absolute top-12 sm:top-20 left-4 sm:left-10 w-8 sm:w-10 h-8 sm:h-10 bg-green-500/80 backdrop-blur-lg border border-white/20 rounded-full flex items-center justify-center animate-pulse shadow-xl">
-            <span className="text-white">
-              <SiNextdotjs size={20} className="sm:w-7 sm:h-7" />
-            </span>
-          </div>
-          <div className="absolute bottom-18 sm:bottom-20 right-12 sm:right-20 w-10 sm:w-14 h-10 sm:h-14 bg-purple-500/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center animate-pulse shadow-xl">
-            <span className="text-white text-xl sm:text-3xl">⚛️</span>
-          </div>
 
           {/* Main Developer Illustration */}
           <div className="relative z-10">
-            <div className="w-32 sm:w-40 h-32 sm:h-40 bg-gradient-to-br from-blue-400/80 to-purple-500/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-2xl">
-              <div className="w-24 sm:w-32 h-24 sm:h-32 overflow-hidden bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30">
+            {/* Desk with Glass Effect */}
+            <div className="mt-3 sm:mt-4 w-48 sm:w-72 h-64 sm:h-80 lg:h-96 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg relative shadow-xl mx-auto">
+              {/* Mongoose - Top Right */}
+              <div className="absolute top-4 sm:top-10 -right-4 sm:-right-10 w-16 sm:w-20 h-10 sm:h-12 bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden rounded-xl flex items-center justify-center animate-bounce shadow-xl">
                 <Image
-                  src="/images/rajiul.jpeg"
-                  alt="Developer Illustration"
-                  width={120}
-                  height={120}
-                  className="object-cover w-full h-full rounded-full"
+                  src="/images/mongoose.png"
+                  alt="Mongoose Icon"
+                  width={80}
+                  height={48}
+                  className="object-contain"
                 />
               </div>
-            </div>
-            {/* Desk with Glass Effect */}
-            <div className="mt-3 sm:mt-4 w-48 sm:w-64 h-12 sm:h-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg relative shadow-xl mx-auto">
-              <div className="absolute top-2 left-3 sm:left-4 w-8 sm:w-12 h-4 sm:h-8 bg-gray-800/80 backdrop-blur-sm border border-gray-600/50 rounded shadow-md"></div>
-              <div className="absolute top-2 right-3 sm:right-4 w-6 sm:w-8 h-4 sm:h-8 bg-blue-600/80 backdrop-blur-sm border border-blue-400/50 rounded shadow-md"></div>
-              {/* Additional decorative elements */}
-              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 h-1 bg-white/20 rounded-full"></div>
-            </div>
-          </div>
 
-          {/* Background decorative circles */}
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-cyan-400/10 rounded-full blur-xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-purple-400/10 rounded-full blur-xl"></div>
-            <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-pink-400/10 rounded-full blur-xl"></div>
+              {/* React - Top Left */}
+              <div
+                className="absolute top-4 sm:top-10 -left-4 sm:-left-10 w-16 sm:w-20 h-10 sm:h-12 bg-blue-500/80 backdrop-blur-lg border border-white/20 rounded-xl flex items-center justify-center animate-bounce shadow-xl"
+                style={{ animationDelay: '0.5s' }}
+              >
+                <span className="text-white">
+                  <SiReact size={20} className="sm:w-7 sm:h-7" />
+                </span>
+              </div>
+
+              {/* Next.js - Right */}
+              <div className="absolute top-1/2 -translate-y-1/2 -right-5 w-8 sm:w-10 h-8 sm:h-10 bg-black/80 backdrop-blur-lg border border-white/20 rounded-full flex items-center justify-center animate-pulse shadow-xl">
+                <span className="text-white">
+                  <SiNextdotjs size={20} className="sm:w-7 sm:h-7" />
+                </span>
+              </div>
+
+              {/* TypeScript - Left */}
+              <div
+                className="absolute top-1/2 -translate-y-1/2 -left-5 w-8 sm:w-10 h-8 sm:h-10 bg-blue-600/80 backdrop-blur-lg border border-white/20 rounded-full flex items-center justify-center animate-pulse shadow-xl"
+                style={{ animationDelay: '1s' }}
+              >
+                <span className="text-white">
+                  <SiTypescript size={20} className="sm:w-7 sm:h-7" />
+                </span>
+              </div>
+
+              {/* Zustand - Bottom Right */}
+              <div
+                className="absolute bottom-4 sm:bottom-10 -right-4 sm:-right-10 w-16 sm:w-20 h-10 sm:h-12 bg-orange-500/80 backdrop-blur-lg border border-white/20 rounded-xl flex items-center justify-center animate-bounce shadow-xl"
+                style={{ animationDelay: '0.3s' }}
+              >
+                <span className="text-white text-xs sm:text-sm font-bold">
+                  🐻
+                </span>
+              </div>
+
+              {/* TanStack Query - Bottom Left */}
+              <div
+                className="absolute bottom-4 sm:bottom-10 -left-4 sm:-left-10 w-16 sm:w-20 h-10 sm:h-12 bg-red-500/80 backdrop-blur-lg border border-white/20 rounded-xl flex items-center justify-center animate-bounce shadow-xl"
+                style={{ animationDelay: '0.8s' }}
+              >
+                <span className="text-white text-xs sm:text-sm font-bold">
+                  TQ
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

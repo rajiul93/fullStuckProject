@@ -14,8 +14,10 @@ const ProjectImage = ({ src, alt }: { src: string; alt: string }) => {
         </div>
       )}
       {error ? (
-        <div className="absolute inset-0 bg-white/5 backdrop-blur-md flex items-center justify-center">
-          <p className="text-white/60">Image not available</p>
+        <div className="absolute inset-0 bg-white/5 backdrop-blur-md flex flex-col items-center justify-center">
+          <p className="text-white/60">Image not available 😞</p>
+          <br />
+          <p>size ratio is height 256px </p>
         </div>
       ) : (
         <Image

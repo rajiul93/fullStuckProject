@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { AuthService } from './auth.service';
+import { apiResponse } from '../utils/response';
+import { catchAsync } from '../utils/catch-async';
+import { ValidationService } from '../utils/zod-validation-service';
+import { loginSchema, registerSchema } from '../user/user.validation';
 
 const COOKIE_OPTIONS = {
   httpOnly: true,
@@ -10,48 +14,41 @@ const COOKIE_OPTIONS = {
 };
 
 export class AuthController {
-  static async login(request: NextRequest) {
-    try {
-      const body = await request.json();
-      const { user, accessToken, refreshToken } = await AuthService.login(body);
+  static login = catchAsync(async (request: NextRequest) => {
+    const validatedData = await ValidationService.validateBody(
+      request,
+      loginSchema,
+    );
 
-      const response = Response.json(
-        { success: true, data: { user } },
-        { status: 200 },
-      );
+    const result = await AuthService.login(validatedData);
+    const { accessToken, role } = result;
 
-      response.headers.set(
-        'Set-Cookie',
-        [
-          `accessToken=${accessToken}; ${Object.entries(COOKIE_OPTIONS)
-            .map(([key, value]) => `${key}=${value}`)
-            .join('; ')}; Max-Age=${15 * 60}`,
-          `refreshToken=${refreshToken}; ${Object.entries(COOKIE_OPTIONS)
-            .map(([key, value]) => `${key}=${value}`)
-            .join('; ')}; Max-Age=${7 * 24 * 60 * 60}`,
-        ].join(', '),
-      );
+    // Create a response
+    const response = NextResponse.json(
+      apiResponse(true, 'Login successful', 200, { role }),
+    );
 
-      return response;
-    } catch (error: any) {
-      return Response.json(
-        { success: false, error: error.message },
-        { status: 401 },
-      );
-    }
-  }
+    // Set the cookie with token
+    response.cookies.set('auth_token', accessToken, COOKIE_OPTIONS);
 
-  static async register(request: NextRequest) {
-    try {
-      const body = await request.json();
-      const result = await AuthService.register(body);
+    return response;
+  });
 
-      return Response.json({ success: true, data: result }, { status: 201 });
-    } catch (error: any) {
-      return Response.json(
-        { success: false, error: error.message },
-        { status: 400 },
-      );
-    }
-  }
+  static register = catchAsync(async (request: NextRequest) => {
+    // Central validation
+    const validatedData = await ValidationService.validateBody(
+      request,
+      registerSchema,
+    );
+
+    const result = await AuthService.register(validatedData);
+    const { accessToken, role } = result;
+
+    const response = NextResponse.json(
+      apiResponse(true, 'Registration successful', 201, { role }),
+    );
+
+    response.cookies.set('auth_token', accessToken, COOKIE_OPTIONS);
+    return response;
+  });
 }

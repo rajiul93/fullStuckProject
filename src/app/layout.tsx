@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Barlow } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
+import Providers from '@/provider/providers';
 
 const barlow = Barlow({
   variable: '--font-barlow',
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${barlow.variable} font-primary`}>
-        {children}
+        <Providers>{children}</Providers>
         <Toaster position="top-right" richColors />
       </body>
     </html>

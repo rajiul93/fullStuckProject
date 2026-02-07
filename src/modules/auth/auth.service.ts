@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import { User } from '../user/user.model';
 import { connectDB } from '@/lib/db';
 import { JWTService, TokenPayload } from '@/lib/jwt';
+import { AppError } from '../utils/app-error';
 
 interface LoginData {
   email: string;
@@ -12,7 +13,8 @@ interface RegisterData {
   name: string;
   email: string;
   password: string;
-  role?: string;
+  role?: 'user' | 'admin';
+  status?: 'active' | 'inactive';
 }
 
 export class AuthService {
@@ -21,16 +23,16 @@ export class AuthService {
 
     const user = await User.findOne({ email: data.email }).select('+password');
     if (!user) {
-      throw new Error('Invalid email or password');
+      throw new AppError('Invalid email or password', 401);
     }
 
-    if (!user.isActive) {
-      throw new Error('Account is deactivated');
+    if (user.status) {
+      throw new AppError('Account is deactivated', 403);
     }
 
     const isPasswordValid = await bcrypt.compare(data.password, user.password);
     if (!isPasswordValid) {
-      throw new Error('Invalid email or password');
+      throw new AppError('Invalid email or password', 401);
     }
 
     const payload: TokenPayload = {
@@ -40,15 +42,13 @@ export class AuthService {
     };
 
     const accessToken = JWTService.generateAccessToken(payload);
-    const refreshToken = JWTService.generateRefreshToken(payload);
 
     const userObj = user.toObject();
     delete userObj.password;
 
     return {
-      user: userObj,
+      role: user.role,
       accessToken,
-      refreshToken,
     };
   }
 
@@ -57,7 +57,7 @@ export class AuthService {
 
     const existingUser = await User.findOne({ email: data.email });
     if (existingUser) {
-      throw new Error('User with this email already exists');
+      throw new AppError('User with this email already exists', 409);
     }
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -67,14 +67,17 @@ export class AuthService {
       email: data.email,
       password: hashedPassword,
       role: data.role || 'user',
+      status: 'active',
+    });
+    const accessToken = JWTService.generateAccessToken({
+      userId: user._id.toString(),
+      email: user.email,
+      role: user.role,
     });
 
-    const userObj = user.toObject();
-    delete userObj.password;
-
     return {
-      user: userObj,
-      message: 'User registered successfully',
+      role: user.role,
+      accessToken,
     };
   }
 }

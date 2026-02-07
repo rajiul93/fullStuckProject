@@ -14,18 +14,60 @@ const tabStyle =
   'relative data-[state=active]:text-primary text-white/60 rounded-lg py-3 transition-all duration-300 hover:text-white/80';
 
 const ProjectSection = () => {
-  const [activeTab, setActiveTab] = useState<'small' | 'medium' | 'large'>(
-    'medium',
-  );
+  const [activeTab, setActiveTab] = useState<
+    'all' | 'small' | 'medium' | 'large'
+  >('all');
 
-  const filteredProjects = projectsData.filter(
-    (project) => project.category === activeTab,
-  );
+  const filteredProjects =
+    activeTab === 'all'
+      ? projectsData
+      : projectsData.filter((project) => project.category === activeTab);
 
   const tabVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 0 },
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+      scale: 0.9,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: 'spring' as const,
+        stiffness: 100,
+        damping: 15,
+        duration: 0.6,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      scale: 0.95,
+      transition: {
+        duration: 0.2,
+      },
+    },
   };
 
   return (
@@ -57,15 +99,29 @@ const ProjectSection = () => {
         <Tabs
           value={activeTab}
           onValueChange={(value) =>
-            setActiveTab(value as 'small' | 'medium' | 'large')
+            setActiveTab(value as 'all' | 'small' | 'medium' | 'large')
           }
           className="w-full"
         >
           {/* Tabs List */}
           <TabsList
-            className="relative grid w-full max-w-md mx-auto grid-cols-3 mb-12 bg-white/10 backdrop-blur-lg border border-white/20 p-1 rounded-xl h-auto"
+            className="relative grid w-full max-w-lg mx-auto grid-cols-4 mb-12 bg-white/10 backdrop-blur-lg border border-white/20 p-1 rounded-xl h-auto"
             aria-label="Project size categories"
           >
+            <TabsTrigger value="all" className={tabStyle}>
+              {activeTab === 'all' && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute inset-0 bg-white/20 rounded-lg shadow-lg"
+                  transition={{
+                    type: 'spring',
+                    stiffness: 500,
+                    damping: 30,
+                  }}
+                />
+              )}
+              <span className="relative z-10">All</span>
+            </TabsTrigger>
             <TabsTrigger value="small" className={tabStyle}>
               {activeTab === 'small' && (
                 <motion.div
@@ -111,7 +167,7 @@ const ProjectSection = () => {
           </TabsList>
 
           {/* Tab Contents */}
-          {(['small', 'medium', 'large'] as const).map((category) => (
+          {(['all', 'small', 'medium', 'large'] as const).map((category) => (
             <TabsContent
               key={category}
               value={category}
@@ -127,17 +183,39 @@ const ProjectSection = () => {
                   transition={{ duration: 0.4, ease: 'easeInOut' }}
                 >
                   {filteredProjects.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {filteredProjects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
+                    <motion.div
+                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+                      variants={tabVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      {filteredProjects.map((project, index) => (
+                        <motion.div
+                          key={project.id}
+                          variants={cardVariants}
+                          custom={index}
+                        >
+                          <ProjectCard project={project} />
+                        </motion.div>
                       ))}
-                    </div>
+                    </motion.div>
                   ) : (
-                    <EmptyState
-                      category={
-                        category.charAt(0).toUpperCase() + category.slice(1)
-                      }
-                    />
+                    <motion.div
+                      variants={cardVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      <EmptyState
+                        category={
+                          category === 'all'
+                            ? 'All'
+                            : category.charAt(0).toUpperCase() +
+                              category.slice(1)
+                        }
+                      />
+                    </motion.div>
                   )}
                 </motion.div>
               </AnimatePresence>
