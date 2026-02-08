@@ -67,7 +67,7 @@ export function NavMain({
                       asChild
                       className={
                         pathname === subItem.url
-                          ? 'active-menu-gradient text-white'
+                          ? 'active-menu-gradient text-white hover:text-white'
                           : ''
                       }
                     >

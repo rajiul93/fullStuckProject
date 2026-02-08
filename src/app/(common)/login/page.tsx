@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import useLogin from '@/hooks/api/useLogin';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type FormData = {
   email: string;
@@ -15,6 +16,7 @@ type FormData = {
 
 const Login = () => {
   const { mutate, isPending } = useLogin();
+  const router = useRouter();
 
   const {
     register,
@@ -37,6 +39,7 @@ const Login = () => {
       onSuccess: () => {
         toast.success('Login successful!');
         reset();
+        router.push('/dashboard');
       },
       onError: () => {
         toast.error('Login failed. Please try again.');

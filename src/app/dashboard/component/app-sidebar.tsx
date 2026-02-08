@@ -43,7 +43,6 @@ const data = {
       title: 'Playground',
       url: '#',
       icon: SquareTerminal,
-      isActive: true, // This makes Playground the active tab
       items: [
         {
           title: 'History',
@@ -60,22 +59,21 @@ const data = {
       ],
     },
     {
-      title: 'Models',
+      title: 'content',
       url: '#',
       icon: Bot,
-      isActive: false, // Change to true to make this active
       items: [
         {
-          title: 'Genesis',
-          url: '#',
+          title: 'Projects',
+          url: '/dashboard/contents/projects',
         },
         {
-          title: 'Explorer',
-          url: '#',
+          title: 'Blog',
+          url: '/dashboard/contents/blog',
         },
         {
-          title: 'Quantum',
-          url: '#',
+          title: 'Skills',
+          url: '/dashboard/contents/skills',
         },
       ],
     },
@@ -143,6 +141,13 @@ const data = {
       icon: Map,
     },
   ],
+  dashboard: [
+    {
+      name: 'Dashboard',
+      url: '/dashboard',
+      icon: Frame,
+    },
+  ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -152,8 +157,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
+        <NavProjects projects={data.dashboard} />
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavProjects title="Projects" projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

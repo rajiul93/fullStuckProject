@@ -72,13 +72,7 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-.active-menu-gradient {
-  background: linear-gradient(
-    90deg,
-    rgba(42, 123, 155, 1) 0%,
-    rgba(120, 179, 141, 1) 51%,
-    rgba(237, 221, 83, 1) 100%
-  );
+  .active-menu-gradient {
+    @apply bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364] text-white;
+  }
 }
