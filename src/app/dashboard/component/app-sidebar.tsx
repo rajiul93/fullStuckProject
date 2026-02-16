@@ -75,6 +75,10 @@ const data = {
           title: 'Skills',
           url: '/dashboard/contents/skills',
         },
+        {
+          title: 'Resume',
+          url: '/dashboard/contents/resume',
+        },
       ],
     },
     {

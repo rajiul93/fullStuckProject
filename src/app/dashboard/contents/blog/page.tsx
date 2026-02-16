@@ -1,89 +1,69 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Lock, Search, Calendar, User, Copy, Check, Code2 } from 'lucide-react';
+import {
+  Lock,
+  Search,
+  Calendar,
+  User,
+  Copy,
+  Check,
+  Code2,
+  Plus,
+} from 'lucide-react';
 import Link from 'next/link';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 type BlogPost = {
   id: string;
   title: string;
-  description: string;
+  content: string;
   author: string;
-  date: string;
+  createdAt: string;
   category: string;
-  isPaid: boolean;
+  published: boolean;
   tags: string[];
   slug: string;
 };
 
-const BLOG_POSTS: BlogPost[] = [
-  {
-    id: '1',
-    title: 'Building a Custom Button Component with shadcn/ui',
-    description:
-      'Learn how to create accessible, reusable button components with variants and animations.',
-    author: 'Rajiul Islam',
-    date: '2024-01-15',
-    category: 'Components',
-    isPaid: false,
-    tags: ['React', 'TypeScript', 'UI'],
-    slug: 'custom-button-component',
-  },
-  {
-    id: '2',
-    title: 'Advanced Form Validation with React Hook Form',
-    description:
-      'Master complex form validation patterns with Zod and react-hook-form integration.',
-    author: 'Rajiul Islam',
-    date: '2024-01-20',
-    category: 'Forms',
-    isPaid: true,
-    tags: ['React', 'Forms', 'Validation'],
-    slug: 'advanced-form-validation',
-  },
-  {
-    id: '3',
-    title: 'Creating Animated Card Components',
-    description:
-      'Build beautiful, animated card components with Framer Motion and Tailwind CSS.',
-    author: 'Rajiul Islam',
-    date: '2024-01-25',
-    category: 'Animation',
-    isPaid: false,
-    tags: ['Animation', 'UI', 'Framer Motion'],
-    slug: 'animated-card-components',
-  },
-  {
-    id: '4',
-    title: 'Building a Complete Dashboard Layout System',
-    description:
-      'Step-by-step guide to creating a professional dashboard with responsive navigation.',
-    author: 'Rajiul Islam',
-    date: '2024-02-01',
-    category: 'Layout',
-    isPaid: true,
-    tags: ['Dashboard', 'Layout', 'Navigation'],
-    slug: 'dashboard-layout-system',
-  },
-];
-
 const BlogPage = () => {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
+  useEffect(() => {
+    fetchBlogPosts();
+  }, []);
+
+  const fetchBlogPosts = async () => {
+    try {
+      const response = await fetch('/api/blogs');
+      if (response.ok) {
+        const data = await response.json();
+        setBlogPosts(data.blogs || []);
+      }
+    } catch (error) {
+      console.error('Error fetching blog posts:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const categories = [
     'All',
-    ...Array.from(new Set(BLOG_POSTS.map((post) => post.category))),
+    ...Array.from(
+      new Set(blogPosts.map((post) => post.category).filter(Boolean)),
+    ),
   ];
 
-  const filteredPosts = BLOG_POSTS.filter((post) => {
+  const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchQuery.toLowerCase());
+      post.content.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory =
       selectedCategory === 'All' || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
@@ -95,14 +75,35 @@ const BlogPage = () => {
     setTimeout(() => setCopiedCode(null), 2000);
   };
 
+  if (loading) {
+    return (
+      <div className="container mx-auto py-8">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <p className="text-muted-foreground">Loading blog posts...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto py-8">
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Developer Blog</h1>
-        <p className="text-muted-foreground text-lg">
-          Component showcases, tutorials, and code examples
-        </p>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Developer Blog</h1>
+            <p className="text-muted-foreground text-lg">
+              Component showcases, tutorials, and code examples
+            </p>
+          </div>
+
+          <Link href="/dashboard/contents/blog/create">
+            <Button>
+              <Plus className="h-4 w-4 mr-2" />
+              Create New Blog
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* Search and Filter */}
@@ -142,11 +143,12 @@ const BlogPage = () => {
             <div className="p-6 border-b bg-muted/20">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <Badge variant="secondary">{post.category}</Badge>
-                  {post.isPaid && (
-                    <Badge variant="default" className="gap-1">
-                      <Lock className="h-3 w-3" />
-                      Paid
+                  {post.category && (
+                    <Badge variant="secondary">{post.category}</Badge>
+                  )}
+                  {!post.published && (
+                    <Badge variant="outline" className="gap-1">
+                      Draft
                     </Badge>
                   )}
                 </div>
@@ -158,7 +160,7 @@ const BlogPage = () => {
                   </div>
                   <div className="flex items-center gap-1">
                     <Calendar className="h-3 w-3" />
-                    {new Date(post.date).toLocaleDateString('en-US', {
+                    {new Date(post.createdAt).toLocaleDateString('en-US', {
                       month: 'short',
                       day: 'numeric',
                       year: 'numeric',
@@ -169,11 +171,13 @@ const BlogPage = () => {
 
               <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
 
-              <p className="text-muted-foreground mb-4">{post.description}</p>
+              <p className="text-muted-foreground mb-4">
+                {post.content.substring(0, 200)}...
+              </p>
 
               {/* Tags */}
               <div className="flex gap-2 flex-wrap">
-                {post.tags.map((tag) => (
+                {post.tags?.map((tag) => (
                   <span
                     key={tag}
                     className="text-xs bg-background px-2 py-1 rounded border"
@@ -209,7 +213,6 @@ const BlogPage = () => {
                   className="border rounded-lg p-8 bg-muted/30"
                 >
                   <div className="flex items-center justify-center min-h-[200px]">
-                    {/* Example Preview - Replace with actual component */}
                     <div className="space-y-3">
                       <Button>Default Button</Button>
                       <div className="flex gap-2">
@@ -253,20 +256,7 @@ const BlogPage = () => {
                     </div>
                     <pre className="p-4 overflow-x-auto">
                       <code className="text-sm font-mono">
-                        {`// Example code for ${post.title}
-import { Button } from '@/components/ui/button'
-
-export function Example() {
-  return (
-    <div className="space-y-3">
-      <Button>Default Button</Button>
-      <div className="flex gap-2">
-        <Button variant="outline">Outline</Button>
-        <Button variant="ghost">Ghost</Button>
-      </div>
-    </div>
-  )
-}`}
+                        {post.content.substring(0, 500)}...
                       </code>
                     </pre>
                   </div>
@@ -280,19 +270,8 @@ export function Example() {
                 href={`/dashboard/contents/blog/${post.slug}`}
                 className="block"
               >
-                <Button
-                  className="w-full"
-                  variant={post.isPaid ? 'default' : 'outline'}
-                  size="lg"
-                >
-                  {post.isPaid ? (
-                    <>
-                      <Lock className="h-4 w-4 mr-2" />
-                      Unlock Full Article
-                    </>
-                  ) : (
-                    'Read Full Article'
-                  )}
+                <Button className="w-full" variant="outline" size="lg">
+                  Read Full Article
                 </Button>
               </Link>
             </div>
@@ -301,11 +280,21 @@ export function Example() {
       </div>
 
       {/* Empty State */}
-      {filteredPosts.length === 0 && (
+      {filteredPosts.length === 0 && !loading && (
         <div className="text-center py-12">
-          <p className="text-muted-foreground">
-            No articles found matching your criteria.
+          <p className="text-muted-foreground mb-4">
+            {blogPosts.length === 0
+              ? 'No blog posts found. Create your first blog post!'
+              : 'No articles found matching your criteria.'}
           </p>
+          {blogPosts.length === 0 && (
+            <Link href="/dashboard/contents/blog/create">
+              <Button>
+                <Plus className="h-4 w-4 mr-2" />
+                Create Your First Blog Post
+              </Button>
+            </Link>
+          )}
         </div>
       )}
     </div>
