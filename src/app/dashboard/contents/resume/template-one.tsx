@@ -13,21 +13,24 @@ import {
 } from '@react-pdf/renderer';
 
 // Fix the font path - it should be 'font' not 'fonts'
-Font.register({
-  family: 'Roboto',
-  src: `${window.location.origin}/font/Roboto/roboto.ttf`,
-});
+// Use relative paths to avoid window dependency
+if (typeof window !== 'undefined') {
+  Font.register({
+    family: 'Roboto',
+    src: `${window.location.origin}/font/Roboto/roboto.ttf`,
+  });
 
-// Let's register multiple font weights for better typography
-Font.register({
-  family: 'Roboto-Bold',
-  src: `${window.location.origin}/font/Roboto/static/Roboto-Bold.ttf`,
-});
+  // Let's register multiple font weights for better typography
+  Font.register({
+    family: 'Roboto-Bold',
+    src: `${window.location.origin}/font/Roboto/static/Roboto-Bold.ttf`,
+  });
 
-Font.register({
-  family: 'Roboto-Italic',
-  src: `${window.location.origin}/font/Roboto/static/Roboto-Italic.ttf`,
-});
+  Font.register({
+    family: 'Roboto-Italic',
+    src: `${window.location.origin}/font/Roboto/static/Roboto-Italic.ttf`,
+  });
+}
 
 const styles = StyleSheet.create({
   page: {

@@ -1,6 +1,10 @@
 'use client';
 import React from 'react';
-import TemplateOne from './template-one';
+import dynamic from 'next/dynamic';
+
+const TemplateOne = dynamic(() => import('./template-one'), {
+  ssr: false,
+});
 
 const ResumePage = () => {
   return (
