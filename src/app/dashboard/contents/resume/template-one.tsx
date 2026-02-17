@@ -12,38 +12,52 @@ import {
   Font,
 } from '@react-pdf/renderer';
 
-// Fix the font path - it should be 'font' not 'fonts'
-// Use relative paths to avoid window dependency
-if (typeof window !== 'undefined') {
-  Font.register({
-    family: 'Roboto',
-    src: `${window.location.origin}/font/Roboto/roboto.ttf`,
-  });
+// Register fonts for React PDF
+// Note: React PDF doesn't need window check - it handles font URLs directly
+Font.register({
+  family: 'Roboto',
+  fonts: [
+    {
+      src: '/font/Roboto/roboto.ttf',
+      fontWeight: 400,
+    },
+    {
+      src: '/font/Roboto/static/Roboto-Bold.ttf',
+      fontWeight: 700,
+    },
+    {
+      src: '/font/Roboto/static/Roboto-Italic.ttf',
+      fontStyle: 'italic',
+    },
+  ],
+});
 
-  // Let's register multiple font weights for better typography
-  Font.register({
-    family: 'Roboto-Bold',
-    src: `${window.location.origin}/font/Roboto/static/Roboto-Bold.ttf`,
-  });
+Font.register({
+  family: 'Raleway',
+  src: '/font/Raleway/Raleway-VariableFont_wght.ttf',
+});
 
-  Font.register({
-    family: 'Roboto-Italic',
-    src: `${window.location.origin}/font/Roboto/static/Roboto-Italic.ttf`,
-  });
-  Font.register({
-    family: 'Raleway',
-    src: `${window.location.origin}/font/Raleway/Raleway-VariableFont_wght.ttf`,
-  });
-  Font.register({
-    family: 'Open Sans',
-    src: `${window.location.origin}/font/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf`,
-  });
-  Font.register({
-    family: 'Open Sans bold',
-    src: `${window.location.origin}/font/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf`,
-    fontWeight: 700,
-  });
-}
+Font.register({
+  family: 'Open Sans',
+  fonts: [
+    {
+      src: '/font/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf',
+      fontWeight: 400,
+    },
+    {
+      src: '/font/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf',
+      fontWeight: 500,
+    },
+    {
+      src: '/font/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf',
+      fontWeight: 600,
+    },
+    {
+      src: '/font/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf',
+      fontWeight: 700,
+    },
+  ],
+});
 
 // Spacing constants – consistent rhythm for alignment and single-page fit
 const SPACING = {
@@ -72,11 +86,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     marginBottom: 3,
     fontFamily: 'Roboto',
+    color: '#3e3e3e',
   },
   subtitle: {
     fontSize: 11,
     marginBottom: 0,
-    fontFamily: 'Open Sans bold',
+    fontFamily: 'Open Sans',
+    fontWeight: 700,
   },
   text: {
     fontSize: 9,
@@ -120,7 +136,8 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 12,
-    fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto',
+    fontWeight: 700,
     borderBottom: '0.5px solid #ccc',
     paddingBottom: SPACING.sectionTitlePadding,
     marginBottom: SPACING.sectionTitleMargin,
@@ -140,11 +157,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Open Sans',
     fontWeight: 500,
     lineHeight: 1.35,
+    textAlign: 'justify',
     color: '#3e3e3e',
   },
   bodyTextBlue: {
     fontSize: 9,
-    fontFamily: 'Open Sans bold',
+    fontFamily: 'Open Sans',
+    fontWeight: 700,
     color: 'blue',
   },
   degreeTitle: {
@@ -189,7 +208,8 @@ const styles = StyleSheet.create({
   },
   featuresLabel: {
     fontSize: 9,
-    fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto',
+    fontWeight: 700,
     marginBottom: 3,
     marginTop: 3,
   },
@@ -217,7 +237,8 @@ const styles = StyleSheet.create({
   },
   bottomTitle: {
     fontSize: 11,
-    fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto',
+    fontWeight: 700,
     marginBottom: 4,
   },
   bottomItem: {
@@ -289,7 +310,7 @@ export const resumeData = {
         description:
           'A multi-provider online travel booking platform built with React.js and Next.js, featuring role-based dashboards, multi-payment integration, and advanced admin management. ',
         responsibilities: [
-          'Integrated 3 OTA systems with separate UI inside a single application',
+          'Integrated Multi-OTA systems with separate UI inside a single application',
           'Built dynamic role-based user, agency, and admin dashboards',
           'Built accounts module with expense, invoice, supplier, and financial reports',
         ],
@@ -300,6 +321,8 @@ export const resumeData = {
           'ShadCN UI',
           'zustand',
           'Tanstack Query',
+          'Tanstack Table',
+          'dayjs',
         ],
       },
       {
@@ -588,7 +611,11 @@ const TemplateOne = ({ data = resumeData }: { data?: typeof resumeData }) => {
                       <Text
                         style={[
                           styles.bodyText,
-                          { fontFamily: 'Roboto-Bold', fontSize: 10 },
+                          {
+                            fontFamily: 'Roboto',
+                            fontWeight: 700,
+                            fontSize: 10,
+                          },
                         ]}
                       >
                         {d.sectionLabels.project}{' '}
@@ -610,7 +637,11 @@ const TemplateOne = ({ data = resumeData }: { data?: typeof resumeData }) => {
                           <Text
                             style={[
                               styles.bodyText,
-                              { fontFamily: 'Roboto-Bold', fontSize: 9 },
+                              {
+                                fontFamily: 'Roboto',
+                                fontWeight: 700,
+                                fontSize: 9,
+                              },
                             ]}
                           >
                             Tech Stack:
@@ -715,7 +746,7 @@ const TemplateOne = ({ data = resumeData }: { data?: typeof resumeData }) => {
                         <Text
                           style={[
                             styles.bodyText,
-                            { fontFamily: 'Roboto-Bold' },
+                            { fontFamily: 'Roboto', fontWeight: 700 },
                           ]}
                         >
                           {skill.title}
@@ -747,7 +778,11 @@ const TemplateOne = ({ data = resumeData }: { data?: typeof resumeData }) => {
                       <Text
                         style={[
                           styles.bodyText,
-                          { fontFamily: 'Roboto-Bold', fontSize: 10 },
+                          {
+                            fontFamily: 'Roboto',
+                            fontWeight: 700,
+                            fontSize: 10,
+                          },
                         ]}
                       >
                         {project.title}
@@ -827,7 +862,11 @@ const TemplateOne = ({ data = resumeData }: { data?: typeof resumeData }) => {
                           <Text
                             style={[
                               styles.bodyText,
-                              { fontFamily: 'Roboto-Bold', fontSize: 9 },
+                              {
+                                fontFamily: 'Roboto',
+                                fontWeight: 700,
+                                fontSize: 9,
+                              },
                             ]}
                           >
                             Tech Stack:
