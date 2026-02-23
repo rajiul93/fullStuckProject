@@ -272,9 +272,9 @@ export const resumeData = {
     softSkills: 'SOFT SKILLS',
     personalProjects: 'PERSONAL PROJECTS',
     keyFeatures: 'Key Features:',
-    liveDemo: 'Live Demo',
-    frontendGit: 'Frontend GitHub',
-    backendGit: 'Backend GitHub',
+    liveDemo: 'Live',
+    frontendGit: 'Frontend',
+    backendGit: 'Backend',
     project: 'Project',
     languages: 'LANGUAGES',
     certifications: 'CERTIFICATIONS',
@@ -346,10 +346,10 @@ export const resumeData = {
       },
     ],
   },
-  additionalTraining: {
+  additionalTraining: [{
     title: 'Programming Hero – Online Web Development Course',
     description: 'Front End Web Development – Level 1 & Level 2 (Completed)',
-  },
+  }],
   technologies: [
     'Next.js',
     'TypeScript',
@@ -682,14 +682,16 @@ const TemplateOne = ({ data = resumeData }: { data?: typeof resumeData }) => {
                   <Text style={styles.sectionTitle}>
                     {d.sectionLabels.additionalTraining}
                   </Text>
-                  <View style={styles.sectionContent}>
-                    <Text style={[styles.bodyTextBlue, styles.lineSpacing]}>
-                      {d.additionalTraining.title}
-                    </Text>
-                    <Text style={[styles.bodyText, { marginTop: 4 }]}>
-                      {d.additionalTraining.description}
-                    </Text>
-                  </View>
+                  {d.additionalTraining.map((training, index) => (
+                    <View key={index} style={styles.sectionContent}>
+                      <Text style={[styles.bodyTextBlue, styles.lineSpacing]}>
+                        {training.title}
+                      </Text>
+                      <Text style={[styles.bodyText, { marginTop: 4 }]}>
+                        {training.description}
+                      </Text>
+                    </View>
+                  ))}
                 </View>
               </View>
 
@@ -787,52 +789,61 @@ const TemplateOne = ({ data = resumeData }: { data?: typeof resumeData }) => {
                       >
                         {project.title}
                       </Text>
-                      <Text
-                        style={[
-                          styles.bodyText,
-                          {
-                            fontSize: 8,
-                            color: 'gray',
-                            marginTop: 1,
-                          },
-                        ]}
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 6,
+                          justifyContent: 'space-between',
+                        }}
                       >
-                        {project.duration}
-                      </Text>
-                      <View style={styles.linkRow}>
-                        <Link
-                          src={project.liveLink}
-                          style={{
-                            fontSize: 9,
-                            fontFamily: 'Roboto',
-                            color: 'blue',
-                            textDecoration: 'underline',
-                          }}
+                        <Text
+                          style={[
+                            styles.bodyText,
+                            {
+                              fontSize: 8,
+                              color: 'gray',
+                              marginTop: 1,
+                            },
+                          ]}
                         >
-                          {d.sectionLabels.liveDemo}
-                        </Link>
-                        <Link
-                          src={project.frontendGit}
-                          style={{
-                            fontSize: 9,
-                            fontFamily: 'Roboto',
-                            color: 'blue',
-                            textDecoration: 'underline',
-                          }}
-                        >
-                          {d.sectionLabels.frontendGit}
-                        </Link>
-                        <Link
-                          src={project.backendGit}
-                          style={{
-                            fontSize: 9,
-                            fontFamily: 'Roboto',
-                            color: 'blue',
-                            textDecoration: 'underline',
-                          }}
-                        >
-                          {d.sectionLabels.backendGit}
-                        </Link>
+                          {project.duration}
+                        </Text>
+                        <View style={styles.linkRow}>
+                          <Link
+                            src={project.liveLink}
+                            style={{
+                              fontSize: 9,
+                              fontFamily: 'Roboto',
+                              color: 'blue',
+                              textDecoration: 'underline',
+                            }}
+                          >
+                            {d.sectionLabels.liveDemo}
+                          </Link>
+                          <Link
+                            src={project.frontendGit}
+                            style={{
+                              fontSize: 9,
+                              fontFamily: 'Roboto',
+                              color: 'blue',
+                              textDecoration: 'underline',
+                            }}
+                          >
+                            {d.sectionLabels.frontendGit}
+                          </Link>
+                          <Link
+                            src={project.backendGit}
+                            style={{
+                              fontSize: 9,
+                              fontFamily: 'Roboto',
+                              color: 'blue',
+                              textDecoration: 'underline',
+                            }}
+                          >
+                            {d.sectionLabels.backendGit}
+                          </Link>
+                        </View>
                       </View>
                       <Text style={[styles.bodyText, { marginTop: 2 }]}>
                         {project.description}
