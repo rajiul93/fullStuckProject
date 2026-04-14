@@ -60,10 +60,16 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
+    <section
+      id="skills"
+      className="scroll-mt-24 max-w-7xl mx-auto px-6 py-16"
+      aria-labelledby="skills-heading"
+    >
       <div className="grid lg:grid-cols-2 gap-16">
         <div>
-          <h2 className="text-3xl font-bold mb-8">SKILLS</h2>
+          <h2 id="skills-heading" className="text-3xl font-bold mb-8">
+              SKILLS
+            </h2>
           <div className="grid grid-cols-2 gap-6">
             {skills.map((skill, index) => (
               <SkillCard key={index} skill={skill} />

@@ -5,7 +5,10 @@ import React from 'react';
 import { BsTelephoneForward } from 'react-icons/bs';
 const ContactSection = () => {
   return (
-    <section id="contact" className="max-w-7xl mx-auto px-6 py-16">
+    <section
+      id="contact"
+      className="scroll-mt-24 max-w-7xl mx-auto px-6 py-16"
+    >
       <div className="grid lg:grid-cols-2 gap-16">
         <div>
           <h2 className="text-3xl font-bold mb-8">CONTACT</h2>

@@ -9,7 +9,10 @@ import CoustomTitle from '@/components/common-component/couston-title';
 
 const HeroSection = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ">
+    <section
+      id="home"
+      className="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+    >
       <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-1 lg:order-1 ">
         <CoustomTitle title="MERN STACK DEVELOPER" />
         <p className="text-sm sm:text-lg text-gray-300 max-w-lg mx-auto lg:mx-0 ">

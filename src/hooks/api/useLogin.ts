@@ -1,7 +1,6 @@
 'use client';
 import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
-import { publicAPI } from '.';
+import { api } from '@/hooks/api/api-client';
 import { LoginResponse } from '@/type/front/type';
 
 interface LoginCredentials {
@@ -13,21 +12,11 @@ const loginFn = async (
   credentials: LoginCredentials,
 ): Promise<LoginResponse> => {
   const { email, password } = credentials;
-  const body = { email, password };
-
-  try {
-    const res = await publicAPI.post<LoginResponse>('/api/auth/login', body, {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    });
-
-    return res.data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
-    }
-    throw new Error('Login failed');
-  }
+  const res = await api.post<LoginResponse>('/api/auth/login', {
+    email,
+    password,
+  });
+  return res.data;
 };
 
 const useLogin = () => {

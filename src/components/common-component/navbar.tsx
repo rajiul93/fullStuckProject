@@ -2,17 +2,64 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Link as ScrollLink } from 'react-scroll';
 import { AnimatePresence, motion } from 'framer-motion';
 import Resume from './resume/resume';
 import { AlignVerticalSpaceAround } from 'lucide-react';
-// import Image from 'next/image';
+import {
+  LANDING_NAV_TARGETS,
+  LANDING_SCROLL_OFFSET,
+} from '@/app/(common)/home/landing-nav-config';
 
-const MENU = [
-  { label: 'HOME', href: '/' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' },
-];
+const scrollLinkProps = {
+  smooth: true as const,
+  duration: 500,
+  offset: LANDING_SCROLL_OFFSET,
+  spy: true,
+  activeClass: 'text-blue-300',
+};
+
+const navLinkClass =
+  'cursor-pointer hover:text-blue-300 transition-colors text-inherit';
+
+function NavEntry({
+  to,
+  label,
+  onNavigate,
+}: {
+  to: string;
+  label: string;
+  onNavigate?: () => void;
+}) {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
+  if (isHome) {
+    return (
+      <ScrollLink
+        to={to}
+        {...scrollLinkProps}
+        className={navLinkClass}
+        onClick={onNavigate}
+        href={`#${to}`}
+      >
+        {label}
+      </ScrollLink>
+    );
+  }
+
+  return (
+    <Link
+      href={`/#${to}`}
+      className={navLinkClass}
+      onClick={onNavigate}
+      scroll={false}
+    >
+      {label}
+    </Link>
+  );
+}
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -21,28 +68,12 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-white/10 backdrop-blur-md supports-[backdrop-filter]:bg-white/10">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
-          {/* <div className="flex rounded-full  items-center justify-center  shadow-sm border border-white/20 bg-white/10 backdrop-blur-md p-1">
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={42}
-              height={42}
-              className="rounded-full size-12 object-cover"
-              priority={true}
-            />
-          </div> */}
           <span className="text-lg font-bold sm:text-2xl">RAJIUL ISLAM</span>
         </div>
 
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-          {MENU.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="hover:text-blue-300 transition-colors"
-            >
-              {item.label}
-            </Link>
+          {LANDING_NAV_TARGETS.map((item) => (
+            <NavEntry key={item.to} to={item.to} label={item.label} />
           ))}
         </nav>
 
@@ -78,15 +109,13 @@ const Navbar = () => {
               exit={{ y: -6 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
             >
-              {MENU.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="hover:text-blue-300 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
+              {LANDING_NAV_TARGETS.map((item) => (
+                <NavEntry
+                  key={item.to}
+                  to={item.to}
+                  label={item.label}
+                  onNavigate={() => setIsMenuOpen(false)}
+                />
               ))}
             </motion.div>
           </motion.nav>

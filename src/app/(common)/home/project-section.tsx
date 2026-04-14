@@ -72,7 +72,8 @@ const ProjectSection = () => {
 
   return (
     <section
-      className="min-h-screen py-20 px-4 md:px-8 lg:px-16"
+      id="projects"
+      className="scroll-mt-24 min-h-screen py-20 px-4 md:px-8 lg:px-16"
       aria-labelledby="projects-heading"
     >
       <div className="max-w-7xl mx-auto">

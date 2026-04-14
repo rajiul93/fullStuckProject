@@ -29,9 +29,13 @@ const BlogSection = () => {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
+    <section
+      id="blog"
+      className="scroll-mt-24 max-w-7xl mx-auto px-6 py-16"
+      aria-labelledby="blog-heading"
+    >
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold">BLOG</h2>
+        <h2 id="blog-heading" className="text-3xl font-bold">BLOG</h2>
         <CustomButton title="VIEW BLOG" />
       </div>
       <div className="grid md:grid-cols-3 gap-6">

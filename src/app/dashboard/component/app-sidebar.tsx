@@ -49,8 +49,8 @@ const data = {
           url: '/dashboard/playground/history',
         },
         {
-          title: 'Starred',
-          url: '/dashboard/playground/starred',
+          title: 'Media',
+          url: '/dashboard/playground/media',
         },
         {
           title: 'Settings',
