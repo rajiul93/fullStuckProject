@@ -1,5 +1,6 @@
 import mongoose, { Model, Schema } from "mongoose";
 import type { IProject } from "./project.interface";
+import { projectTypeValues } from "./project.validation";
 
 const ProjectDetailSchema = new Schema(
   {
@@ -13,6 +14,13 @@ const ProjectDetailSchema = new Schema(
 const ProjectSchema = new Schema<IProject>(
   {
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    projectType: {
+      type: String,
+      enum: projectTypeValues,
+      required: true,
+      default: "personal",
+      trim: true,
+    },
     imageUrl: { type: String, required: true, trim: true },
     title: { type: String, required: true, trim: true, maxlength: 200 },
     subTitle: { type: String, required: true, trim: true, maxlength: 300 },

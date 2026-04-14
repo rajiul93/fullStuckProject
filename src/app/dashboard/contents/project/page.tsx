@@ -17,8 +17,17 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { projectTypeValues } from '@/modules/project/project.validation';
 
 const defaultValues: ProjectInput = {
+  projectType: 'personal',
   imageUrl: '',
   title: '',
   subTitle: '',
@@ -55,6 +64,31 @@ export default function Projects() {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+            control={form.control}
+            name="projectType"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Project Type</FormLabel>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select project type" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {projectTypeValues.map((type) => (
+                      <SelectItem key={type} value={type}>
+                        {type}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="title"

@@ -9,6 +9,7 @@ export type ProjectDetail = {
 export interface IProject {
   userId: Types.ObjectId;
   _id?: string;
+  projectType: "personal" | "professional" | "Office" | "others";
   imageUrl: string;
   title: string;
   subTitle: string;

@@ -1,47 +1,80 @@
-import mongoose, { Schema } from "mongoose";
-import type { Experience } from "../../../abc";
+import { Schema, model, Types } from "mongoose";
+import { ResumeData } from "./resume.interface";
 
-const ExperienceProjectSchema = new Schema(
+// ─────────────────────────────────────
+// Sub Schemas
+// ─────────────────────────────────────
+
+const PersonalSchema = new Schema(
   {
-    userId: { type: String, required: true, trim: true },
-    id: { type: Number, required: true, min: 0 },
-    title: { type: String, required: true, trim: true },
-    description: { type: String, required: true, trim: true },
-    responsibilities: {
-      type: [String],
-      required: true,
-      default: [],
-    },
-    tech: {
-      type: [String],
-      required: true,
-      default: [],
-    },
-    liveUrl: { type: String, trim: true },
-    gitFrontendUrl: { type: String, trim: true },
-    gitBackendUrl: { type: String, trim: true },
+    name: { type: String, required: true },
+    title: { type: String, required: true },
   },
-  { _id: false },
+  { _id: false }
 );
 
-const ExperienceSchema = new Schema<Experience>(
+const ContactSchema = new Schema(
   {
-    userId: { type: String, required: true, trim: true, index: true },
-    jobTitle: { type: String, required: true, trim: true },
-    company: { type: String, required: true, trim: true },
-    period: { type: String, required: true, trim: true },
-    location: { type: String, required: true, trim: true },
-    projects: {
-      type: [ExperienceProjectSchema],
-      required: true,
-      default: [],
-    },
+    phone: { type: String, required: true },
+    email: { type: String, required: true },
+    linkedInUrl: { type: String },
+    linkedInLabel: { type: String },
+    portfolioUrl: { type: String },
+    portfolioLabel: { type: String },
+    location: { type: String },
   },
-  { timestamps: true },
+  { _id: false }
 );
 
-export const ExperienceModel =
-  mongoose.models.Experience ||
-  mongoose.model<Experience>("Experience", ExperienceSchema);
+const SectionLabelsSchema = new Schema(
+  {
+    summary: { type: String },
+    education: { type: String },
+    experience: { type: String },
+    additionalTraining: { type: String },
+    industrySkills: { type: String },
+    softSkills: { type: String },
+    personalProjects: { type: String },
+    keyFeatures: { type: String },
+    liveDemo: { type: String },
+    frontendGit: { type: String },
+    backendGit: { type: String },
+    project: { type: String },
+    languages: { type: String },
+    certifications: { type: String },
+    bullet: { type: String },
+  },
+  { _id: false }
+);
 
-export default ExperienceModel;
+// ─────────────────────────────────────
+// Main Resume Schema
+// ─────────────────────────────────────
+
+const ResumeSchema = new Schema<ResumeData>(
+  {
+    userId: { type: Types.ObjectId, ref: "User", required: true },
+    personal: { type: PersonalSchema, required: true },
+    contact: { type: ContactSchema, required: true },
+    sectionLabels: { type: SectionLabelsSchema, required: true },
+    summary: { type: String },
+
+    education: [{ type: Types.ObjectId, ref: "Education" }],
+    experience: [{ type: Types.ObjectId, ref: "Experience" }],
+    personalProjects: [{ type: Types.ObjectId, ref: "PersonalProject" }],
+    additionalTraining: [{ type: Types.ObjectId, ref: "AdditionalTraining" }],
+    technologies: [{ type: Types.ObjectId, ref: "Technology" }],
+    softSkills: [{ type: Types.ObjectId, ref: "SoftSkill" }],
+    languages: [{ type: Types.ObjectId, ref: "Language" }],
+    certifications: [{ type: Types.ObjectId, ref: "Certification" }],
+  },
+  {
+    timestamps: true,
+  }
+);
+
+// ─────────────────────────────────────
+// Model
+// ─────────────────────────────────────
+
+export const ResumeModel = model("Resume", ResumeSchema);

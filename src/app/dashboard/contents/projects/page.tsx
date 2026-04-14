@@ -69,6 +69,7 @@ export default function ProjectsPage() {
                   <TableHead className="w-14">SL</TableHead>
                   <TableHead className="w-20">Image</TableHead>
                   <TableHead>Title</TableHead>
+                  <TableHead className="w-32">Type</TableHead>
                   <TableHead className="w-24">Live</TableHead>
                   <TableHead className="w-28">Frontend</TableHead>
                   <TableHead className="w-28">Backend</TableHead>
@@ -79,10 +80,11 @@ export default function ProjectsPage() {
               <TableBody>
                 {projects.map((p, idx) => {
                   const defaultValues: ProjectInput = {
+                    projectType: p.projectType ?? 'personal',
                     imageUrl: p.imageUrl,
                     title: p.title,
                     subTitle: p.subTitle,
-                    skills: p.skills,
+                    skills: p.skills.map((skillId) => String(skillId)),
                     liveUrl: p.liveUrl,
                     gitFront: p.gitFront,
                     gitBackend: p.gitBackend,
@@ -105,6 +107,7 @@ export default function ProjectsPage() {
                           </div>
                         </div>
                       </TableCell>
+                      <TableCell className="text-sm">{p.projectType ?? '-'}</TableCell>
                       <TableCell>
                         <a
                           className="underline underline-offset-4 text-sm"

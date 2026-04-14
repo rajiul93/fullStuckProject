@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+export const projectTypeValues = ['personal', 'professional', 'Office', 'others'] as const;
+
 const urlSchema = z
   .string()
   .min(1, 'URL is required')
@@ -12,6 +14,9 @@ export const projectDetailSchema = z.object({
 });
 
 export const projectSchema = z.object({
+  projectType: z.enum(projectTypeValues, {
+    message: 'Project type is required',
+  }),
   imageUrl: urlSchema,
   title: z.string().min(1, 'Title is required').max(200),
   subTitle: z.string().min(1, 'Subtitle is required').max(300),

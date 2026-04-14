@@ -16,7 +16,21 @@ import { Form } from '@/components/ui/form';
 import { RhfTextInput, RhfTextarea } from '@/components/formComponent';
 import { toast } from 'sonner';
 import { useCreateProjectMutation } from '@/hooks/frontend/useProject';
-import { FormField, FormItem, FormMessage } from '@/components/ui/form';
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { projectTypeValues } from '@/modules/project/project.validation';
 
 type Detail = {
   title: string;
@@ -25,6 +39,7 @@ type Detail = {
 };
 
 type ProjectFormValues = {
+  projectType: (typeof projectTypeValues)[number];
   imageUrl: string;
   title: string;
   subTitle: string;
@@ -36,6 +51,7 @@ type ProjectFormValues = {
 };
 
 const DEFAULT_VALUES: ProjectFormValues = {
+  projectType: 'personal',
   imageUrl: '',
   title: '',
   subTitle: '',
@@ -103,6 +119,30 @@ export function ProjectCreateForm() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <FormField
+            control={control}
+            name="projectType"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Project Type</FormLabel>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select project type" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {projectTypeValues.map((type) => (
+                      <SelectItem key={type} value={type}>
+                        {type}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <RhfTextInput
             control={control}
             name="title"

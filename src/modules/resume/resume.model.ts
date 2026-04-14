@@ -1,8 +1,9 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { ResumeData } from "./resume.interface";
 
 const ResumeSchema = new Schema<ResumeData>(
   {
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
     personal: {
       name: { type: String, required: true },
       title: { type: String, required: true },

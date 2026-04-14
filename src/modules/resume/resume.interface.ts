@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 
 export interface ResumeData {
+  userId: Types.ObjectId;
   personal: Personal;
   contact: Contact;
   sectionLabels: SectionLabels;

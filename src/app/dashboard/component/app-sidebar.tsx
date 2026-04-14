@@ -76,6 +76,26 @@ const data = {
           url: '/dashboard/contents/skills',
         },
         {
+          title: 'Educations',
+          url: '/dashboard/contents/educations',
+        },
+        {
+          title: 'Additional Trainings',
+          url: '/dashboard/contents/additional-trainings',
+        },
+        {
+          title: 'SoftSkill',
+          url: '/dashboard/contents/soft-skill',
+        },
+        {
+          title: 'Language',
+          url: '/dashboard/contents/language',
+        },
+        {
+          title: 'Certification',
+          url: '/dashboard/contents/certification',
+        },
+        {
           title: 'Resume',
           url: '/dashboard/contents/resume',
         },
