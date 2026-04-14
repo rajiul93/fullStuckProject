@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export type ProjectDetail = {
   title: string;
   description: string;
@@ -5,12 +7,13 @@ export type ProjectDetail = {
 };
 
 export interface IProject {
+  userId: Types.ObjectId;
   _id?: string;
   imageUrl: string;
   title: string;
   subTitle: string;
   /** Array of Skill _id strings */
-  skills: string[];
+  skills: Types.ObjectId[];
   liveUrl: string;
   gitFront: string;
   gitBackend: string;

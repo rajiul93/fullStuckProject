@@ -3,14 +3,16 @@ import { ProjectController } from '@/modules/project/project.controller';
 import { NextRequest } from 'next/server';
 
 /** GET /api/project — list all projects (public) */
-export async function GET() {
-  return ProjectController.getAll();
+export async function GET(request: NextRequest) {
+  const auth = requireAuth(request);
+  if (!auth.ok) return auth.response;
+  return ProjectController.getAll(auth.payload.userId);
 }
 
 /** POST /api/project — create a project (authenticated) */
 export async function POST(request: NextRequest) {
   const auth = requireAuth(request);
   if (!auth.ok) return auth.response;
-  return ProjectController.create(request);
+  return ProjectController.create(request, auth.payload.userId);
 }
 

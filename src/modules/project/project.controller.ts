@@ -4,9 +4,9 @@ import { ProjectService } from './project.service';
 import { projectSchema, updateProjectSchema } from './project.validation';
 
 export class ProjectController {
-  static async getAll() {
+  static async getAll(userId: string) {
     try {
-      const projects = await ProjectService.getAll();
+      const projects = await ProjectService.getAll(userId);
       return NextResponse.json(projects);
     } catch {
       return NextResponse.json(
@@ -34,11 +34,11 @@ export class ProjectController {
     }
   }
 
-  static async create(request: NextRequest) {
+  static async create(request: NextRequest, userId: string) {
     try {
       const body = await request.json();
       const validated = projectSchema.parse(body);
-      const created = await ProjectService.create(validated);
+      const created = await ProjectService.create(validated, userId);
       return NextResponse.json(created, { status: 201 });
     } catch (error) {
       if (error instanceof ZodError) {
@@ -51,11 +51,26 @@ export class ProjectController {
     }
   }
 
-  static async update(request: NextRequest, id: string) {
+  static async update(request: NextRequest, id: string, userId: string) {
     try {
       const body = await request.json();
       const validated = updateProjectSchema.parse(body);
-      const updated = await ProjectService.update(id, validated);
+      const existing = await ProjectService.getById(id);
+      if (!existing) {
+        return NextResponse.json(
+          { error: 'Project not found' },
+          { status: 404 },
+        );
+      }
+
+      if (String(existing.userId) !== userId) {
+        return NextResponse.json(
+          { error: 'Forbidden', message: 'You can update only your own project' },
+          { status: 403 },
+        );
+      }
+
+      const updated = await ProjectService.update(id, validated, userId);
       if (!updated) {
         return NextResponse.json(
           { error: 'Project not found' },

@@ -5,17 +5,19 @@ import { NextRequest } from 'next/server';
 type RouteContext = { params: Promise<{ id: string }> };
 
 /** GET /api/project/:id — get one project (public) */
-export async function GET(_request: NextRequest, context: RouteContext) {
+export async function GET(request: NextRequest, context: RouteContext) {
+  const auth = requireAuth(request);
+  if (!auth.ok) return auth.response;
   const { id } = await context.params;
   return ProjectController.getById(id);
 }
 
-/** PUT /api/project/:id — update a project (authenticated) */
-export async function PUT(request: NextRequest, context: RouteContext) {
+/** PATCH /api/project/:id — update a project (authenticated) */
+export async function PATCH(request: NextRequest, context: RouteContext) {
   const auth = requireAuth(request);
   if (!auth.ok) return auth.response;
   const { id } = await context.params;
-  return ProjectController.update(request, id);
+  return ProjectController.update(request, id, auth.payload.userId);
 }
 
 /** DELETE /api/project/:id — delete a project (authenticated) */

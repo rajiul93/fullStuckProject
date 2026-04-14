@@ -79,6 +79,10 @@ const data = {
           title: 'Resume',
           url: '/dashboard/contents/resume',
         },
+        {
+          title: 'Resume Form',
+          url: '/dashboard/contents/resume/form',
+        },
       ],
     },
     {

@@ -1,58 +1,6 @@
-export interface ResumeData {
-  personal: Personal;
-  contact: Contact;
-  sectionLabels: SectionLabels;
-  summary: string;
-  education: Education[];
-  experience: Experience;
-  additionalTraining: AdditionalTraining;
-  technologies: string[];
-  softSkills: SoftSkill[];
-  personalProjects: Experience[];
-  languages: Language[];
-  certifications: Certification[];
-}
-
-// ─────────────────────────────────────
-
-export interface Personal {
-  name: string;
-  title: string;
-}
-
-export interface Contact {
-  phone: string;
-  email: string;
-  linkedInUrl: string;
-  linkedInLabel: string;
-  portfolioUrl: string;
-  portfolioLabel: string;
-  location: string;
-}
-
-// ─────────────────────────────────────
-
-export interface SectionLabels {
-  summary: string;
-  education: string;
-  experience: string;
-  additionalTraining: string;
-  industrySkills: string;
-  softSkills: string;
-  personalProjects: string;
-  keyFeatures: string;
-  liveDemo: string;
-  frontendGit: string;
-  backendGit: string;
-  project: string;
-  languages: string;
-  certifications: string;
-  bullet: string;
-}
-
-// ─────────────────────────────────────
 
 export interface Education {
+  userId:string;
   position: number;
   degree: string;
   institution: string;
@@ -63,6 +11,7 @@ export interface Education {
 // ─────────────────────────────────────
 
 export interface Experience {
+  userId:string;
   jobTitle: string;
   company: string;
   period: string;
@@ -71,6 +20,7 @@ export interface Experience {
 }
 
 export interface ExperienceProject {
+  userId:string;
   id: number;
   title: string;
   description: string;
@@ -84,6 +34,7 @@ export interface ExperienceProject {
 // ─────────────────────────────────────
 
 export interface AdditionalTraining {
+  userId:string;
   title: string;
   description: string;
 }
@@ -91,6 +42,7 @@ export interface AdditionalTraining {
 // ─────────────────────────────────────
 
 export interface SoftSkill {
+  userId:string;
   position: number;
   icon: string;
   title: string;
@@ -102,6 +54,7 @@ export interface SoftSkill {
 // ─────────────────────────────────────
 
 export interface Language {
+  userId:string;
   name: string;
   level: string;
 }
@@ -109,6 +62,7 @@ export interface Language {
 // ─────────────────────────────────────
 
 export interface Certification {
+  userId:string;
   name: string;
   issuer: string;
 }

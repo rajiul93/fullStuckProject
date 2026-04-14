@@ -39,7 +39,7 @@ export function useUpdateProjectMutation() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async ({ id, payload }: UpdateProjectPayload) => {
-      const res = await api.put<IProject>(`/api/project/${id}`, payload);
+      const res = await api.patch<IProject>(`/api/project/${id}`, payload);
       return res.data;
     },
     onSuccess: () => {
