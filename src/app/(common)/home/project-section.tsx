@@ -1,17 +1,53 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProjectCard from './project-card';
-import { projectsData } from '@/hooks/api/useProjectData';
 import EmptyState from './enpty-state';
 import CoustomTitle from '@/components/common-component/couston-title';
+import type { Project } from '@/type/front/project-data-type';
 
 // Project data structure
 
 const tabStyle =
   'relative data-[state=active]:text-primary text-white/60 rounded-lg py-3 transition-all duration-300 hover:text-white/80';
+
+const projectsData: Project[] = [
+  {
+    id: '1',
+    title: 'Portfolio Website',
+    description:
+      'Modern personal portfolio with responsive layout, animations, and project showcase.',
+    category: 'small',
+    image: '/images/project/project-1.png',
+    clientLink: 'https://example.com/portfolio',
+    serverLink: 'https://github.com/example/portfolio',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+  },
+  {
+    id: '2',
+    title: 'Business Dashboard',
+    description:
+      'Admin dashboard with analytics widgets, role-based modules, and clean UI components.',
+    category: 'medium',
+    image: '/images/project/project-2.png',
+    clientLink: 'https://example.com/dashboard',
+    serverLink: 'https://github.com/example/dashboard',
+    tags: ['React', 'TanStack Query', 'Shadcn UI'],
+  },
+  {
+    id: '3',
+    title: 'E-Commerce Platform',
+    description:
+      'Full-stack e-commerce platform with products, cart, checkout and order tracking.',
+    category: 'large',
+    image: '/images/project/ecommerce-home.png',
+    clientLink: 'https://example.com/shop',
+    serverLink: 'https://github.com/example/ecommerce',
+    tags: ['Next.js', 'MongoDB', 'Stripe'],
+  },
+];
 
 const ProjectSection = () => {
   const [activeTab, setActiveTab] = useState<
