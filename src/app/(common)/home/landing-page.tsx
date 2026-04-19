@@ -1,49 +1,31 @@
-'use client';
-
-import { useEffect } from 'react';
-import { Element, scroller } from 'react-scroll';
-import HeroSection from './hero-section';
-import SkillsSection from './skills-section';
-import ProjectSection from './project-section';
-import BlogSection from './blog-section';
-import ContactSection from './contact-section';
-import { LANDING_SCROLL_OFFSET } from './landing-nav-config';
+import HeroSection from "./hero-section";
+import SkillsSection from "./skills-section";
+import ProjectSection from "./project-section";
+import BlogSection from "./blog-section";
+import ContactSection from "./contact-section";
 
 export default function LandingPage() {
-  // useEffect(() => {
-  //   const hash = window.location.hash.replace(/^#/, '');
-  //   if (!hash) return;
-  //   const t = window.setTimeout(() => {
-  //     scroller.scrollTo(hash, {
-  //       smooth: true,
-  //       duration: 500,
-  //       offset: LANDING_SCROLL_OFFSET,
-  //     });
-  //   }, 100);
-  //   return () => window.clearTimeout(t);
-  // }, []);
-
   return (
     <div className="flex w-full flex-col gap-0">
-      <Element name="home">
+      <section id="home">
         <HeroSection />
-      </Element>
+      </section>
 
-      <Element name="skills">
+      <section id="skills">
         <SkillsSection />
-      </Element>
+      </section>
 
-      <Element name="projects">
+      <section id="projects">
         <ProjectSection />
-      </Element>
+      </section>
 
-      <Element name="blog">
+      <section id="blog">
         <BlogSection />
-      </Element>
+      </section>
 
-      <Element name="contact">
+      <section id="contact">
         <ContactSection />
-      </Element>
+      </section>
     </div>
   );
 }

@@ -3,7 +3,6 @@ import React from 'react';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Link as ScrollLink } from 'react-scroll';
 import { AnimatePresence, motion } from 'framer-motion';
 import Resume from './resume/resume';
 import { AlignVerticalSpaceAround } from 'lucide-react';
@@ -11,14 +10,6 @@ import {
   LANDING_NAV_TARGETS,
   LANDING_SCROLL_OFFSET,
 } from '@/app/(common)/home/landing-nav-config';
-
-const scrollLinkProps = {
-  smooth: true as const,
-  duration: 500,
-  offset: LANDING_SCROLL_OFFSET,
-  spy: true,
-  activeClass: 'text-blue-300',
-};
 
 const navLinkClass =
   'cursor-pointer hover:text-blue-300 transition-colors text-inherit';
@@ -36,16 +27,30 @@ function NavEntry({
   const isHome = pathname === '/';
 
   if (isHome) {
+    const handleScrollToSection = () => {
+      const section = document.getElementById(to);
+      if (!section) {
+        onNavigate?.();
+        return;
+      }
+
+      const top =
+        section.getBoundingClientRect().top +
+        window.scrollY +
+        LANDING_SCROLL_OFFSET;
+
+      window.scrollTo({ top, behavior: 'smooth' });
+      onNavigate?.();
+    };
+
     return (
-      <ScrollLink
-        to={to}
-        {...scrollLinkProps}
+      <button
+        type="button"
         className={navLinkClass}
-        onClick={onNavigate}
-        href={`#${to}`}
+        onClick={handleScrollToSection}
       >
         {label}
-      </ScrollLink>
+      </button>
     );
   }
 
