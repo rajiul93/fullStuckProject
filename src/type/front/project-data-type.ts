@@ -7,4 +7,8 @@ export interface Project {
   clientLink?: string;
   serverLink?: string;
   tags: string[];
+  features: {
+    title: string;
+    description: string;
+  }[];
 }

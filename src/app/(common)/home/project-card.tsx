@@ -1,8 +1,18 @@
 import ProjectImage from '@/components/common-component/project-image';
 import { Button } from '@/components/ui/button';
+import {
+  DialogClose,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { Project } from '@/type/front/project-data-type';
-import { ExternalLink, Globe, Server } from 'lucide-react';
-import Link from 'next/dist/client/link';
+import { Globe, Server } from 'lucide-react';
+import Link from 'next/link';
 import { Suspense } from 'react';
 
 const ProjectCard = ({ project }: { project: Project }) => {
@@ -69,24 +79,94 @@ const ProjectCard = ({ project }: { project: Project }) => {
               </Link>
             </Button>
           )}
-          {project.serverLink && (
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className="flex-1 bg-white/5 border-white/20 hover:bg-white/10 hover:border-white/40 text-white transition-all"
-              aria-label={`View ${project.title} source code`}
-            >
-              <Link
-                href={project.serverLink}
-                target="_blank"
-                rel="noopener noreferrer"
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex-1 bg-white/5 border-white/20 hover:bg-white/10 hover:border-white/40 text-white transition-all"
+                aria-label={`View ${project.title} details`}
               >
                 <Server className="w-4 h-4 mr-2" aria-hidden="true" />
-                Source Code
-              </Link>
-            </Button>
-          )}
+                View Details
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="flex h-[85vh] max-h-[85vh] max-w-2xl flex-col overflow-hidden border-white/20 bg-slate-950 p-0 text-white">
+              <DialogHeader className="space-y-3">
+                <DialogTitle className="px-6 pt-6 text-2xl font-bold text-white">
+                  {project.title}
+                </DialogTitle>
+                <DialogDescription className="px-6 text-sm leading-7 whitespace-pre-line text-white/75">
+                  {project.description}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="-mx-4 flex-1 space-y-6 overflow-y-auto px-10 py-4">
+                <div className="rounded-lg border border-white/15 bg-white/5 p-4">
+                  <p className="text-xs uppercase tracking-wide text-white/60 mb-2">
+                    Category
+                  </p>
+                  <p className="text-sm text-white capitalize">{project.category}</p>
+                </div>
+
+                <div className="space-y-3">
+                  <p className="text-sm font-semibold text-white">Technologies</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 text-xs font-medium text-blue-200 bg-blue-500/20 rounded-full border border-blue-300/30"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <p className="text-sm font-semibold text-white">Key Features</p>
+                  <ul className="space-y-3">
+                    {project.features.map((feature, index) => (
+                      <li
+                        key={`${feature.title}-${index}`}
+                        className="rounded-lg border border-white/10 bg-white/5 p-4"
+                      >
+                        <p className="text-sm font-medium text-white mb-1">
+                          {feature.title}
+                        </p>
+                        <p className="text-sm leading-6 text-white/75 whitespace-pre-line">
+                          {feature.description}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <DialogFooter className="mt-auto flex-col gap-3 border-t border-white/10 bg-slate-950 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:space-x-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  {project.clientLink && (
+                    <Button asChild variant="secondary" size="sm">
+                      <Link
+                        href={project.clientLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Globe className="w-4 h-4 mr-2" aria-hidden="true" />
+                        Live Demo
+                      </Link>
+                    </Button>
+                  )}
+                 
+                </div>
+                <DialogClose asChild>
+                  <Button variant="outline" size="sm" className="w-full sm:w-auto text-black">
+                    Close
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 
