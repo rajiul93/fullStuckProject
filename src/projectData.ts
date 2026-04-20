@@ -45,7 +45,7 @@ export const projectsData: Project[] = [
       'Digital Agency with responsive layout, animations, and project showcase.',
     category: 'medium',
     image: '/images/project/agency.png',
-    clientLink: 'https://digital-agency.vercel.app',
+    clientLink: 'https://betechlab.com/',
     serverLink: 'https://github.com/example/digital-agency',
     tags: ['React.js', 'TypeScript', 'Tailwind CSS', "axios", "tanstack query", "express", "mongoose", "node.js"],
     features: [
@@ -90,7 +90,7 @@ export const projectsData: Project[] = [
       'Single application for multiple OTA systems with role-based access and multi-payment integration.',
     category: 'large',
     image: '/images/project/ota.png',
-    clientLink: 'https://ota.vercel.app',
+    clientLink: 'https://kingstartravel.com/',
     serverLink: 'https://github.com/example/ota',
     tags: [
       "Next.js",
@@ -108,36 +108,44 @@ export const projectsData: Project[] = [
     ],
     features: [
       {
-        title: 'Responsive Layout',
-        description: 'The OTA is responsive and works on all devices.',
+        title: 'Flight Search & Booking',
+        description:
+          'Supports end-to-end flight search and booking with origin, destination, date, traveler count, and cabin class selection.',
       },
       {
-        title: 'Animations',
-        description: 'The OTA has animations and smooth transitions.',
+        title: 'Trip Types Support',
+        description:
+          'Provides booking flows for One Way, Round Trip, and Multi City journeys in a single booking experience.',
       },
       {
-        title: 'Project Showcase',
-        description: 'The OTA has a project showcase section.',
+        title: 'Hotels, Tours & Multi-Service Discovery',
+        description:
+          'Expands beyond flights with discoverable travel services including hotels, tours, and related packages.',
       },
       {
-        title: 'Contact Form',
-        description: 'The OTA has a contact form section.',
+        title: 'Global Destination Coverage',
+        description:
+          'Highlights wide inventory across 500+ worldwide destinations to increase traveler choice and route flexibility.',
       },
       {
-        title: 'Blog',
-        description: 'The OTA has a blog section.',
+        title: 'Fast & Secure Booking Flow',
+        description:
+          'Delivers a streamlined and secure booking process from initial search to final confirmation.',
       },
       {
-        title: 'About',
-        description: 'The OTA has an about section.',
+        title: 'Expert-Guided Travel Experience',
+        description:
+          'Promotes guided tours with experienced travel professionals to improve planning confidence and service quality.',
       },
       {
-        title: 'Services',
-        description: 'The OTA has a services section.',
+        title: 'Travel Content & Inspiration',
+        description:
+          'Includes a blog module for travel tips, destinations, and budget travel stories to support user engagement.',
       },
       {
-        title: 'Projects',
-        description: 'The OTA has a projects section.',
+        title: 'Airline Partner Integration',
+        description:
+          'Leverages trusted airline partner connectivity for real-time inventory and global booking reliability.',
       },
     ],
   },
@@ -148,7 +156,7 @@ export const projectsData: Project[] = [
       'Full-stack e-commerce platform with products, cart, checkout and order tracking.',
     category: 'large',
     image: '/images/project/saas.png',
-    clientLink: 'https://example.com/shop',
+    clientLink: 'https://ezybuss.com/en',
     serverLink: 'https://github.com/example/ecommerce',
     tags: [
       "Next.js",
@@ -168,36 +176,44 @@ export const projectsData: Project[] = [
     ],
     features: [
       {
-        title: 'Responsive Layout',
-        description: 'The SaaS is responsive and works on all devices.',
+        title: 'Industry-Specific Templates',
+        description:
+          'Offers ready-to-launch templates for ecommerce, agencies, portfolios, booking platforms, and blogs.',
       },
       {
-        title: 'Animations',
-        description: 'The SaaS has animations and smooth transitions.',
+        title: 'Custom Domain Support',
+        description:
+          'Supports one-click custom domain connection with built-in SSL, DNS management, and subdomain routing.',
       },
       {
-        title: 'Project Showcase',
-        description: 'The SaaS has a project showcase section.',
+        title: 'Multi-Tenant Architecture',
+        description:
+          'Each tenant runs independently with separate branding, theme, data, and admin panel on a shared platform.',
       },
       {
-        title: 'Contact Form',
-        description: 'The SaaS has a contact form section.',
+        title: 'Powerful Admin Dashboard',
+        description:
+          'Provides centralized management for products, orders, pages, media, and analytics from a single dashboard.',
       },
       {
-        title: 'Blog',
-        description: 'The SaaS has a blog section.',
+        title: 'SEO & Performance Built-in',
+        description:
+          'Uses server-rendered pages, automatic meta handling, and image optimization for fast, search-friendly websites.',
       },
       {
-        title: 'About',
-        description: 'The SaaS has an about section.',
+        title: 'Multilingual & RTL Ready',
+        description:
+          'Supports multilingual publishing including RTL languages for broader regional accessibility.',
       },
       {
-        title: 'Services',
-        description: 'The SaaS has a services section.',
+        title: 'Go Live in Minutes',
+        description:
+          'Streamlines launch flow from template selection to domain setup and one-click publishing in minutes.',
       },
       {
-        title: 'Projects',
-        description: 'The SaaS has a projects section.',
+        title: 'Scalable Business Platform',
+        description:
+          'Designed for growth with high uptime, global usage support, and a dashboard suitable for multi-site operations.',
       },
     ],
   },
@@ -208,7 +224,7 @@ export const projectsData: Project[] = [
       'Full-stack e-commerce platform with products, cart, checkout and order tracking.',
     category: 'medium',
     image: '/images/project/service.png',
-    clientLink: 'https://example.com/shop',
+    clientLink: 'https://www.service64.com/',
     serverLink: 'https://github.com/example/ecommerce',
     tags: [
       "Next.js",
@@ -229,47 +245,55 @@ export const projectsData: Project[] = [
     ],
     features: [
       {
-        title: 'Responsive Layout',
-        description: 'The e-commerce is responsive and works on all devices.',
+        title: 'Location-Based Provider Discovery',
+        description:
+          'Users can find nearby service providers based on their area, improving local relevance and booking intent.',
       },
       {
-        title: 'Animations',
-        description: 'The e-commerce has animations and smooth transitions.',
+        title: 'Category-Wise Service Listing',
+        description:
+          'Services are organized by category so users can quickly filter providers by the exact service they need.',
       },
       {
-        title: 'Project Showcase',
-        description: 'The e-commerce has a project showcase section.',
+        title: 'Provider Profile Pages',
+        description:
+          'Each provider has a dedicated profile with service details, coverage area, and contact-ready information.',
       },
       {
-        title: 'Contact Form',
-        description: 'The e-commerce has a contact form section.',
+        title: 'Search & Filter Experience',
+        description:
+          'Supports fast searching and filtering to narrow results by service type and location context.',
       },
       {
-        title: 'Blog',
-        description: 'The e-commerce has a blog section.',
+        title: 'Lead-Driven Contact Flow',
+        description:
+          'Built to connect users with providers through direct inquiry and conversion-focused action points.',
       },
       {
-        title: 'About',
-        description: 'The e-commerce has an about section.',
+        title: 'Mobile-First UI',
+        description:
+          'Optimized for mobile users who need quick access to local providers while on the go.',
       },
       {
-        title: 'Services',
-        description: 'The e-commerce has a services section.',
+        title: 'Scalable Marketplace Architecture',
+        description:
+          'Designed to onboard growing numbers of providers and categories without affecting browsing performance.',
       },
       {
-        title: 'Projects',
-        description: 'The e-commerce has a projects section.',
+        title: 'Trust-Oriented Listing Presentation',
+        description:
+          'Clear service cards and structured provider information improve user confidence before contact.',
       },
     ],
   },
   {
     id: '6',
-    title: 'Services Marketplace',
+    title: 'Full-stack e-commerce platform',
     description:
       'Full-stack e-commerce platform with products, cart, checkout and order tracking.',
     category: 'large',
     image: '/images/project/ecommerce-home.png',
-    clientLink: 'https://example.com/shop',
+    clientLink: 'https://myecom.ezybuss.com',
     serverLink: 'https://github.com/example/ecommerce',
     tags: [
       "Next.js",
@@ -290,36 +314,64 @@ export const projectsData: Project[] = [
     ],
     features: [
       {
-        title: 'Responsive Layout',
-        description: 'The e-commerce is responsive and works on all devices.',
+        title: 'Modern Storefront Experience',
+        description:
+          'Responsive, conversion-focused storefront with product discovery, promotions, and smooth mobile-first browsing.',
       },
       {
-        title: 'Animations',
-        description: 'The e-commerce has animations and smooth transitions.',
+        title: 'Advanced Product Catalog',
+        description:
+          'Supports category hierarchy, product variants, stock status, pricing rules, and rich product detail pages.',
       },
       {
-        title: 'Project Showcase',
-        description: 'The e-commerce has a project showcase section.',
+        title: 'Smart Search & Filters',
+        description:
+          'Fast search with multi-criteria filters, sorting options, and pagination to improve product findability.',
       },
       {
-        title: 'Contact Form',
-        description: 'The e-commerce has a contact form section.',
+        title: 'Cart, Checkout & Payments',
+        description:
+          'Complete purchase flow including cart management, secure checkout, coupon support, and payment integration.',
       },
       {
-        title: 'Blog',
-        description: 'The e-commerce has a blog section.',
+        title: 'Order & Customer Accounts',
+        description:
+          'Users can manage profiles, track orders, view order history, and receive status updates post-purchase.',
       },
       {
-        title: 'About',
-        description: 'The e-commerce has an about section.',
+        title: 'Admin Product Management',
+        description:
+          'Admin dashboard includes product CRUD, category setup, inventory control, and media uploads from one panel.',
       },
       {
-        title: 'Services',
-        description: 'The e-commerce has a services section.',
+        title: 'Admin Order Operations',
+        description:
+          'Enables order monitoring, status transitions, fulfillment handling, refund workflow, and customer issue tracking.',
       },
       {
-        title: 'Projects',
-        description: 'The e-commerce has a projects section.',
+        title: 'Sales Analytics & Content Control',
+        description:
+          'Dashboard provides revenue/order insights plus CMS-style control for banners, pages, and promotional campaigns.',
+      },
+      {
+        title: 'Fully Dynamic Content Management',
+        description:
+          'All homepage sections, category pages, campaign blocks, and policy pages are configurable from the admin dashboard without redeploy.',
+      },
+      {
+        title: 'SEO-Friendly Architecture',
+        description:
+          'Implements SEO-ready URLs, meta title/description control, structured content support, and optimized indexing across product and category pages.',
+      },
+      {
+        title: 'Offline Service & Order Capture',
+        description:
+          'Supports offline service requests and manual order creation so staff can process phone, walk-in, or low-connectivity customer orders.',
+      },
+      {
+        title: 'Staff Management & Access Control',
+        description:
+          'Role-based staff management enables secure access levels for admins, managers, support agents, and fulfillment teams.',
       },
     ],
   }

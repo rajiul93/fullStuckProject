@@ -8,22 +8,22 @@ import { TSkill } from '@/type/front/skills-type';
 const SkillsSection = () => {
   const skills: TSkill[] = [
     {
-      imageUrl: '',
-      title: 'React Native',
+      imageUrl: '/images/react.png',
+      title: 'React.js',
       description: 'React, Next.js, Tailwind, Animation',
     },
     {
-      imageUrl: '',
-      title: 'Next.js & React',
+      imageUrl: '/images/nextjs.png',
+      title: 'Next.js',
       description: 'Components, Hooks, State Management',
     },
     {
-      imageUrl: '',
+      imageUrl: '/images/mongoose.png',
       title: 'Mongoose',
       description: 'Modern UI Design & Smooth Animation',
     },
     {
-      imageUrl: '',
+      imageUrl: '/images/express.png',
       title: 'Express & Node.js',
       description: 'MERN Stack & Modern Web Technologies',
     },
@@ -33,27 +33,27 @@ const SkillsSection = () => {
     {
       initial: 'R',
       bgColor: 'bg-blue-500',
-      title: 'Project XL',
+      title: 'Multi-tenant Architecture',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod',
+        'A powerful multi-tenant SaaS platform that enables users to build and manage eCommerce, portfolio, business, and OTA solutions from a single unified dashboard—without relying on pre-built templates. Each tenant can create and customize their own dashboard experience with flexible layouts and modular features, designed for scalability and modern performance.',
       badges: ['React', 'Node.js'],
       showButton: false,
     },
-    {
-      initial: 'E',
-      bgColor: 'bg-green-500',
-      title: 'Ecommerce App',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod',
-      badges: ['Next.js', 'MongoDB'],
-      showButton: false,
-    },
+    // {
+    //   initial: 'E',
+    //   bgColor: 'bg-green-500',
+    //   title: 'Ecommerce App',
+    //   description:
+    //     'A powerful all-in-one eCommerce solution with no limitations—fully customizable layouts, dynamic content management, POS, tax, revenue tracking, and everything you need to run and grow your online business.',
+    //   badges: ['Next.js', 'MongoDB'],
+    //   showButton: false,
+    // },
     {
       initial: 'S',
       bgColor: 'bg-purple-500',
-      title: 'Streaming App',
+      title: 'A complete OTA (Online Travel Agency)',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod',
+        'A complete OTA (Online Travel Agency) management system designed to handle the full travel booking workflow. Users can search flights, book or hold tickets, and manage balance through multiple top-up methods including bank, cheque, and online payments—all from a simple and user-friendly dashboard. The platform supports both individual users and agencies. Agencies can create their own teams, assign roles, and manage operations based on their business needs. On the admin side, the system provides full control including flight creation, provider selection, multi-currency management, user and agency management, and additional services like vouchers, visas, tours, airport and airline management, and group ticket handling—everything required to run a complete travel business in one place.',
       badges: ['Socket.io', 'Express'],
       showButton: true,
     },
@@ -68,8 +68,8 @@ const SkillsSection = () => {
       <div className="grid lg:grid-cols-2 gap-16">
         <div>
           <h2 id="skills-heading" className="text-3xl font-bold mb-8">
-              SKILLS
-            </h2>
+            SKILLS
+          </h2>
           <div className="grid grid-cols-2 gap-6">
             {skills.map((skill, index) => (
               <SkillCard key={index} skill={skill} />

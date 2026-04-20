@@ -1,7 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { HardDriveDownload } from 'lucide-react';
-import { pdf } from '@react-pdf/renderer';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -11,9 +10,10 @@ const Resume = () => {
   const handleDownload = async () => {
     setIsDownloading(true);
     try {
-      const { TemplateOneDocument, resumeData } = await import(
-        '@/app/(common)/resume/template-one'
-      );
+      const [{ pdf }, { TemplateOneDocument, resumeData }] = await Promise.all([
+        import('@react-pdf/renderer'),
+        import('@/app/(common)/resume/template-one'),
+      ]);
       const blob = await pdf(<TemplateOneDocument data={resumeData} />).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');

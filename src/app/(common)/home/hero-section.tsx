@@ -8,6 +8,15 @@ import { motion } from 'framer-motion';
 import CoustomTitle from '@/components/common-component/couston-title';
 
 const HeroSection = () => {
+  const handleScrollToProjects = () => {
+    const section = document.getElementById('projects');
+    if (!section) return;
+
+    const offset = 88;
+    const top = section.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
   return (
     <section
       id="home"
@@ -16,16 +25,19 @@ const HeroSection = () => {
       <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-1 lg:order-1 ">
         <CoustomTitle title="MERN STACK DEVELOPER" />
         <p className="text-sm sm:text-lg text-gray-300 max-w-lg mx-auto lg:mx-0 ">
-          Passionate and detail-oriented Frontend Developer with 1 year of
-          experience building responsive and user-friendly web applications.
-          Skilled in translating design mockups into high-quality code using
-          modern frontend technologies. Adept at collaborating with
-          cross-functional teams to deliver high-performance digital
-          experiences.
+          MERN Stack Developer with a strong frontend focus and 1+ year of
+          hands-on experience building responsive, user-centered web
+          applications. I specialize in React and Next.js for clean UI, smooth
+          interactions, and performance-first implementation, while staying
+          confident with backend integration using Node.js, Express, and MongoDB.
         </p>
 
         <div className="flex justify-center lg:justify-start">
-          <CustomButton title=" MY WORK" className="text-sm h-12 " />
+          <CustomButton
+            title=" MY WORK"
+            className="text-sm h-12 "
+            onClick={handleScrollToProjects}
+          />
         </div>
 
         {/* Tech Stack */}
@@ -41,6 +53,7 @@ const HeroSection = () => {
         >
           {[
             'JS',
+            'TS',
             'REACT',
             'NEXT.JS',
             'EXPRESS',
@@ -50,6 +63,7 @@ const HeroSection = () => {
             'MOTION',
             'FIGMA',
             'UI/UX',
+            'Lexical Editor',
             'TAILWIND',
             'JAVASCRIPT',
             'GIT',
@@ -79,17 +93,18 @@ const HeroSection = () => {
 
           {/* Main Developer Illustration */}
           <div className="relative z-10">
-            {/* Desk with Glass Effect */}
-            <div className="mt-3 sm:mt-4 w-48 sm:w-72 h-64 sm:h-80 lg:h-96 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg relative shadow-xl mx-auto">
-              {/* Mongoose - Top Right */}
-              <div className="absolute top-4 sm:top-10 -right-4 sm:-right-10 w-16 sm:w-20 h-10 sm:h-12 bg-white/10 backdrop-blur-lg border border-white/20 overflow-hidden rounded-xl flex items-center justify-center animate-bounce shadow-xl">
+            {/* Profile frame */}
+            <div className="mt-3 sm:mt-4 w-52 sm:w-72 h-72 sm:h-80 lg:h-96 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl relative shadow-xl mx-auto">
+              <div className="absolute inset-0 overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/mongoose.png"
-                  alt="Mongoose Icon"
-                  width={80}
-                  height={48}
-                  className="object-contain"
+                  src="/rajiul.jpeg"
+                  alt="Rajiul profile image"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                  sizes="(min-width: 1024px) 288px, (min-width: 640px) 288px, 208px"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* React - Top Left */}

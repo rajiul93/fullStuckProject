@@ -5,12 +5,14 @@ import { ArrowRight } from 'lucide-react'; // added import
 interface CustomButtonProps {
   title: string;
   className?: string;
+  onClick?: () => void;
 }
 
-const CustomButton = ({ title, className }: CustomButtonProps) => {
+const CustomButton = ({ title, className, onClick }: CustomButtonProps) => {
   return (
     <motion.button
       type="button"
+      onClick={onClick}
       initial={{ x: 20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       whileTap={{ scale: 0.95 }}

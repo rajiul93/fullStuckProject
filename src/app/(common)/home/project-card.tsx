@@ -1,4 +1,5 @@
 import ProjectImage from '@/components/common-component/project-image';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
   DialogClose,
@@ -91,26 +92,22 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 View Details
               </Button>
             </DialogTrigger>
-            <DialogContent className="flex h-[85vh] max-h-[85vh] max-w-2xl flex-col overflow-hidden border-white/20 bg-slate-950 p-0 text-white">
+            <DialogContent className="flex h-[85vh] gap-0! max-h-[85vh] max-w-2xl flex-col overflow-hidden border-white/20 bg-slate-950 p-0 text-white">
               <DialogHeader className="space-y-3">
                 <DialogTitle className="px-6 pt-6 text-2xl font-bold text-white">
-                  {project.title}
+                  <span>{project.title}</span>{' '}
+                  <Badge className="text-sm">{project.category}</Badge>
                 </DialogTitle>
                 <DialogDescription className="px-6 text-sm leading-7 whitespace-pre-line text-white/75">
                   {project.description}
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="-mx-4 flex-1 space-y-6 overflow-y-auto px-10 py-4">
-                <div className="rounded-lg border border-white/15 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-wide text-white/60 mb-2">
-                    Category
-                  </p>
-                  <p className="text-sm text-white capitalize">{project.category}</p>
-                </div>
-
+              <div className="-mx-4 flex-1 space-y-6 overflow-y-auto px-10 pb-4">
                 <div className="space-y-3">
-                  <p className="text-sm font-semibold text-white">Technologies</p>
+                  <p className="text-sm font-semibold text-white">
+                    Technologies
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, index) => (
                       <span
@@ -124,7 +121,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 </div>
 
                 <div className="space-y-3">
-                  <p className="text-sm font-semibold text-white">Key Features</p>
+                  <p className="text-sm font-semibold text-white">
+                    Key Features
+                  </p>
                   <ul className="space-y-3">
                     {project.features.map((feature, index) => (
                       <li
@@ -157,10 +156,13 @@ const ProjectCard = ({ project }: { project: Project }) => {
                       </Link>
                     </Button>
                   )}
-                 
                 </div>
                 <DialogClose asChild>
-                  <Button variant="outline" size="sm" className="w-full sm:w-auto text-black">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full sm:w-auto text-black"
+                  >
                     Close
                   </Button>
                 </DialogClose>

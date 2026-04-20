@@ -27,12 +27,9 @@ function NavEntry({
   const isHome = pathname === '/';
 
   if (isHome) {
-    const handleScrollToSection = () => {
+    const scrollToSection = () => {
       const section = document.getElementById(to);
-      if (!section) {
-        onNavigate?.();
-        return;
-      }
+      if (!section) return;
 
       const top =
         section.getBoundingClientRect().top +
@@ -40,7 +37,17 @@ function NavEntry({
         LANDING_SCROLL_OFFSET;
 
       window.scrollTo({ top, behavior: 'smooth' });
-      onNavigate?.();
+    };
+
+    const handleScrollToSection = () => {
+      // Mobile menu close first; then compute offset after layout settles.
+      if (onNavigate) {
+        onNavigate();
+        window.setTimeout(scrollToSection, 260);
+        return;
+      }
+
+      scrollToSection();
     };
 
     return (
@@ -59,7 +66,6 @@ function NavEntry({
       href={`/#${to}`}
       className={navLinkClass}
       onClick={onNavigate}
-      scroll={false}
     >
       {label}
     </Link>
