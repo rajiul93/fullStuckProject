@@ -101,11 +101,12 @@ const styles = StyleSheet.create({
   },
   contactRow: {
     flexDirection: 'row',
-    gap: 12,
-    flexWrap: 'wrap',
+    gap: 8,
+    flexWrap: 'nowrap',
     marginBottom: SPACING.afterContact,
     alignItems: 'center',
     marginTop: 6,
+    justifyContent: 'space-between',
   },
   contactItem: {
     flexDirection: 'row',
@@ -262,7 +263,7 @@ export const resumeData = {
     linkedInLabel: 'LinkedIn Profile',
     portfolioUrl: 'https://rajiul-portfolio.vercel.app',
     portfolioLabel: 'Portfolio',
-    location: 'Dhaka, Bangladesh',
+    location: 'Khulna, Bangladesh',
   },
   sectionLabels: {
     summary: 'SUMMARY',
@@ -609,6 +610,18 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
             <View style={styles.contactItem}>
               <Image src="/images/resume/gmail.png" style={styles.icon} />
               <Text style={styles.text}>{d.contact.email}</Text>
+            </View>
+          </Link>
+          <Link
+            style={{ color: 'black', textDecoration: 'none' }}
+            src="https://github.com/rajiul-islam-rayhan"
+          >
+            <View style={styles.contactItem}>
+              <Image
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                style={styles.icon}
+              />
+              <Text style={styles.text}>GitHub Profile</Text>
             </View>
           </Link>
           <Link
