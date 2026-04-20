@@ -258,9 +258,9 @@ export const resumeData = {
   contact: {
     phone: '+880 1986570093',
     email: 'developer.rajiul@gmail.com',
-    linkedInUrl: 'https://linkedin.com/in/yourprofile',
+    linkedInUrl: 'https://www.linkedin.com/in/rajiul-islam-rayhan',
     linkedInLabel: 'LinkedIn Profile',
-    portfolioUrl: 'https://yourportfolio.com',
+    portfolioUrl: 'https://rajiul-portfolio.vercel.app',
     portfolioLabel: 'Portfolio',
     location: 'Dhaka, Bangladesh',
   },
@@ -273,7 +273,7 @@ export const resumeData = {
     softSkills: 'SOFT SKILLS',
     personalProjects: 'PERSONAL PROJECTS',
     keyFeatures: 'Key Features:',
-    liveDemo: 'Live Demo',
+    liveDemo: 'Live',
     frontendGit: 'Frontend GitHub',
     backendGit: 'Backend GitHub',
     project: 'Project',
@@ -291,13 +291,13 @@ export const resumeData = {
       period: '2018 - 2022',
       location: 'Dhaka, Bangladesh',
     },
-    // {
-    //   id: 2,
-    //   degree: 'DIPLOMA IN ELECTRICAL',
-    //   institution: 'Mangrove Institute of Science and Technology',
-    //   period: '2013 - 2017',
-    //   location: 'KHULNA, Bangladesh',
-    // },
+    {
+      id: 2,
+      degree: 'DIPLOMA IN ELECTRICAL',
+      institution: 'Mangrove Institute of Science and Technology',
+      period: '2013 - 2017',
+      location: 'KHULNA, Bangladesh',
+    },
   ],
   experience: {
     jobTitle: 'Junior Front-End Developer',
@@ -308,6 +308,7 @@ export const resumeData = {
       {
         id: 1,
         title: 'Travel Booking Platform [OTA]',
+        liveUrl:"https://kingstartravel.com",
         description:
           'A multi-provider online travel booking platform built with React.js and Next.js, featuring role-based dashboards, multi-payment integration, and advanced admin management. ',
         responsibilities: [
@@ -329,6 +330,7 @@ export const resumeData = {
       {
         id: 2,
         title: 'Multi-Tenant SaaS Platform',
+        liveUrl:"https://ezybuss.com/en",
         description:
           'A scalable multi-tenant SaaS platform that allows users to create and manage portfolio or eCommerce websites with dynamic templates, domain integration, and secure tenant-based architecture.',
         responsibilities: [
@@ -364,22 +366,22 @@ export const resumeData = {
     'dayjs',
   ],
   softSkills: [
-    {
-      id: 1,
-      icon: '/images/resume/book.png',
-      title: 'Eager to Learn New Skills',
-      description:
-        'Continuously learning new technologies and best practices to improve code quality.',
-      iconStyle: { width: 10, marginRight: 3 },
-    },
-    {
-      id: 2,
-      icon: '/images/resume/statistics.png',
-      title: 'Not Afraid of Challenges',
-      description:
-        'Comfortable tackling complex problems and adapting to changing requirements.',
-      iconStyle: { width: 10, marginRight: 3 },
-    },
+    // {
+    //   id: 1,
+    //   icon: '/images/resume/book.png',
+    //   title: 'Eager to Learn New Skills',
+    //   description:
+    //     'Continuously learning new technologies and best practices to improve code quality.',
+    //   iconStyle: { width: 10, marginRight: 3 },
+    // },
+    // {
+    //   id: 2,
+    //   icon: '/images/resume/statistics.png',
+    //   title: 'Not Afraid of Challenges',
+    //   description:
+    //     'Comfortable tackling complex problems and adapting to changing requirements.',
+    //   iconStyle: { width: 10, marginRight: 3 },
+    // },
     {
       id: 3,
       icon: '/images/resume/clock.png',
@@ -398,52 +400,61 @@ export const resumeData = {
     },
   ],
   personalProjects: [
-    {
-      id: 1,
-      title: 'E-Commerce Full Stack Application',
-      duration: 'Jan 2024 - Mar 2024',
-      description:
-        'An e-commerce platform with product management, shopping cart, and payment integration.',
-      features: [
-        'User authentication and authorization',
-        'Product catalog with search and filters',
-        'Shopping cart and checkout process',
-      ],
-      liveLink: 'https://ecommerce-demo.vercel.app',
-      frontendGit: 'https://github.com/username/ecommerce-frontend',
-      backendGit: 'https://github.com/username/ecommerce-backend',
-      tech: [
-        'React.js',
-        'Next.js',
-        'TypeScript',
-        'Tailwind CSS',
-        'Redux Toolkit',
-        'Stripe',
-        'REST APIs',
-      ],
-    },
+    // {
+    //   id: 1,
+    //   title: 'E-Commerce Full Stack Application',
+    //   duration: 'Jan 2024 - Mar 2024',
+    //   description:
+    //     'An e-commerce platform with product management, shopping cart, and payment integration.',
+    //   features: [
+    //     'User authentication and authorization',
+    //     'Product catalog with search and filters',
+    //     'Shopping cart and checkout process',
+    //   ],
+    //   liveLink: 'https://ecommerce-demo.vercel.app',
+    //   frontendGit: 'https://github.com/username/ecommerce-frontend',
+    //   backendGit: 'https://github.com/username/ecommerce-backend',
+    //   tech: [
+    //     'React.js',
+    //     'Next.js',
+    //     'TypeScript',
+    //     'Tailwind CSS',
+    //     'Redux Toolkit',
+    //     'Stripe',
+    //     'REST APIs',
+    //   ],
+    // },
     {
       id: 2,
-      title: 'Task Management System',
-      duration: 'Apr 2024 - May 2024',
+      title: 'Services Marketplace',
+      duration: 'Live Project',
       description:
-        'A collaborative task management app with real-time updates and team collaboration.',
+        'Full-stack e-commerce platform with products, cart, checkout and order tracking.',
       features: [
-        'Real-time task updates with Socket.io',
-        'Drag and drop task boards',
-        'Team collaboration and assignments',
-      ],
-      liveLink: 'https://task-manager-demo.vercel.app',
-      frontendGit: 'https://github.com/username/task-manager-frontend',
-      backendGit: 'https://github.com/username/task-manager-backend',
+        'Location-Based Provider Discovery: Users can find nearby service providers based on their area, improving local relevance and booking intent.',
+        'Category-Wise Service Listing: Services are organized by category so users can quickly filter providers by the exact service they need.',
+        'Provider Profile Pages: Each provider has a dedicated profile with service details, coverage area, and contact-ready information.',
+        'Search & Filter Experience: Supports fast searching and filtering to narrow results by service type and location context.',
+        'Lead-Driven Contact Flow: Built to connect users with providers through direct inquiry and conversion-focused action points.',
+        'Mobile-First UI: Optimized for mobile users who need quick access to local providers while on the go.',
+        'Scalable Marketplace Architecture: Designed to onboard growing numbers of providers and categories without affecting browsing performance.',
+       ],
+      liveLink: 'https://www.service64.com/',
+      frontendGit: 'https://github.com/example/ecommerce',
+      backendGit: 'https://github.com/example/ecommerce',
       tech: [
-        'React.js',
         'Next.js',
+        'React.js',
         'TypeScript',
-        'Socket.io',
-        'Zustand',
         'Tailwind CSS',
-        'REST APIs',
+        'Zustand',
+        'TanStack Query',
+        'React Hook Form',
+        'Zod',
+        'Axios', 
+        'JWT',
+        'mongoose',
+        'express',  
       ],
     },
   ],
@@ -474,6 +485,7 @@ type ApiResume = {
   }>;
   experience: Array<{
     title: string;
+    liveUrl:string;
     subTitle?: string;
     details: Array<{
       title?: string;
@@ -526,6 +538,7 @@ export function adaptResumeData(apiResume: ApiResume): typeof resumeData {
       projects: apiResume.experience.map((project, index) => ({
         id: index + 1,
         title: project.title,
+        liveUrl:project.liveUrl,
         description:
           project.subTitle ||
           project.details.map((detail) => detail.description).join(' '),
@@ -547,12 +560,12 @@ export function adaptResumeData(apiResume: ApiResume): typeof resumeData {
       icon: skill.icon || '/images/resume/book.png',
       title: skill.title,
       description: skill.description,
-      iconStyle: { width: 10, marginRight: 3 },
+      iconStyle: { width: 10, height: 10, marginRight: 3 },
     })),
     personalProjects: apiResume.personalProjects.map((project, index) => ({
       id: index + 1,
       title: project.title,
-      duration: project.subTitle,
+      duration: project.subTitle || '3 months',
       description:
         project.details[0]?.description || project.subTitle || project.title,
       features: project.details.map((detail) => detail.description),
@@ -708,19 +721,46 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
               </View>
               {d.experience.projects.map((project, index) => (
                 <View key={project.id} style={styles.blockSpacing}>
-                  <Text
-                    style={[
-                      styles.bodyText,
-                      {
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      gap: 8,
+                    }}
+                  >
+                    <Text
+                      style={[
+                        styles.bodyText,
+                        {
+                          fontFamily: 'Roboto',
+                          fontWeight: 700,
+                          fontSize: 10,
+                          flex: 1,
+                        },
+                      ]}
+                    >
+                      {d.sectionLabels.project} {String(index + 1).padStart(2, '0')} -{' '}
+                      {project.title}
+                    </Text>
+                    <Link
+                      src={project.liveUrl}
+                      style={{
+                        fontSize: 8,
                         fontFamily: 'Roboto',
                         fontWeight: 700,
-                        fontSize: 10,
-                      },
-                    ]}
-                  >
-                    {d.sectionLabels.project} {String(index + 1).padStart(2, '0')} -{' '}
-                    {project.title}
-                  </Text>
+                        color: '#1d4ed8',
+                        textDecoration: 'none',
+                        border: '1px solid #93c5fd',
+                        backgroundColor: '#eff6ff',
+                        borderRadius: 10,
+                        paddingHorizontal: 6,
+                        paddingVertical: 2,
+                      }}
+                    >
+                      Live
+                    </Link>
+                  </View>
                   <Text style={[styles.bodyText, { marginTop: 4 }]}>
                     {project.description}
                   </Text>
@@ -869,51 +909,41 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
                   >
                     {project.title}
                   </Text>
-                  <Text
-                    style={[
-                      styles.bodyText,
-                      {
-                        fontSize: 8,
-                        color: 'gray',
-                        marginTop: 1,
-                      },
-                    ]}
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginTop: 1,
+                    }}
                   >
-                    {project.duration}
-                  </Text>
-                  <View style={styles.linkRow}>
+                    <Text
+                      style={[
+                        styles.bodyText,
+                        {
+                          fontSize: 8,
+                          color: 'gray',
+                        },
+                      ]}
+                    >
+                      {project.duration}
+                    </Text>
                     <Link
                       src={project.liveLink}
                       style={{
-                        fontSize: 9,
+                        fontSize: 8,
                         fontFamily: 'Roboto',
-                        color: 'blue',
-                        textDecoration: 'underline',
+                        fontWeight: 700,
+                        color: '#1d4ed8',
+                        textDecoration: 'none',
+                        border: '1px solid #93c5fd',
+                        backgroundColor: '#eff6ff',
+                        borderRadius: 10,
+                        paddingHorizontal: 6,
+                        paddingVertical: 2,
                       }}
                     >
                       {d.sectionLabels.liveDemo}
-                    </Link>
-                    <Link
-                      src={project.frontendGit}
-                      style={{
-                        fontSize: 9,
-                        fontFamily: 'Roboto',
-                        color: 'blue',
-                        textDecoration: 'underline',
-                      }}
-                    >
-                      {d.sectionLabels.frontendGit}
-                    </Link>
-                    <Link
-                      src={project.backendGit}
-                      style={{
-                        fontSize: 9,
-                        fontFamily: 'Roboto',
-                        color: 'blue',
-                        textDecoration: 'underline',
-                      }}
-                    >
-                      {d.sectionLabels.backendGit}
                     </Link>
                   </View>
                   <Text style={[styles.bodyText, { marginTop: 2 }]}>

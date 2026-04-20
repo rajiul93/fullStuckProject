@@ -10,15 +10,19 @@ const Resume = () => {
   const handleDownload = async () => {
     setIsDownloading(true);
     try {
-      const [{ pdf }, { TemplateOneDocument, resumeData }] = await Promise.all([
+      const [{ pdf }, templateOneModule] = await Promise.all([
         import('@react-pdf/renderer'),
         import('@/app/(common)/resume/template-one'),
       ]);
-      const blob = await pdf(<TemplateOneDocument data={resumeData} />).toBlob();
+      // Snapshot data at click time so latest template updates are downloaded.
+      const currentResumeData = structuredClone(templateOneModule.resumeData);
+      const blob = await pdf(
+        <templateOneModule.TemplateOneDocument data={currentResumeData} />,
+      ).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${resumeData.personal.name || 'resume'}.pdf`;
+      link.download = `${currentResumeData.personal.name || 'resume'}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -33,6 +37,7 @@ const Resume = () => {
   return (
     <div className="flex items-center justify-center">
       <Button
+        type="button"
         variant="default"
         onClick={handleDownload}
         disabled={isDownloading}
