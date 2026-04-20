@@ -1,6 +1,38 @@
+import type { Metadata } from 'next';
 import Footer from '@/components/common-component/footer';
 import Navbar from '@/components/common-component/navbar';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Rajiul Islam | MERN Developer',
+    template: '%s | Rajiul Islam',
+  },
+  description:
+    'Portfolio of Rajiul Islam, a MERN Stack Developer focused on frontend engineering with React and Next.js.',
+  keywords: [
+    'Rajiul Islam',
+    'MERN Stack Developer',
+    'Frontend Developer',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Portfolio',
+  ],
+  openGraph: {
+    title: 'Rajiul Islam | MERN Developer',
+    description:
+      'Frontend-focused MERN developer portfolio showcasing projects, blogs, and resume.',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rajiul Islam | MERN Developer',
+    description:
+      'Frontend-focused MERN developer portfolio showcasing projects, blogs, and resume.',
+  },
+};
 
 const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   return (
