@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import Resume from './resume/resume';
@@ -78,8 +79,17 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-white/10 backdrop-blur-md supports-[backdrop-filter]:bg-white/10">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2">
-          <span className="text-lg font-bold sm:text-2xl">RAJIUL ISLAM</span>
+        <div className="flex items-center rounded-lg overflow-hidden gap-2">
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/logo.png"
+              alt="Rajiul Islam logo"
+              width={36}
+              height={36}
+              className="h-9 w-9 object-contain"
+              priority
+            />
+          </Link>
         </div>
 
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
