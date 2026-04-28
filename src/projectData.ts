@@ -389,43 +389,37 @@ export const projectsData: Project[] = [
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
     features: [
       {
-        title: 'Responsive layout',
-        description: 'Mobile-first layout that scales nicely across devices.',
-      },
-      {
-        title: 'Reusable sections',
+        title: 'SEO-ready Metadata',
         description:
-          'Hero, features, pricing, and CTA components designed for reuse.',
+          'Configured `metadataBase`, title template, description, and OpenGraph image in the Next.js App Router layout.',
       },
       {
-        title: 'Polished UI',
-        description: 'Glassmorphism styling and consistent spacing system.',
+        title: 'Favicon + App Icons',
+        description:
+          'Added favicon/shortcut/apple icons via `metadata.icons` so the app has a consistent brand icon across browsers and iOS.',
+      },
+      {
+        title: 'Auth Bootstrap (Client Provider)',
+        description:
+          'Client-side `AuthProvider` initializes auth state from a Zustand store on app load.',
+      },
+      {
+        title: 'Responsive Navbar + Mobile Nav',
+        description:
+          'Sticky navigation with active route styling, plus a compact mobile navigation row for smaller screens.',
+      },
+      {
+        title: 'Account Menu + Actions',
+        description:
+          'User dropdown with avatar fallback, quick links (Add/Manage), and logout with toast feedback.',
+      },
+      {
+        title: 'Toast Notifications',
+        description:
+          'Global Sonner toaster with rich colors (top-right) for auth and UX feedback.',
       },
     ],
   },
 
-  {
-    id: 'p-3',
-    title: 'E-Commerce API (Backend)',
-    description:
-      'A REST API for products, orders, auth, and roles with validation and secure routes.',
-    category: 'personal',
-    image: '/images/project/ecommerce-home.png',
-    githubBackendLink: 'https://github.com/example/ecommerce-api-backend',
-    tags: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT'],
-    features: [
-      {
-        title: 'Auth & roles',
-        description: 'JWT auth with role-based access for admin/user routes.',
-      },
-      {
-        title: 'Validation',
-        description: 'Request validation and predictable error responses.',
-      },
-      {
-        title: 'Orders & products',
-        description: 'Endpoints for product catalog and order lifecycle.',
-      },
-    ],
-  },
+   
 ];
