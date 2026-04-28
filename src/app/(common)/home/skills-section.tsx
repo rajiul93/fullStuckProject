@@ -1,6 +1,5 @@
 'use client';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SkillCard from './skills-card';
 import { TSkill } from '@/type/front/skills-type';
@@ -29,33 +28,30 @@ const SkillsSection = () => {
     },
   ];
 
-  const projects = [
+  const education = [
     {
-      initial: 'R',
-      bgColor: 'bg-blue-500',
-      title: 'Multi-tenant Architecture',
-      description:
-        'A powerful multi-tenant SaaS platform that enables users to build and manage eCommerce, portfolio, business, and OTA solutions from a single unified dashboard—without relying on pre-built templates. Each tenant can create and customize their own dashboard experience with flexible layouts and modular features, designed for scalability and modern performance.',
-      badges: ['React', 'Node.js'],
-      showButton: false,
+      initial: 'B',
+      bgColor: 'bg-cyan-500',
+      title: 'B.Sc in Electrical & Electronic Engineering (EEE)',
+      institution: 'World University of Bangladesh (WUB)',
+      year: '2018 - 2022',
+      badges: ['B.Sc', 'EEE', '2018-2022'],
     },
-    // {
-    //   initial: 'E',
-    //   bgColor: 'bg-green-500',
-    //   title: 'Ecommerce App',
-    //   description:
-    //     'A powerful all-in-one eCommerce solution with no limitations—fully customizable layouts, dynamic content management, POS, tax, revenue tracking, and everything you need to run and grow your online business.',
-    //   badges: ['Next.js', 'MongoDB'],
-    //   showButton: false,
-    // },
     {
-      initial: 'S',
+      initial: 'D',
+      bgColor: 'bg-blue-600',
+      title: 'Diploma in Electrical',
+      institution: 'MIST, Khulna',
+      year: '2013 - 2017',
+      badges: ['Diploma', '2013-2017', 'Khulna'],
+    },
+    {
+      initial: 'PH',
       bgColor: 'bg-purple-500',
-      title: 'A complete OTA (Online Travel Agency)',
-      description:
-        'A complete OTA (Online Travel Agency) management system designed to handle the full travel booking workflow. Users can search flights, book or hold tickets, and manage balance through multiple top-up methods including bank, cheque, and online payments—all from a simple and user-friendly dashboard. The platform supports both individual users and agencies. Agencies can create their own teams, assign roles, and manage operations based on their business needs. On the admin side, the system provides full control including flight creation, provider selection, multi-currency management, user and agency management, and additional services like vouchers, visas, tours, airport and airline management, and group ticket handling—everything required to run a complete travel business in one place.',
-      badges: ['Socket.io', 'Express'],
-      showButton: true,
+      title: 'Programming Hero — Web Development',
+      institution: 'Programming Hero',
+      year: 'Extra Training',
+      badges: ['Training', 'Frontend', 'MERN'],
     },
   ];
 
@@ -77,11 +73,11 @@ const SkillsSection = () => {
           </div>
         </div>
 
-        {/* Projects Section */}
+        {/* Education Section */}
         <div>
-          <h2 className="text-3xl font-bold mb-8">PROJECTS</h2>
+          <h2 className="text-3xl font-bold mb-8">EDUCATION</h2>
           <div className="space-y-6">
-            {projects.map((project, index) => (
+            {education.map((item, index) => (
               <Card
                 key={index}
                 className="bg-white/10 backdrop-blur-md border border-white/20 shadow-xl hover:bg-white/20 transition-all duration-300"
@@ -89,30 +85,33 @@ const SkillsSection = () => {
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
                     <div
-                      className={`w-12 h-12 ${project.bgColor} rounded-full flex items-center justify-center shadow-lg`}
+                      className={`w-12 h-12 ${item.bgColor} rounded-full flex items-center justify-center shadow-lg`}
                     >
-                      <span className="text-white font-bold">
-                        {project.initial}
+                      <span className="text-white font-bold text-xs">
+                        {item.initial}
                       </span>
                     </div>
                     <div className="flex-1">
                       <h3 className="font-bold mb-2 text-white">
-                        {project.title}
+                        {item.title}
                       </h3>
-                      <p className="text-sm text-gray-300 mb-3">
-                        {project.description}
+                      <p className="text-sm text-gray-300 mb-2">
+                        {item.institution}
+                      </p>
+                      <p className="text-xs text-white/70 mb-3">
+                        {item.year}
                       </p>
                       <div className="flex gap-2">
-                        {project.badges.map((badge, badgeIndex) => (
+                        {item.badges.map((badge, badgeIndex) => (
                           <Badge
                             key={badgeIndex}
                             variant="secondary"
                             className={`bg-white/20 cursor-pointer text-white border-white/30 transition-colors duration-300 ${
-                              project.bgColor === 'bg-blue-500'
-                                ? 'hover:bg-blue-500/80'
-                                : project.bgColor === 'bg-green-500'
-                                  ? 'hover:bg-green-500/80'
-                                  : project.bgColor === 'bg-purple-500'
+                              item.bgColor === 'bg-cyan-500'
+                                ? 'hover:bg-cyan-500/80'
+                                : item.bgColor === 'bg-blue-600'
+                                  ? 'hover:bg-blue-600/80'
+                                  : item.bgColor === 'bg-purple-500'
                                     ? 'hover:bg-purple-500/80'
                                     : 'hover:bg-gray-500/80'
                             }`}
@@ -121,14 +120,6 @@ const SkillsSection = () => {
                           </Badge>
                         ))}
                       </div>
-                      {project.showButton && (
-                        <Button
-                          size="sm"
-                          className="mt-3 bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:from-cyan-500 hover:to-blue-500 backdrop-blur-sm border border-white/20 transition-all duration-300"
-                        >
-                          View Project
-                        </Button>
-                      )}
                     </div>
                   </div>
                 </CardContent>

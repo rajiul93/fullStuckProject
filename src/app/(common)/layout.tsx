@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Footer from '@/components/common-component/footer';
 import Navbar from '@/components/common-component/navbar';
 import React from 'react';
+import FloatingSocialBar from '@/components/common-component/floating-social-bar';
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +39,7 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-teal-800 text-white">
       <Navbar />
+      <FloatingSocialBar />
       {children}
       <Footer />
     </main>

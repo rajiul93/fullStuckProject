@@ -1,4 +1,4 @@
-import Link from 'next/link';
+
 import React from 'react';
 
 const Footer = () => {
@@ -6,11 +6,9 @@ const Footer = () => {
 
   return (
     <footer className="w-full border-t border-gray-200 py-6">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 text-sm text-white md:flex-row">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 px-4 text-sm text-white md:flex-row">
         <span>© {year} Portfolio App. All rights reserved.</span>
-        <span>
-          Built with Next.js <Link href="/login">login</Link>
-        </span>
+         
       </div>
     </footer>
   );
