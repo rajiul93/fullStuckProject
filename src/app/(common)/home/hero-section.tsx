@@ -43,43 +43,102 @@ const HeroSection = () => {
         {/* Tech Stack */}
         <motion.div
           className="flex flex-wrap gap-2 pt-4 sm:pt-8 justify-center lg:justify-start"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{
-            duration: 0.8,
-            ease: 'easeOut',
-            staggerChildren: 0.1,
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { staggerChildren: 0.06, delayChildren: 0.15 },
+            },
           }}
         >
           {[
-            'JS',
-            'TS',
-            'REACT',
-            'NEXT.JS',
-            'EXPRESS',
-            'MONGOOSE',
-            'MONGODB',
-            'SOCKET',
-            'MOTION',
-            'FIGMA',
-            'UI/UX',
-            'Lexical Editor',
-            'TAILWIND',
-            'JAVASCRIPT',
-            'GIT',
-          ].map((tech, index) => (
+            {
+              label: 'JavaScript',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+            },
+            {
+              label: 'TypeScript',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+            },
+            {
+              label: 'React',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+            },
+            {
+              label: 'Next.js',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+            },
+            {
+              label: 'Node.js',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+            },
+            {
+              label: 'Express',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+            },
+            {
+              label: 'MongoDB',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+            },
+            {
+              label: 'Mongoose',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg',
+            },
+            {
+              label: 'Socket.io',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg',
+            },
+            {
+              label: 'Tailwind CSS',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
+            },
+            {
+              label: 'Figma',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
+            },
+            {
+              label: 'Git',
+              src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+            },
+          ].map((tech) => (
             <motion.div
-              key={tech}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.05,
-                ease: 'easeOut',
+              key={tech.label}
+              variants={{
+                hidden: { opacity: 0, x: 24, y: 6, scale: 0.98, filter: 'blur(4px)' },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  scale: 1,
+                  filter: 'blur(0px)',
+                  transition: { duration: 0.55, ease: 'easeOut' },
+                },
+              }}
+              whileHover={{
+                scale: 1.03,
+                y: -2,
+                transition: { duration: 0.2, ease: 'easeOut' },
               }}
             >
-              <Badge variant="secondary" className="cursor-pointer">
-                {tech}
+              <Badge
+                variant="secondary"
+                className="cursor-pointer px-2.5 py-1.5"
+              >
+                <span className="flex items-center gap-2" title={tech.label}>
+                  <span className="relative h-4 w-4 sm:h-5 sm:w-5">
+                    <Image
+                      src={tech.src}
+                      alt={tech.label}
+                      fill
+                      className="object-contain"
+                      sizes="20px"
+                    />
+                  </span>
+                  <span className="sr-only">{tech.label}</span>
+                </span>
               </Badge>
             </motion.div>
           ))}

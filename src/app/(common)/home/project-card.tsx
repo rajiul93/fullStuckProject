@@ -12,11 +12,21 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Project } from '@/type/front/project-data-type';
-import { Globe, Server } from 'lucide-react';
+import { Github, Globe, Server } from 'lucide-react';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
 const ProjectCard = ({ project }: { project: Project }) => {
+  const isPersonal = project.category === 'personal';
+  const githubFrontend =
+    isPersonal && project.githubFrontendLink && project.githubFrontendLink !== '#'
+      ? project.githubFrontendLink
+      : undefined;
+  const githubBackend =
+    isPersonal && project.githubBackendLink && project.githubBackendLink !== '#'
+      ? project.githubBackendLink
+      : undefined;
+
   return (
     <div
       className="group relative bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden border border-white/20 hover:border-white/40 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
@@ -61,7 +71,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
 
         {/* Links */}
-        <div className="flex gap-3 pt-4 border-t border-white/10">
+        <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10">
           {project.clientLink && (
             <Button
               asChild
@@ -80,6 +90,37 @@ const ProjectCard = ({ project }: { project: Project }) => {
               </Link>
             </Button>
           )}
+
+          {githubFrontend && (
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="flex-1 bg-white/5 border-white/20 hover:bg-white/10 hover:border-white/40 text-white transition-all"
+              aria-label={`View ${project.title} frontend source code`}
+            >
+              <Link href={githubFrontend} target="_blank" rel="noopener noreferrer">
+                <Github className="w-4 h-4 mr-2" aria-hidden="true" />
+                Frontend
+              </Link>
+            </Button>
+          )}
+
+          {githubBackend && (
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="flex-1 bg-white/5 border-white/20 hover:bg-white/10 hover:border-white/40 text-white transition-all"
+              aria-label={`View ${project.title} backend source code`}
+            >
+              <Link href={githubBackend} target="_blank" rel="noopener noreferrer">
+                <Github className="w-4 h-4 mr-2" aria-hidden="true" />
+                Backend
+              </Link>
+            </Button>
+          )}
+
           <Dialog>
             <DialogTrigger asChild>
               <Button

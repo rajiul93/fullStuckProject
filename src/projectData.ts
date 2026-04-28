@@ -6,7 +6,7 @@ export const projectsData: Project[] = [
     title: 'Portfolio Website',
     description:
       'Modern personal portfolio with responsive layout, animations, and project showcase.',
-    category: 'small',
+    category: 'personal',
     image: '/images/project/portfolio.png',
     clientLink: 'https://rajiul-portfolio.vercel.app',
     serverLink: 'https://github.com/example/portfolio',
@@ -375,4 +375,57 @@ export const projectsData: Project[] = [
       },
     ],
   }
+  ,
+  {
+    id: 'p-1',
+    title: 'Landing Page UI (Assignment)',
+    description:
+      'A clean responsive landing page built with modern UI, reusable components, and smooth interactions.',
+    category: 'personal',
+    image: '/images/project/landigpage.png',
+    githubFrontendLink: 'https://github.com/example/landing-frontend',
+    clientLink: 'https://landing-page-assignment-beta.vercel.app',
+
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    features: [
+      {
+        title: 'Responsive layout',
+        description: 'Mobile-first layout that scales nicely across devices.',
+      },
+      {
+        title: 'Reusable sections',
+        description:
+          'Hero, features, pricing, and CTA components designed for reuse.',
+      },
+      {
+        title: 'Polished UI',
+        description: 'Glassmorphism styling and consistent spacing system.',
+      },
+    ],
+  },
+
+  {
+    id: 'p-3',
+    title: 'E-Commerce API (Backend)',
+    description:
+      'A REST API for products, orders, auth, and roles with validation and secure routes.',
+    category: 'personal',
+    image: '/images/project/ecommerce-home.png',
+    githubBackendLink: 'https://github.com/example/ecommerce-api-backend',
+    tags: ['Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT'],
+    features: [
+      {
+        title: 'Auth & roles',
+        description: 'JWT auth with role-based access for admin/user routes.',
+      },
+      {
+        title: 'Validation',
+        description: 'Request validation and predictable error responses.',
+      },
+      {
+        title: 'Orders & products',
+        description: 'Endpoints for product catalog and order lifecycle.',
+      },
+    ],
+  },
 ];

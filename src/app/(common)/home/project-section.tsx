@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProjectCard from './project-card';
 import EmptyState from './enpty-state';
@@ -11,17 +11,15 @@ import { projectsData } from '@/projectData';
 // Project data structure
 
 const tabStyle =
-  'relative data-[state=active]:text-primary text-white/60 rounded-lg py-3 transition-all duration-300 hover:text-white/80';
+  'relative shrink-0 whitespace-nowrap px-4 py-3 data-[state=active]:text-primary text-white/60 rounded-lg transition-all duration-300 hover:text-white/80';
 
 const ProjectSection = () => {
   const [activeTab, setActiveTab] = useState<
-    'all' | 'small' | 'medium' | 'large'
-  >('all');
+    'personal' | 'small' | 'medium' | 'large'
+  >('personal');
 
   const filteredProjects =
-    activeTab === 'all'
-      ? projectsData
-      : projectsData.filter((project) => project.category === activeTab);
+    projectsData.filter((project) => project.category === activeTab);
 
   const tabVariants = {
     hidden: { opacity: 0 },
@@ -100,17 +98,17 @@ const ProjectSection = () => {
         <Tabs
           value={activeTab}
           onValueChange={(value) =>
-            setActiveTab(value as 'all' | 'small' | 'medium' | 'large')
+            setActiveTab(value as 'personal' | 'small' | 'medium' | 'large')
           }
           className="w-full"
         >
           {/* Tabs List */}
           <TabsList
-            className="relative grid w-full max-w-lg mx-auto grid-cols-4 mb-12 bg-white/10 backdrop-blur-lg border border-white/20 p-1 rounded-xl h-auto"
+            className="relative flex w-full max-w-fit mx-auto gap-1 mb-12 bg-white/10 backdrop-blur-lg border border-white/20 p-1 rounded-xl h-auto overflow-x-auto"
             aria-label="Project size categories"
           >
-            <TabsTrigger value="all" className={tabStyle}>
-              {activeTab === 'all' && (
+            <TabsTrigger value="personal" className={tabStyle}>
+              {activeTab === 'personal' && (
                 <motion.div
                   layoutId="activeTab"
                   className="absolute inset-0 bg-white/20 rounded-lg shadow-lg"
@@ -121,7 +119,7 @@ const ProjectSection = () => {
                   }}
                 />
               )}
-              <span className="relative z-10">All</span>
+              <span className="relative z-10">Personal</span>
             </TabsTrigger>
             <TabsTrigger value="small" className={tabStyle}>
               {activeTab === 'small' && (
@@ -168,7 +166,7 @@ const ProjectSection = () => {
           </TabsList>
 
           {/* Tab Contents */}
-          {(['all', 'small', 'medium', 'large'] as const).map((category) => (
+          {(['personal', 'small', 'medium', 'large'] as const).map((category) => (
             <TabsContent
               key={category}
               value={category}
@@ -210,10 +208,7 @@ const ProjectSection = () => {
                     >
                       <EmptyState
                         category={
-                          category === 'all'
-                            ? 'All'
-                            : category.charAt(0).toUpperCase() +
-                              category.slice(1)
+                          category.charAt(0).toUpperCase() + category.slice(1)
                         }
                       />
                     </motion.div>
