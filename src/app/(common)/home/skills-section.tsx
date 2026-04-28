@@ -41,7 +41,7 @@ const SkillsSection = () => {
       initial: 'D',
       bgColor: 'bg-blue-600',
       title: 'Diploma in Electrical',
-      institution: 'MIST, Khulna',
+      institution: 'Mangrove Institute of Science and Technology (MIST), Khulna',
       year: '2013 - 2017',
       badges: ['Diploma', '2013-2017', 'Khulna'],
     },
