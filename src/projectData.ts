@@ -501,4 +501,66 @@ export const projectsData: Project[] = [
       },
     ],
   },
+  {
+    id: "p-1",
+    title: "Craft Corner — Art & Craft (Personal)",
+    description:
+      "Craft Corner is a React (Vite) art & craft listing app: browse crafts from a REST API, filter by category, and (when signed in) add, edit, and manage your own listings with Firebase auth and a polished marketing home experience.",
+    category: "personal",
+    image: "/images/project/art.png",
+    githubFrontendLink: "https://github.com/rajiul93/art",
+    clientLink: "https://update-art.netlify.app",
+
+    tags: [
+      "React",
+      "Vite",
+      "React Router",
+      "Firebase Auth",
+      "Tailwind CSS",
+      "DaisyUI",
+      "React Hook Form",
+      "Swiper",
+      "Lottie",
+      "AOS",
+      "React Toastify",
+      "SweetAlert2",
+    ],
+    features: [
+      {
+        title: "Marketing home experience",
+        description:
+          "Hero carousel (Swiper), Lottie visuals, typewriter headline, achievements, latest crafts grid, category highlights, and team section.",
+      },
+      {
+        title: "Browse all crafts & details",
+        description:
+          "All crafts table with links to full detail views; craft data loaded from the hosted REST API (`new-art.vercel.app`).",
+      },
+      {
+        title: "Category discovery",
+        description:
+          "Category cards and dedicated category routes to explore crafts grouped by category.",
+      },
+      {
+        title: "Firebase authentication",
+        description:
+          "Email/password registration and login, plus social sign-in options (Google / GitHub) via Firebase Auth.",
+      },
+      {
+        title: "Protected creator flows",
+        description:
+          "Authenticated-only routes for craft details, add craft, my crafts, and update — enforced with a private route wrapper.",
+      },
+      {
+        title: "Light / dark theme",
+        description:
+          "Navbar-driven theme toggle with DaisyUI `data-theme` and persistence in localStorage; brand accent integrated across the UI.",
+      },
+      {
+        title: "Forms & user feedback",
+        description:
+          "React Hook Form for craft forms; React Toastify and SweetAlert2 for confirmations and non-blocking feedback.",
+      },
+    ],
+  },
 ];
