@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 'use client';
- 
+
 import {
   Page,
   Text,
@@ -309,7 +309,7 @@ export const resumeData = {
       {
         id: 1,
         title: 'Travel Booking Platform [OTA]',
-        liveUrl:"https://kingstartravel.com",
+        liveUrl: 'https://kingstartravel.com',
         description:
           'A multi-provider online travel booking platform built with React.js and Next.js, featuring role-based dashboards, multi-payment integration, and advanced admin management. ',
         responsibilities: [
@@ -331,7 +331,7 @@ export const resumeData = {
       {
         id: 2,
         title: 'Multi-Tenant SaaS Platform',
-        liveUrl:"https://ezybuss.com/en",
+        liveUrl: 'https://ezybuss.com/en',
         description:
           'A scalable multi-tenant SaaS platform that allows users to create and manage portfolio or eCommerce websites with dynamic templates, domain integration, and secure tenant-based architecture.',
         responsibilities: [
@@ -360,6 +360,9 @@ export const resumeData = {
     'ShadCN UI',
     'Redux Toolkit',
     'Zustand',
+    'Express JS',
+    'Mongoose',
+    'Node js',
     'Tanstack Query',
     'Git & GitHub',
     'figma',
@@ -430,16 +433,15 @@ export const resumeData = {
       title: 'Services Marketplace',
       duration: 'Live Project',
       description:
-        'Full-stack e-commerce platform with products, cart, checkout and order tracking.',
+        'A location-based service marketplace that connects users with nearby service providers for seamless discovery and engagement.',
       features: [
         'Location-Based Provider Discovery: Users can find nearby service providers based on their area, improving local relevance and booking intent.',
         'Category-Wise Service Listing: Services are organized by category so users can quickly filter providers by the exact service they need.',
         'Provider Profile Pages: Each provider has a dedicated profile with service details, coverage area, and contact-ready information.',
         'Search & Filter Experience: Supports fast searching and filtering to narrow results by service type and location context.',
-        'Lead-Driven Contact Flow: Built to connect users with providers through direct inquiry and conversion-focused action points.',
         'Mobile-First UI: Optimized for mobile users who need quick access to local providers while on the go.',
         'Scalable Marketplace Architecture: Designed to onboard growing numbers of providers and categories without affecting browsing performance.',
-       ],
+      ],
       liveLink: 'https://www.service64.com/',
       frontendGit: 'https://github.com/example/ecommerce',
       backendGit: 'https://github.com/example/ecommerce',
@@ -452,10 +454,10 @@ export const resumeData = {
         'TanStack Query',
         'React Hook Form',
         'Zod',
-        'Axios', 
+        'Axios',
         'JWT',
         'mongoose',
-        'express',  
+        'express',
       ],
     },
   ],
@@ -486,7 +488,7 @@ type ApiResume = {
   }>;
   experience: Array<{
     title: string;
-    liveUrl:string;
+    liveUrl: string;
     subTitle?: string;
     details: Array<{
       title?: string;
@@ -539,12 +541,14 @@ export function adaptResumeData(apiResume: ApiResume): typeof resumeData {
       projects: apiResume.experience.map((project, index) => ({
         id: index + 1,
         title: project.title,
-        liveUrl:project.liveUrl,
+        liveUrl: project.liveUrl,
         description:
           project.subTitle ||
           project.details.map((detail) => detail.description).join(' '),
         responsibilities: project.details.map((detail) =>
-          detail.title ? `${detail.title}: ${detail.description}` : detail.description,
+          detail.title
+            ? `${detail.title}: ${detail.description}`
+            : detail.description,
         ),
         tech: [],
       })),
@@ -590,7 +594,7 @@ export function adaptResumeData(apiResume: ApiResume): typeof resumeData {
 
 export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
   const d = data;
-  console.log(d.technologies)
+  console.log(d.technologies);
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -655,11 +659,15 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
           <View style={styles.mainColumn}>
             <View>
               <Text style={styles.sectionTitle}>{d.sectionLabels.summary}</Text>
-              <Text style={[styles.bodyText, styles.sectionContent]}>{d.summary}</Text>
+              <Text style={[styles.bodyText, styles.sectionContent]}>
+                {d.summary}
+              </Text>
             </View>
 
             <View style={styles.blockSpacing}>
-              <Text style={styles.sectionTitle}>{d.sectionLabels.education}</Text>
+              <Text style={styles.sectionTitle}>
+                {d.sectionLabels.education}
+              </Text>
               {d.education.map((edu, idx) => (
                 <View
                   key={edu.id}
@@ -701,7 +709,9 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
             </View>
 
             <View style={styles.blockSpacing}>
-              <Text style={styles.sectionTitle}>{d.sectionLabels.experience}</Text>
+              <Text style={styles.sectionTitle}>
+                {d.sectionLabels.experience}
+              </Text>
               <View style={styles.sectionContent}>
                 <Text style={styles.degreeTitle}>{d.experience.jobTitle}</Text>
                 <View
@@ -753,8 +763,8 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
                         },
                       ]}
                     >
-                      {d.sectionLabels.project} {String(index + 1).padStart(2, '0')} -{' '}
-                      {project.title}
+                      {d.sectionLabels.project}{' '}
+                      {String(index + 1).padStart(2, '0')} - {project.title}
                     </Text>
                     <Link
                       src={project.liveUrl}
@@ -832,7 +842,9 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
             </View>
 
             <View style={styles.blockSpacing}>
-              <Text style={styles.sectionTitle}>{d.sectionLabels.additionalTraining}</Text>
+              <Text style={styles.sectionTitle}>
+                {d.sectionLabels.additionalTraining}
+              </Text>
               <View style={styles.sectionContent}>
                 <Text style={[styles.bodyTextBlue, styles.lineSpacing]}>
                   {d.additionalTraining.title}
@@ -846,12 +858,17 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
 
           <View style={styles.sideColumn}>
             <View>
-              <Text style={styles.sectionTitle}>{d.sectionLabels.industrySkills}</Text>
+              <Text style={styles.sectionTitle}>
+                {d.sectionLabels.industrySkills}
+              </Text>
               <View style={styles.techWrap}>
                 {d.technologies.map((tech, index) => (
                   <Text
                     key={index}
-                    style={[styles.bodyText, { borderBottom: '0.5px dashed #ccc' }]}
+                    style={[
+                      styles.bodyText,
+                      { borderBottom: '0.5px dashed #ccc' },
+                    ]}
                   >
                     {tech}
                     {index < d.technologies.length - 1 ? ', ' : ''}
@@ -885,14 +902,22 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
                       gap: 6,
                     }}
                   >
-                    <Image src={skill.icon} style={[styles.icon, skill.iconStyle]} />
+                    <Image
+                      src={skill.icon}
+                      style={[styles.icon, skill.iconStyle]}
+                    />
                     <Text
-                      style={[styles.bodyText, { fontFamily: 'Roboto', fontWeight: 700 }]}
+                      style={[
+                        styles.bodyText,
+                        { fontFamily: 'Roboto', fontWeight: 700 },
+                      ]}
                     >
                       {skill.title}
                     </Text>
                   </View>
-                  <Text style={[styles.bodyText, { marginLeft: 18, marginTop: 2 }]}>
+                  <Text
+                    style={[styles.bodyText, { marginLeft: 18, marginTop: 2 }]}
+                  >
                     {skill.description}
                   </Text>
                 </View>
@@ -963,13 +988,17 @@ export function TemplateOneDocument({ data }: { data: typeof resumeData }) {
                     {project.description}
                   </Text>
                   <View>
-                    <Text style={styles.featuresLabel}>{d.sectionLabels.keyFeatures}</Text>
+                    <Text style={styles.featuresLabel}>
+                      {d.sectionLabels.keyFeatures}
+                    </Text>
                     {project.features.map((feature, index) => (
                       <View key={index} style={styles.featureItem}>
                         <Text style={[styles.bodyText, { marginRight: 4 }]}>
                           {d.sectionLabels.bullet}
                         </Text>
-                        <Text style={[styles.bodyText, { fontSize: 9, flex: 1 }]}>
+                        <Text
+                          style={[styles.bodyText, { fontSize: 9, flex: 1 }]}
+                        >
                           {feature}
                         </Text>
                       </View>
