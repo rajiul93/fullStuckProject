@@ -26,12 +26,23 @@ export const metadata: Metadata = {
       'Frontend-focused MERN developer portfolio showcasing projects, blogs, and resume.',
     type: 'website',
     locale: 'en_US',
+    siteName: 'Rajiul Islam',
+    images: [
+      {
+        url: '/logo.png',
+        width: 512,
+        height: 512,
+        alt: 'Rajiul Islam',
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Rajiul Islam | MERN Developer',
     description:
       'Frontend-focused MERN developer portfolio showcasing projects, blogs, and resume.',
+    images: ['/logo.png'],
   },
 };
 
