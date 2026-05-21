@@ -10,6 +10,12 @@ const TemplateOne = dynamic(() => import('./template-one'), {
 const TemplateTwo = dynamic(() => import('./template-two'), {
   ssr: false,
 });
+const TemplateElectricalOne = dynamic(
+  () => import('./resume-three-electrical'),
+  {
+    ssr: false,
+  },
+);
 
 const ResumePageClient = () => {
   const searchParams = useSearchParams();
@@ -30,14 +36,18 @@ const ResumePageClient = () => {
         <TabsList className="mb-6">
           <TabsTrigger value="one">Template One</TabsTrigger>
           <TabsTrigger value="two">Template Two</TabsTrigger>
+          <TabsTrigger value="electrical">Electrical</TabsTrigger>
         </TabsList>
 
         <TabsContent value="one">
           <TemplateOne />
         </TabsContent>
-
         <TabsContent value="two">
           <TemplateTwo />
+        </TabsContent>
+
+        <TabsContent value="electrical">
+          <TemplateElectricalOne />
         </TabsContent>
       </Tabs>
     </div>
