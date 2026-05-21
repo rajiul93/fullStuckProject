@@ -26,6 +26,8 @@ Font.register({
 });
 
 const ICON_SIZE = 12;
+const LIST_ICON_SIZE = 8;
+const LIST_ICON = '/icons/darkArrow.png';
 const UNIQUE_SKILLS = [...new Set(data.skills)];
 
 const styles = StyleSheet.create({
@@ -161,6 +163,33 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 1.25,
     color: '#444',
+  },
+  bulletList: {
+    marginTop: 2,
+  },
+  bulletRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 4,
+    marginLeft:12
+  },
+  bulletIconBox: {
+    width: LIST_ICON_SIZE,
+    height: LIST_ICON_SIZE,
+    marginRight: 4,
+    marginTop: 2,
+    flexShrink: 0,
+  },
+  bulletIcon: {
+    width: LIST_ICON_SIZE,
+    height: LIST_ICON_SIZE,
+    objectFit: 'contain',
+  },
+  bulletText: {
+    fontSize: 12,
+    lineHeight: 1.25,
+    color: '#444',
+    flex: 1,
   },
   skillsWrap: {
     flexDirection: 'row',
@@ -391,16 +420,20 @@ const ResumeThreeElectricalDocument = () => (
             </Text>
             <Text style={styles.itemDetail}>{formatJobMeta(job)}</Text>
             {job.responsibilities?.length ? (
-              <Text style={styles.itemDetail}>
-                {job.responsibilities.join(' · ')}
-              </Text>
+              <View style={styles.bulletList}>
+                {job.responsibilities.map((item) => (
+                  <View key={item} style={styles.bulletRow}>
+                    <View style={styles.bulletIconBox}>
+                      <Image src={LIST_ICON} style={styles.bulletIcon} />
+                    </View>
+                    <Text style={styles.bulletText}>{item}</Text>
+                  </View>
+                ))}
+              </View>
             ) : null}
           </View>
         ))}
       </Section>
-    </Page>
-
-    <Page size="A4" style={styles.page}>
       <Section title="Training">
         {data.training.map((training) => (
           <View
@@ -433,7 +466,6 @@ const ResumeThreeElectricalDocument = () => (
           ))}
         </View>
       </Section>
-
       <Section title="Languages">
         <View style={styles.table}>
           <View style={styles.tableHeader}>
@@ -471,7 +503,6 @@ const ResumeThreeElectricalDocument = () => (
           ))}
         </View>
       </Section>
-
       <Section title="Personal Information">
         <View style={styles.personalGrid}>
           {personalInfoFields.map((field) => (
@@ -487,6 +518,14 @@ const ResumeThreeElectricalDocument = () => (
           ))}
         </View>
       </Section>
+    </Page>
+
+    <Page size="A4" style={styles.page}>
+  
+
+
+
+   
     </Page>
   </Document>
 );

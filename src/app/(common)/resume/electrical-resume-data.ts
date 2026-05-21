@@ -3,7 +3,7 @@ export const electricalResumeData = {
     fullName: "MD Rajiul Islam",
     name: "Rajiul Islam",
     title: "Electrical Engineer",
-    location: "Sharankhola, Rayenda Bazar, Rupsha, Khulna",
+    location: "Sharankhola, Bagerhat, Khulna",
     phone: "01986570093",
     email: "rajiulrayhan@gmail.com",
     linkedin: "https://www.linkedin.com/in/rajiul-islam-rayhan/",
@@ -12,9 +12,9 @@ export const electricalResumeData = {
     careerObjective:
       "To work at CLEAN using my electrical maintenance experience in motor systems, control panel wiring, cable dressing, and motor connections. I aim to support community energy and climate work and improve field work, reporting, and teamwork skills.",
     careerSummary:
-      "Electrical Engineer with experience in textile industry, SLAM power plant control board project, and 350MW power plant maintenance.",
+      "Electrical Engineer with experience in the textile industry, S-Alam power plant control panel project, and 350 MW power plant maintenance.",
     specialQualification:
-      "Experienced in motor maintenance, RF dryer, DB board troubleshooting, dyeing and winding machine maintenance.",
+      "Experienced in motor maintenance, RF dryer, DB board troubleshooting, control panel wiring, dyeing and winding machine maintenance.",
   },
 
   experience: {
@@ -24,7 +24,7 @@ export const electricalResumeData = {
         position: "MERN Stack Developer",
         company: "Wadi Taslim Technologies",
         duration: "01 Jul 2025 - 30 Apr 2026",
-        experience: "0.8 years",
+        experience: "10 months",
         skills: [
           "Express.js",
           "JavaScript ES6",
@@ -37,7 +37,7 @@ export const electricalResumeData = {
           "Develop MERN applications",
           "Build responsive UI",
           "Create REST APIs",
-          "Integrate frontend and backend",
+          "Integrate the frontend with the backend",
           "Debug and optimize performance",
         ],
       },
@@ -59,7 +59,7 @@ export const electricalResumeData = {
         position: "Assistant Engineer",
         company: "Banshkhali Power Station (S-Alam)",
         duration: "18 Jun 2021 - 01 May 2022",
-        experience: "0.9 years",
+        experience: "11 months",
         location: "Gondamara, Banshkhali, Chittagong",
         skills: ["PLC", "Installation"],
         responsibilities: ["PLC control wiring", "Power section checking"],
@@ -86,7 +86,7 @@ export const electricalResumeData = {
       cgpa: "3.0/4.0",
       year: 2022,
       achievement:
-        "Arduino based DC motor speed and direction control project (Bluetooth controlled)",
+        "Arduino-based DC motor speed and direction control project (Bluetooth-controlled)",
     },
     {
       degree: "Diploma in Engineering",
@@ -94,7 +94,7 @@ export const electricalResumeData = {
       institution: "Mangrove Institute of Science and Technology",
       cgpa: "2.8/4.0",
       year: 2018,
-      achievement: "12 weeks industrial attachment in steam power plant",
+      achievement: "12-week industrial attachment in a steam power plant",
     },
     {
       degree: "SSC",
