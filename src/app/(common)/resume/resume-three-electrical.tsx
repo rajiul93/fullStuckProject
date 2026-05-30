@@ -520,13 +520,7 @@ const ResumeThreeElectricalDocument = () => (
       </Section>
     </Page>
 
-    <Page size="A4" style={styles.page}>
   
-
-
-
-   
-    </Page>
   </Document>
 );
 

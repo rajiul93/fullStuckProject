@@ -10,7 +10,7 @@ export const electricalResumeData = {
     github: "https://github.com/rajiul93",
     profileImage: "/rajiul-islam.jpeg",
     careerObjective:
-      "To work at CLEAN using my electrical maintenance experience in motor systems, control panel wiring, cable dressing, and motor connections. I aim to support community energy and climate work and improve field work, reporting, and teamwork skills.",
+      "To utilize my electrical maintenance experience in motor systems, control panel wiring, cable dressing, and motor connections to contribute effectively in a professional organization. I am eager to support operational and technical activities while enhancing my fieldwork, reporting, problem-solving, and teamwork skills for continuous professional growth.",
     careerSummary:
       "Electrical Engineer with experience in the textile industry, S-Alam power plant control panel project, and 350 MW power plant maintenance.",
     specialQualification:
@@ -74,6 +74,19 @@ export const electricalResumeData = {
           "Industrial electrical maintenance",
           "Machine troubleshooting",
           "Preventive maintenance",
+        ],
+      },
+      {
+        position: "Volunteer",
+        company: "Coastal Community Resilience Project",
+        duration: "4 Apr 2018 - 31 Dec 2019",
+        experience: "1.5 years",
+        skills: ["Installation", "Maintenance"],
+        responsibilities: [
+          "Community development",
+          "Community engagement",
+          "Community mobilization",
+          "Community organization",
         ],
       },
     ],
@@ -158,7 +171,6 @@ export const electricalResumeData = {
     "Mongoose",
     "Next.js",
     "Tailwind CSS",
-    "Bootstrap",
     "HTML",
     "CSS",
   ],
