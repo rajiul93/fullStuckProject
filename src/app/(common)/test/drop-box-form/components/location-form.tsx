@@ -238,14 +238,14 @@ export function LocationForm() {
             />
           </div>
 
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <Label>Map — click to select location</Label>
             <LocationMap
               latitude={mapCoords.lat}
               longitude={mapCoords.lon}
               onMapClick={handleMapClick}
             />
-          </div>
+          </div> */}
         </form>
       </Form>
     </div>
