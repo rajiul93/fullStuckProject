@@ -17,6 +17,14 @@ const TemplateElectricalOne = dynamic(
   },
 );
 
+const TemplateFrontendCv = dynamic(() => import('./template-frontend-cv'), {
+  ssr: false,
+});
+
+const TemplateMernCv = dynamic(() => import('./template-mern-cv'), {
+  ssr: false,
+});
+
 const ResumePageClient = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -37,6 +45,8 @@ const ResumePageClient = () => {
           <TabsTrigger value="one">Template One</TabsTrigger>
           <TabsTrigger value="two">Template Two</TabsTrigger>
           <TabsTrigger value="electrical">Electrical</TabsTrigger>
+          <TabsTrigger value="frontend-cv">Frontend CV</TabsTrigger>
+          <TabsTrigger value="mern-cv">MERN CV</TabsTrigger>
         </TabsList>
 
         <TabsContent value="one">
@@ -48,6 +58,14 @@ const ResumePageClient = () => {
 
         <TabsContent value="electrical">
           <TemplateElectricalOne />
+        </TabsContent>
+
+        <TabsContent value="frontend-cv">
+          <TemplateFrontendCv />
+        </TabsContent>
+
+        <TabsContent value="mern-cv">
+          <TemplateMernCv />
         </TabsContent>
       </Tabs>
     </div>
