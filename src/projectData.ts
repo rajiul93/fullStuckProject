@@ -394,6 +394,124 @@ export const projectsData: Project[] = [
     ],
   },
   {
+    id: "7",
+    title: "Meriton Signatur Hotel",
+    description:
+      "Full-stack hotel booking platform for Meriton Signatur with room search, real-time availability, Stripe checkout, and an admin panel for rooms, bookings, and site settings.",
+    category: "small",
+    image: "/images/project/hotel.png",
+    githubFrontendLink:
+      "https://github.com/meritonsignaturemy-design/Booking_font.git",
+    serverLink:
+      "https://github.com/meritonsignaturemy-design/Booking_server.git",
+    clientLink: "https://meritonsignatur.com/",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "TanStack Query",
+      "Zustand",
+      "Stripe",
+      "React Hook Form",
+      "Zod",
+      "Express",
+      "Node.js",
+      "MongoDB",
+      "JWT",
+      "Cloudflare R2",
+      "Nodemailer",
+    ],
+    features: [
+      {
+        title: "Marketing & Content Pages",
+        description:
+          "Public site with home hero, about, gallery, reviews, location, contact, and featured rooms — built for direct hotel bookings at meritonsignatur.com.",
+      },
+      {
+        title: "Date-Range Room Search",
+        description:
+          "Guests pick check-in/check-out dates, room category, adults, children, and room count from the booking bar to start a stay search.",
+      },
+      {
+        title: "Real-Time Room Availability",
+        description:
+          "Availability API checks open rooms against confirmed bookings for the selected dates and returns per-night pricing and estimated totals.",
+      },
+      {
+        title: "Room Detail & Booking Flow",
+        description:
+          "Slug-based room pages show galleries, amenities, stay summary, and an embedded booking form that routes guests into checkout.",
+      },
+      {
+        title: "Stripe Payment Checkout",
+        description:
+          "Secure card checkout with Stripe Payment Intents, pending booking cleanup on failure, and dedicated success/failed result pages.",
+      },
+      {
+        title: "Booking Confirmation Email",
+        description:
+          "Automated guest confirmation emails after successful payment with booking reference, stay dates, and amount details.",
+      },
+      {
+        title: "Admin Dashboard",
+        description:
+          "Protected admin area for room CRUD, media uploads, booking list management, app settings, and credential updates.",
+      },
+      {
+        title: "Configurable Availability Rules",
+        description:
+          "Global app config lets admins toggle overlap checks and manage operational settings without redeploying the frontend.",
+      },
+    ],
+  },
+  {
+    id: "8",
+    title: "HD Home Inspectors",
+    description:
+      "Client website for a licensed home inspection company with service pages, pricing, Spectora online booking, customer reviews, and SEO-optimized marketing content for California, Florida, and Arizona.",
+    category: "small",
+    image: "/images/project/hdhome.png",
+    clientLink: "https://hdhome.vercel.app/",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Spectora",
+      "SEO",
+      "Vercel",
+    ],
+    features: [
+      {
+        title: "Marketing Homepage",
+        description:
+          "Hero banner, customer reviews carousel, service highlights, accreditations, and call-to-action sections built for lead generation.",
+      },
+      {
+        title: "Pricing & Online Booking",
+        description:
+          "Transparent pricing breakdown with embedded Spectora scheduler so clients can book inspections directly from the site.",
+      },
+      {
+        title: "Multi-Page Public Site",
+        description:
+          "About, FAQ, Book Now, and pricing pages with responsive layout and consistent brand styling across the full customer journey.",
+      },
+      {
+        title: "SEO & Social Metadata",
+        description:
+          "Optimized title, description, keywords, Open Graph, and Twitter cards with favicon and metadataBase for search and social sharing.",
+      },
+      {
+        title: "Modern UI Components",
+        description:
+          "Reusable navigation, footer, dialogs, and carousels using shadcn/ui, Base UI, and Tailwind CSS with mobile-first responsive design.",
+      },
+    ],
+  },
+  {
     id: "p-1",
     title: "Landing Page UI (Assignment)",
     description:
