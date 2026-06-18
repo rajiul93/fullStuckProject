@@ -4,7 +4,7 @@ import ResumePageClient from './resume-client';
 const ResumePage = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <ResumePageClient />;
+      <ResumePageClient />
     </Suspense>
   );
 };

@@ -25,6 +25,10 @@ const TemplateMernCv = dynamic(() => import('./template-mern-cv'), {
   ssr: false,
 });
 
+const TemplateMahmudulCv = dynamic(() => import('./template-mahmudul-cv'), {
+  ssr: false,
+});
+
 const ResumePageClient = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -47,6 +51,7 @@ const ResumePageClient = () => {
           <TabsTrigger value="electrical">Electrical</TabsTrigger>
           <TabsTrigger value="frontend-cv">Frontend CV</TabsTrigger>
           <TabsTrigger value="mern-cv">MERN CV</TabsTrigger>
+          <TabsTrigger value="mahmudul-cv">Mahmudul CV</TabsTrigger>
         </TabsList>
 
         <TabsContent value="one">
@@ -66,6 +71,10 @@ const ResumePageClient = () => {
 
         <TabsContent value="mern-cv">
           <TemplateMernCv />
+        </TabsContent>
+
+        <TabsContent value="mahmudul-cv">
+          <TemplateMahmudulCv />
         </TabsContent>
       </Tabs>
     </div>
