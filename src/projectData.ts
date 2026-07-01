@@ -681,4 +681,62 @@ export const projectsData: Project[] = [
       },
     ],
   },
+  {
+    id: "p-jewels",
+    title: "Momenzi — Jewelry E-Commerce",
+    description:
+      "Full-stack jewelry e-commerce platform built with Next.js and Prisma: storefront with collections, product catalog, cart & checkout, Razorpay/COD payments, Shiprocket shipping, and a full admin panel for products, orders, coupons, gifts, and site branding.",
+    category: "small",
+    image: "/images/project/ecommerce.jpeg",
+    clientLink: "https://momenzi.com",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "TanStack Query",
+      "Zustand",
+      "React Hook Form",
+      "Zod",
+      "Razorpay",
+      "Shiprocket",
+      "AWS R2",
+      "shadcn/ui",
+      "Neon Auth",
+    ],
+    features: [
+      {
+        title: "Storefront & Product Discovery",
+        description:
+          "Home banners, curated collections, category pages, shop search/sort/pagination, and rich product detail pages with reviews and testimonials.",
+      },
+      {
+        title: "Cart, Wishlist & Checkout",
+        description:
+          "Persistent cart and wishlist, stock validation, coupon application, address capture, and a multi-step checkout optimized for conversions.",
+      },
+      {
+        title: "Razorpay & COD Payments",
+        description:
+          "Online payments via Razorpay (including magic checkout), cash-on-delivery support, webhooks, and payment verification flows.",
+      },
+      {
+        title: "Shiprocket Shipping Integration",
+        description:
+          "Admin tools to push orders, assign AWB, generate labels, track shipments, and handle courier serviceability checks.",
+      },
+      {
+        title: "Admin Product Management",
+        description:
+          "Manage products, categories, brands, attributes, media (R2), FAQs, gifts, home-page content, and product testimonials from the dashboard.",
+      },
+      {
+        title: "Orders, Coupons & Analytics",
+        description:
+          "Order lifecycle tracking, coupon CRUD, payment/income history, contact messages, GTM settings, and role-based admin access.",
+      },
+    ],
+  },
 ];

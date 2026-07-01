@@ -287,7 +287,10 @@ export function MahmudulCvDocument({ data }: { data: MahmudulCvData }) {
               <View style={styles.iconBox}>
                 <Image src="/images/resume/gmail.png" style={styles.icon} />
               </View>
-              <Link src={`mailto:${d.contact.email}`} style={styles.contactLink}>
+              <Link
+                src={`mailto:${d.contact.email}`}
+                style={styles.contactLink}
+              >
                 Email: {d.contact.email}
               </Link>
             </View>
@@ -338,54 +341,6 @@ export function MahmudulCvDocument({ data }: { data: MahmudulCvData }) {
             <Bullet key={test.id} text={`${test.name} ${test.score}`} />
           ))}
         </Section>
-        <Section title="Biographical Information">
-          <View style={styles.bioGrid}>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>{"Father's Name:"}</Text>
-              <Text style={styles.bioValue}>{d.biographical.fatherName}</Text>
-            </View>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>{"Mother's Name:"}</Text>
-              <Text style={styles.bioValue}>{d.biographical.motherName}</Text>
-            </View>
-            <View style={styles.bioFieldFull}>
-              <Text style={styles.bioLabel}>Permanent Address:</Text>
-              <Text style={styles.bioValue}>
-                {d.biographical.permanentAddress}
-              </Text>
-            </View>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>Date of Birth:</Text>
-              <Text style={styles.bioValue}>{d.biographical.dateOfBirth}</Text>
-            </View>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>Nationality:</Text>
-              <Text style={styles.bioValue}>{d.biographical.nationality}</Text>
-            </View>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>Religion:</Text>
-              <Text style={styles.bioValue}>{d.biographical.religion}</Text>
-            </View>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>Sex:</Text>
-              <Text style={styles.bioValue}>{d.biographical.sex}</Text>
-            </View>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>Marital Status:</Text>
-              <Text style={styles.bioValue}>
-                {d.biographical.maritalStatus}
-              </Text>
-            </View>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>Blood Group:</Text>
-              <Text style={styles.bioValue}>{d.biographical.bloodGroup}</Text>
-            </View>
-            <View style={styles.bioField}>
-              <Text style={styles.bioLabel}>Height:</Text>
-              <Text style={styles.bioValue}>{d.biographical.height}</Text>
-            </View>
-          </View>
-        </Section>
 
         <Section title="Hobbies">
           <Text style={styles.hobbiesText}>{d.hobbies.join(', ')}</Text>
@@ -413,7 +368,7 @@ export function MahmudulCvDocument({ data }: { data: MahmudulCvData }) {
         <Text style={styles.declaration}>{d.declaration}</Text>
         <Text style={styles.signature}>Sincerely,</Text>
         <Text style={styles.signature}>{d.signature}</Text>
-        </Page>
+      </Page>
     </Document>
   );
 }
