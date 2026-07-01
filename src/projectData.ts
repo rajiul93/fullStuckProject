@@ -718,7 +718,7 @@ export const projectsData: Project[] = [
           "Persistent cart and wishlist, stock validation, coupon application, address capture, and a multi-step checkout optimized for conversions.",
       },
       {
-        title: "Razorpay & COD Payments",
+        title: "Razorpay & COD Payments ",
         description:
           "Online payments via Razorpay (including magic checkout), cash-on-delivery support, webhooks, and payment verification flows.",
       },
