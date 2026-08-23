@@ -76,19 +76,6 @@ export const electricalResumeData = {
           "Preventive maintenance",
         ],
       },
-      {
-        position: "Volunteer",
-        company: "Coastal Community Resilience Project",
-        duration: "4 Apr 2018 - 31 Dec 2019",
-        experience: "1.5 years",
-        skills: ["Installation", "Maintenance"],
-        responsibilities: [
-          "Community development",
-          "Community engagement",
-          "Community mobilization",
-          "Community organization",
-        ],
-      },
     ],
   },
 
