@@ -15,6 +15,7 @@ import {
 import { frontendCvData, type FrontendCvData } from './frontend-cv-data';
 
 const ACCENT = '#0f2744';
+const LINK = '#1d4ed8';
 
 Font.register({
   family: 'Roboto',
@@ -25,55 +26,54 @@ Font.register({
   ],
 });
 
-const ICON_SIZE = 10;
+// Keep words whole instead of hyphenating them at line breaks.
+Font.registerHyphenationCallback((word) => [word]);
+
+const ICON_SIZE = 11;
 const LIST_ICON = '/icons/darkArrow.png';
 
 const styles = StyleSheet.create({
   page: {
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingHorizontal: 36,
+    paddingVertical: 30,
     fontFamily: 'Roboto',
-    fontSize: 10,
+    fontSize: 11,
     color: '#2d2d2d',
   },
   headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 8,
-    borderBottom: '2px solid #c9a227',
-    paddingBottom: 8,
-  },
-  cvLabel: {
-    fontSize: 8,
-    color: '#888',
-    letterSpacing: 1.5,
-    textTransform: 'uppercase',
-    marginBottom: 4,
+    alignItems: 'center',
+    marginBottom: 6,
+    borderBottom: `1.5px solid ${ACCENT}`,
+    paddingBottom: 10,
   },
   title: {
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: 700,
     color: ACCENT,
-    marginBottom: 2,
   },
   subtitle: {
-    fontSize: 11,
-    fontWeight: 500,
+    fontSize: 13,
     color: '#555',
-    marginBottom: 6,
+    marginBottom: 7,
   },
   profileImage: {
-    width: 76,
-    height: 88,
+    width: 70,
+    height: 80,
     borderRadius: 4,
     objectFit: 'cover',
-    border: '2px solid #c9a227',
+    border: '1px solid #d1d5db',
+  },
+  contactGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   contactItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 3,
+    marginRight: 14,
+    marginBottom: 4,
   },
   iconBox: {
     width: ICON_SIZE,
@@ -87,89 +87,84 @@ const styles = StyleSheet.create({
     objectFit: 'contain',
   },
   contactText: {
-    fontSize: 9,
+    fontSize: 10.5,
     color: '#444',
   },
   contactLink: {
-    fontSize: 9,
-    color: ACCENT,
-    textDecoration: 'none',
+    fontSize: 10.5,
+    color: LINK,
+    textDecoration: 'underline',
   },
   section: {
-    marginTop: 8,
+    marginTop: 14,
   },
   sectionTitle: {
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: 700,
     color: ACCENT,
     borderBottom: '1px solid #e0e0e0',
-    paddingBottom: 2,
-    marginBottom: 4,
+    paddingBottom: 3,
+    marginBottom: 6,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
   bodyText: {
-    fontSize: 9.5,
-    lineHeight: 1.35,
+    fontSize: 11,
+    lineHeight: 1.5,
     color: '#333',
-    textAlign: 'justify',
-  },
-  objectiveText: {
-    fontSize: 9.5,
-    lineHeight: 1.35,
-    color: '#444',
-    fontStyle: 'italic',
   },
   jobTitle: {
-    fontSize: 10.5,
+    fontSize: 12,
     fontWeight: 700,
     color: ACCENT,
-    marginBottom: 2,
   },
   companyRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 2,
+    alignItems: 'flex-end',
+    marginBottom: 1,
   },
   companyName: {
-    fontSize: 9.5,
-    fontWeight: 600,
+    fontSize: 11,
+    fontWeight: 400,
     color: '#444',
   },
   periodText: {
-    fontSize: 9,
+    fontSize: 10.5,
     color: '#666',
-    fontWeight: 600,
+    fontWeight: 700,
   },
   muted: {
-    fontSize: 9,
+    fontSize: 10.5,
     color: '#666',
-    marginBottom: 4,
+    marginBottom: 2,
+  },
+  projectBlock: {
+    marginTop: 8,
   },
   projectTitle: {
-    fontSize: 10,
+    fontSize: 11.5,
     fontWeight: 700,
     color: '#1a1a1a',
-    marginTop: 4,
-    marginBottom: 2,
+    marginBottom: 1,
   },
   projectDesc: {
-    fontSize: 9,
-    lineHeight: 1.3,
+    fontSize: 10.5,
+    lineHeight: 1.45,
     color: '#444',
-    marginBottom: 2,
+    marginBottom: 1,
   },
   bulletRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 2,
-    marginLeft: 4,
+    marginBottom: 2.5,
+    marginLeft: 6,
   },
   bulletIconBox: {
     width: 7,
     height: 7,
-    marginRight: 4,
-    marginTop: 2,
+    marginRight: 6,
+    marginTop: 3.5,
     flexShrink: 0,
   },
   bulletIcon: {
@@ -178,109 +173,63 @@ const styles = StyleSheet.create({
     objectFit: 'contain',
   },
   bulletText: {
-    fontSize: 9,
-    lineHeight: 1.3,
+    fontSize: 10.5,
+    lineHeight: 1.45,
     color: '#333',
     flex: 1,
   },
   liveLink: {
-    fontSize: 8.5,
-    color: ACCENT,
-    textDecoration: 'none',
-    marginBottom: 2,
+    fontSize: 10,
+    color: LINK,
+    textDecoration: 'underline',
   },
-  techWrap: {
+  linkIcon: {
+    width: 9,
+    height: 9,
+    marginRight: 4,
+    marginTop: 1.5,
+  },
+  liveLinkItem: {
+    flexDirection: 'row',
+  },
+  linkSeparator: {
+    fontSize: 10,
+    color: '#999',
+    marginHorizontal: 5,
+  },
+  liveLinkRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 2,
-    marginBottom: 4,
-  },
-  techChip: {
-    backgroundColor: '#eef2f7',
-    borderRadius: 3,
-    paddingVertical: 2,
-    paddingHorizontal: 5,
-    marginRight: 4,
     marginBottom: 3,
   },
-  techChipText: {
-    fontSize: 7.5,
+  techLine: {
+    fontSize: 10,
+    color: '#555',
+    marginLeft: 6,
+    marginTop: 1,
+  },
+  techLabel: {
+    fontWeight: 700,
     color: ACCENT,
-    fontWeight: 600,
+  },
+  skillLine: {
+    fontSize: 10.5,
+    lineHeight: 1.6,
+    color: '#333',
+  },
+  skillLabel: {
+    fontWeight: 700,
+    color: ACCENT,
+  },
+  eduLine: {
+    fontSize: 10.5,
+    color: '#444',
+    marginBottom: 3,
+    lineHeight: 1.4,
   },
   eduDegree: {
-    fontSize: 10,
     fontWeight: 700,
-    color: ACCENT,
-  },
-  eduMeta: {
-    fontSize: 9,
-    color: '#555',
-    marginTop: 1,
-  },
-  eduBlock: {
-    marginBottom: 5,
-  },
-  strengthRow: {
-    flexDirection: 'row',
-    marginBottom: 2,
-  },
-  strengthDot: {
-    fontSize: 8,
-    color: '#c9a227',
-    marginRight: 4,
-    width: 8,
-  },
-  strengthText: {
-    fontSize: 9,
-    color: '#333',
-    flex: 1,
-    lineHeight: 1.25,
-  },
-  skillsWrap: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  skillBadge: {
-    backgroundColor: '#f3f4f6',
-    borderWidth: 1,
-    borderColor: '#e5e7eb',
-    borderRadius: 3,
-    paddingVertical: 2,
-    paddingHorizontal: 6,
-    marginRight: 4,
-    marginBottom: 4,
-  },
-  skillBadgeText: {
-    fontSize: 8,
-    color: '#374151',
-  },
-  softSkillTitle: {
-    fontSize: 9.5,
-    fontWeight: 700,
-    color: ACCENT,
-    marginBottom: 1,
-  },
-  softSkillDesc: {
-    fontSize: 9,
-    color: '#555',
-    lineHeight: 1.3,
-    marginBottom: 4,
-  },
-  langItem: {
-    fontSize: 9,
-    marginBottom: 2,
-  },
-  certName: {
-    fontSize: 9.5,
-    fontWeight: 600,
-    color: '#222',
-  },
-  certIssuer: {
-    fontSize: 8.5,
-    color: '#666',
-    marginTop: 1,
-    marginBottom: 4,
+    color: '#1a1a1a',
   },
 });
 
@@ -321,6 +270,33 @@ const ContactRow = ({
   </View>
 );
 
+const displayUrl = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+
+const ProjectBlock = ({ project }: { project: FrontendCvData['projects'][number] }) => (
+  <View style={styles.projectBlock} wrap={false}>
+    <Text style={styles.projectTitle}>{project.title}</Text>
+    <Text style={styles.projectDesc}>{project.description}</Text>
+    <View style={styles.liveLinkRow}>
+      <Image src="/images/resume/world.png" style={styles.linkIcon} />
+      {[project.liveUrl].flat().map((url, j) => (
+        <View key={url} style={styles.liveLinkItem}>
+          {j > 0 && <Text style={styles.linkSeparator}>|</Text>}
+          <Link src={url} style={styles.liveLink}>
+            {displayUrl(url)}
+          </Link>
+        </View>
+      ))}
+    </View>
+    {project.responsibilities.map((item) => (
+      <Bullet key={item} text={item} />
+    ))}
+    <Text style={styles.techLine}>
+      <Text style={styles.techLabel}>Tech: </Text>
+      {project.tech.join(' · ')}
+    </Text>
+  </View>
+);
+
 export function FrontendCvDocument({ data }: { data: FrontendCvData }) {
   const d = data;
 
@@ -329,159 +305,93 @@ export function FrontendCvDocument({ data }: { data: FrontendCvData }) {
       <Page size="A4" style={styles.page} wrap>
         <View style={styles.headerRow}>
           <View style={{ flex: 1, paddingRight: 12 }}>
-            <Text style={styles.cvLabel}>Curriculum Vitae</Text>
             <Text style={styles.title}>{d.personal.name}</Text>
             <Text style={styles.subtitle}>{d.personal.title}</Text>
 
-            <ContactRow icon="/images/resume/phone.png">
-              <Text style={styles.contactText}>{d.contact.phone}</Text>
-            </ContactRow>
-            <ContactRow icon="/images/resume/gmail.png">
-              <Link src={`mailto:${d.contact.email}`} style={styles.contactLink}>
-                {d.contact.email}
-              </Link>
-            </ContactRow>
-            <ContactRow icon="/images/resume/location.png">
-              <Text style={styles.contactText}>{d.contact.location}</Text>
-            </ContactRow>
-            <ContactRow icon="/images/resume/in.png">
-              <Link src={d.contact.linkedInUrl} style={styles.contactLink}>
-                LinkedIn Profile
-              </Link>
-            </ContactRow>
-            <ContactRow icon="/images/resume/world.png">
-              <Link src={d.contact.portfolioUrl} style={styles.contactLink}>
-                Portfolio
-              </Link>
-            </ContactRow>
+            <View style={styles.contactGrid}>
+              <ContactRow icon="/images/resume/phone.png">
+                <Text style={styles.contactText}>{d.contact.phone}</Text>
+              </ContactRow>
+              <ContactRow icon="/images/resume/gmail.png">
+                <Link src={`mailto:${d.contact.email}`} style={styles.contactLink}>
+                  {d.contact.email}
+                </Link>
+              </ContactRow>
+              <ContactRow icon="/images/resume/location.png">
+                <Text style={styles.contactText}>{d.contact.location}</Text>
+              </ContactRow>
+              <ContactRow icon="/images/resume/in.png">
+                <Link src={d.contact.linkedInUrl} style={styles.contactLink}>
+                  LinkedIn
+                </Link>
+              </ContactRow>
+              <ContactRow icon="/images/resume/world.png">
+                <Link src={d.contact.portfolioUrl} style={styles.contactLink}>
+                  {displayUrl(d.contact.portfolioUrl)}
+                </Link>
+              </ContactRow>
+            </View>
           </View>
           <Image src={d.profileImage} style={styles.profileImage} />
         </View>
 
-        <Section title="Career Objective">
-          <Text style={styles.objectiveText}>{d.careerObjective}</Text>
+        <Section title="Summary">
+          <Text style={styles.bodyText}>{d.summary}</Text>
         </Section>
 
-        <Section title="Professional Summary">
-          <Text style={styles.bodyText}>{d.careerSummary}</Text>
-        </Section>
-
-        <Section title="Core Strengths">
-          {d.coreStrengths.map((item) => (
-            <View key={item} style={styles.strengthRow}>
-              <Text style={styles.strengthDot}>◆</Text>
-              <Text style={styles.strengthText}>{item}</Text>
-            </View>
-          ))}
-        </Section>
-
-        <Section title={d.sectionLabels.experience}>
-          <Text style={styles.jobTitle}>{d.experience.jobTitle}</Text>
-          <View style={styles.companyRow}>
-            <Text style={styles.companyName}>{d.experience.company}</Text>
-            <Text style={styles.periodText}>{d.experience.period}</Text>
-          </View>
-          <Text style={styles.muted}>{d.experience.location}</Text>
-
-          {d.experience.projects.map((project) => (
-            <View key={project.id}>
-              <Text style={styles.projectTitle}>{project.title}</Text>
-              <Text style={styles.projectDesc}>{project.description}</Text>
-              <Link src={project.liveUrl} style={styles.liveLink}>
-                {project.liveUrl}
-              </Link>
-              {project.responsibilities.map((item) => (
-                <Bullet key={item} text={item} />
-              ))}
-              <View style={styles.techWrap}>
-                {project.tech.map((t) => (
-                  <View key={t} style={styles.techChip}>
-                    <Text style={styles.techChipText}>{t}</Text>
-                  </View>
-                ))}
-              </View>
-            </View>
-          ))}
-        </Section>
-
-        <Section title={d.sectionLabels.education}>
-          {d.education.map((edu) => (
-            <View key={edu.id} style={styles.eduBlock}>
-              <Text style={styles.eduDegree}>{edu.degree}</Text>
-              <Text style={styles.eduMeta}>{edu.institution}</Text>
-              <Text style={styles.eduMeta}>
-                {edu.period} · {edu.location}
-              </Text>
-            </View>
-          ))}
-        </Section>
-
-        <Section title={d.sectionLabels.additionalTraining}>
-          <Text style={styles.jobTitle}>{d.additionalTraining.title}</Text>
-          <Text style={styles.eduMeta}>{d.additionalTraining.description}</Text>
-        </Section>
-
-        {d.personalProjects.length > 0 && (
-          <Section title={d.sectionLabels.personalProjects}>
-            {d.personalProjects.map((project) => (
-              <View key={project.id}>
-                <Text style={styles.projectTitle}>
-                  {project.title} — {project.duration}
-                </Text>
-                <Text style={styles.projectDesc}>{project.description}</Text>
-                <Link src={project.liveLink} style={styles.liveLink}>
-                  {project.liveLink}
-                </Link>
-                {project.features.map((feature) => (
-                  <Bullet key={feature} text={feature} />
-                ))}
-                <View style={styles.techWrap}>
-                  {project.tech.map((t) => (
-                    <View key={t} style={styles.techChip}>
-                      <Text style={styles.techChipText}>{t}</Text>
-                    </View>
-                  ))}
-                </View>
-              </View>
-            ))}
-          </Section>
-        )}
-
-        <Section title={d.sectionLabels.industrySkills}>
-          <View style={styles.skillsWrap}>
-            {d.technologies.map((tech) => (
-              <View key={tech} style={styles.skillBadge}>
-                <Text style={styles.skillBadgeText}>{tech}</Text>
-              </View>
-            ))}
-          </View>
-        </Section>
-
-        <Section title={d.sectionLabels.softSkills}>
-          {d.softSkills.map((skill) => (
-            <View key={skill.id}>
-              <Text style={styles.softSkillTitle}>{skill.title}</Text>
-              <Text style={styles.softSkillDesc}>{skill.description}</Text>
-            </View>
-          ))}
-        </Section>
-
-        <Section title={d.sectionLabels.languages}>
-          {d.languages.map((lang) => (
-            <Text key={lang.id} style={styles.langItem}>
-              {lang.name} — {lang.level}
+        <Section title="Skills">
+          {d.skillGroups.map((group) => (
+            <Text key={group.label} style={styles.skillLine}>
+              <Text style={styles.skillLabel}>{group.label}: </Text>
+              {group.items.join(', ')}
             </Text>
           ))}
         </Section>
 
-        <Section title={d.sectionLabels.certifications}>
-          {d.certifications.map((cert) => (
-            <View key={cert.id}>
-              <Text style={styles.certName}>{cert.name}</Text>
-              <Text style={styles.certIssuer}>{cert.issuer}</Text>
+        <Section title="Experience">
+          {d.experiences.map((exp, i) => (
+            <View key={exp.company} style={i > 0 ? { marginTop: 12 } : undefined}>
+              <View style={styles.companyRow}>
+                <Text style={styles.jobTitle}>
+                  {exp.jobTitle} <Text style={styles.companyName}>— {exp.company}</Text>
+                </Text>
+                <Text style={styles.periodText}>{exp.period}</Text>
+              </View>
+              <Text style={styles.muted}>{exp.location}</Text>
+              {exp.projects.map((project) => (
+                <ProjectBlock key={project.id} project={project} />
+              ))}
             </View>
           ))}
         </Section>
+
+        <View wrap={false}>
+          <Section title="Projects">
+            {d.projects.map((project) => (
+              <ProjectBlock key={project.id} project={project} />
+            ))}
+          </Section>
+        </View>
+
+        <Section title="Education">
+          {d.education.map((edu) => (
+            <View key={edu.id} style={[styles.companyRow, { alignItems: 'flex-start' }]}>
+              <Text style={styles.eduLine}>
+                <Text style={styles.eduDegree}>{edu.degree}</Text> — {edu.institution}
+              </Text>
+              <Text style={styles.periodText}>{edu.period}</Text>
+            </View>
+          ))}
+        </Section>
+
+        <Section title="Certifications">
+          {d.certifications.map((cert) => (
+            <Text key={cert.id} style={styles.eduLine}>
+              <Text style={styles.eduDegree}>{cert.name}</Text> — {cert.issuer}
+            </Text>
+          ))}
+        </Section>
+
       </Page>
     </Document>
   );

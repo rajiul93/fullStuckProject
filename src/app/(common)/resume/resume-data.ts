@@ -51,7 +51,7 @@ export const resumeData = {
   experience: {
     jobTitle: 'Junior Front-End Developer',
     company: 'Waditaslim tech',
-    period: '2025 - Present',
+    period: 'Jan 2025 - May 2026',
     location: 'KHULNA, Bangladesh (Dubai Base)',
     projects: [
       {
@@ -219,6 +219,5 @@ export const resumeData = {
       name: 'Front End Web Development – Level 1 & 2',
       issuer: 'Programming Hero',
     },
-    { id: 2, name: 'Responsive Web Design', issuer: 'freeCodeCamp' },
   ],
 };

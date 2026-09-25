@@ -50,7 +50,7 @@ export const mernCvData = {
   experience: {
     jobTitle: 'Junior MERN Stack Developer',
     company: 'Waditaslim tech',
-    period: '2025 - Present',
+    period: 'Jan 2025 - May 2026',
     location: 'Khulna, Bangladesh (Dubai Base)',
     projects: [
       {
@@ -179,7 +179,6 @@ export const mernCvData = {
       name: 'Front End Web Development – Level 1 & 2',
       issuer: 'Programming Hero',
     },
-    { id: 2, name: 'Responsive Web Design', issuer: 'freeCodeCamp' },
   ],
 };
 
