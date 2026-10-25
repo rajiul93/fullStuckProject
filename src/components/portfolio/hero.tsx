@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { ArrowRight, Code2 } from 'lucide-react';
 import {
+  SiExpress,
+  SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
   SiReact,
@@ -19,16 +21,19 @@ export default function PortfolioHero() {
     >
       <Reveal className="hero-copy" group>
         <div data-reveal-item className="hero-intro">
-          <span className="status-dot" /> FRONT-END DEVELOPER · BANGLADESH
+          <span className="status-dot" /> MERN STACK DEVELOPER · FRONT-END
+          FOCUS
         </div>
         <h1 data-reveal-item id="hero-title">
-          Thoughtful interfaces.
+          <span className="sr-only">Rajiul Islam, MERN stack developer — </span>
+          Front-end first.
           <br />
-          Powerful <span>experiences.</span>
+          Full-stack <span>ready.</span>
         </h1>
         <p data-reveal-item className="hero-description">
-          I&apos;m Rajiul — a frontend developer building fast, intuitive web
-          experiences with React, Next.js &amp; TypeScript.
+          I&apos;m Rajiul Islam — a MERN stack developer who specialises in the
+          front end. I build fast, accessible React &amp; Next.js interfaces in
+          TypeScript, and connect them to Node.js, Express &amp; MongoDB APIs.
         </p>
         <div data-reveal-item className="hero-actions">
           <a href="#selected-work" className="portfolio-button button-primary">
@@ -50,6 +55,8 @@ export default function PortfolioHero() {
             { name: 'TypeScript', Icon: SiTypescript, color: '#3178c6' },
             { name: 'Tailwind CSS', Icon: SiTailwindcss, color: '#38bdf8' },
             { name: 'Node.js', Icon: SiNodedotjs, color: '#83b449' },
+            { name: 'Express', Icon: SiExpress, color: '#f4f5f4' },
+            { name: 'MongoDB', Icon: SiMongodb, color: '#47a248' },
           ].map(({ name, Icon, color }) => (
             <span key={name}>
               <Icon size={23} style={{ color }} aria-hidden="true" />
@@ -69,7 +76,7 @@ export default function PortfolioHero() {
           </div>
           <Image
             src="/images/rajiul.png"
-            alt="Rajiul Islam in a black jacket and sunglasses"
+            alt="Rajiul Islam, MERN stack developer, in a black jacket and sunglasses"
             width={388}
             height={643}
             priority
@@ -82,8 +89,8 @@ export default function PortfolioHero() {
             </span>
             <div>
               <strong>Rajiul Islam</strong>
-              <span>Front-End Developer</span>
-              <small>React &amp; TypeScript</small>
+              <span>MERN Stack Developer</span>
+              <small>Front-end focus · React &amp; Next.js</small>
             </div>
           </div>
           <div className="portrait-tech" aria-label="Primary stack">

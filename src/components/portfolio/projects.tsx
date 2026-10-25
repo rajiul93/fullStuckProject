@@ -82,9 +82,9 @@ export default function PortfolioProjects({
           >
             <div className="selected-heading-aside">
               <p>
-                A selection of projects across travel, commerce and business
-                platforms. Built with a focus on clean interfaces and useful
-                interactions.
+                Production React and Next.js work across travel booking,
+                multi-tenant SaaS and commerce platforms. Front-end first,
+                built on REST APIs and the MERN stack.
               </p>
               <a href="#projects" className="portfolio-text-link">
                 Browse all projects <ArrowDown size={15} />

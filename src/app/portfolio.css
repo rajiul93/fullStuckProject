@@ -161,7 +161,7 @@ html:has(.portfolio) {
   color: var(--p-lime);
 }
 .brand-name {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.25em;
 }
@@ -173,7 +173,7 @@ html:has(.portfolio) {
   position: relative;
   padding: 14px 0;
   color: #c5cdd0;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   transition: color 0.25s;
 }
@@ -202,7 +202,7 @@ html:has(.portfolio) {
   gap: 14px;
   border-radius: 9px;
   padding: 12px 22px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   border: 1px solid transparent;
   transition:
@@ -243,7 +243,7 @@ html:has(.portfolio) {
 .button-small {
   min-height: 36px;
   padding: 8px 17px;
-  font-size: 11px;
+  font-size: 14px;
 }
 .mobile-menu-toggle {
   display: none;
@@ -273,7 +273,7 @@ html:has(.portfolio) {
   border-radius: 20px;
   padding: 7px 11px;
   color: #b8c3c9;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.075em;
   font-weight: 700;
 }
@@ -317,7 +317,7 @@ html:has(.portfolio) {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
+  font-size: 13px;
   color: #abb8c0;
 }
 .hero-portrait {
@@ -410,12 +410,12 @@ html:has(.portfolio) {
 .portrait-caption small {
   display: block;
   margin-top: 3px;
-  font-size: 10px;
+  font-size: 13px;
   color: #c2caca;
 }
 .portrait-caption small {
   color: #8c9e9e;
-  font-size: 9px;
+  font-size: 12px;
 }
 .portrait-tech {
   position: absolute;
@@ -436,7 +436,7 @@ html:has(.portfolio) {
   align-items: center;
   gap: 8px;
   color: #adbec6;
-  font-size: 10px;
+  font-size: 13px;
 }
 .portrait-tech svg {
   width: 18px;
@@ -460,7 +460,7 @@ html:has(.portfolio) {
   align-items: center;
   gap: 13px;
   color: #aab6bb;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.21em;
   text-transform: uppercase;
@@ -481,7 +481,7 @@ html:has(.portfolio) {
 }
 .selected-heading-aside p {
   color: var(--p-muted);
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.8;
 }
 .portfolio-text-link {
@@ -489,7 +489,7 @@ html:has(.portfolio) {
   align-items: center;
   gap: 8px;
   color: var(--p-lime);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
 }
 .selected-projects {
@@ -572,7 +572,7 @@ html:has(.portfolio) {
   align-items: center;
   gap: 10px;
   color: var(--p-muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 .project-card-copy {
   padding: 18px;
@@ -608,7 +608,7 @@ html:has(.portfolio) {
   background: #202c3a;
   border: 1px solid #314152;
   border-radius: 5px;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.35;
 }
 .technology-tags > .more-tags {
@@ -629,7 +629,7 @@ html:has(.portfolio) {
   align-items: center;
   justify-content: center;
   gap: 7px;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
   min-height: 32px;
 }
@@ -678,7 +678,7 @@ html:has(.portfolio) {
   margin-top: 14px;
 }
 .featured-label {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #172208;
@@ -702,7 +702,7 @@ html:has(.portfolio) {
 }
 .collection-intro {
   color: var(--p-muted);
-  font-size: 12px;
+  font-size: 15px;
 }
 .project-collection-toolbar {
   display: flex;
@@ -845,7 +845,7 @@ html:has(.portfolio) {
 }
 .about-copy > p:not(.portfolio-eyebrow) {
   max-width: 350px;
-  font-size: 12px;
+  font-size: 15px;
   color: #a4b2ba;
   line-height: 1.75;
   margin: 14px 0 20px;
@@ -866,7 +866,7 @@ html:has(.portfolio) {
   margin-bottom: 15px;
 }
 .expertise-card h3 {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -875,7 +875,7 @@ html:has(.portfolio) {
   margin-top: 12px;
 }
 .expertise-card .technology-tags > span {
-  font-size: 8px;
+  font-size: 12px;
   padding: 4px 6px;
 }
 .journey-layout {
@@ -885,7 +885,7 @@ html:has(.portfolio) {
 }
 .journey-heading > p:last-child {
   margin-top: 14px;
-  font-size: 11px;
+  font-size: 15px;
   color: var(--p-muted);
 }
 .journey-grid {
@@ -913,25 +913,25 @@ html:has(.portfolio) {
   flex-shrink: 0;
 }
 .journey-card h3 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.5;
 }
 .journey-date {
   color: var(--p-lime);
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 7px;
 }
 .journey-company {
   margin-top: 4px;
   color: #b7c5cb;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.5;
 }
 .journey-card p:last-child {
   margin-top: 10px;
-  font-size: 10px;
+  font-size: 15px;
   line-height: 1.75;
   color: #8fa3af;
 }
@@ -960,7 +960,7 @@ html:has(.portfolio) {
   aspect-ratio: 1.9;
 }
 .portfolio-blog-section .article-copy h3 {
-  font-size: 14px;
+  font-size: 17px;
 }
 .articles-grid {
   display: grid;
@@ -995,7 +995,7 @@ html:has(.portfolio) {
   padding: 17px 18px 48px;
 }
 .article-category {
-  font-size: 8px;
+  font-size: 11px;
   color: #a2b6b6;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -1006,7 +1006,7 @@ html:has(.portfolio) {
   font-weight: 700;
 }
 .article-copy > p:last-of-type {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--p-muted);
   line-height: 1.7;
   margin-top: 8px;
@@ -1027,7 +1027,7 @@ html:has(.portfolio) {
 }
 .contact-copy > p:last-child {
   color: #9baab3;
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.8;
   max-width: 280px;
   margin-top: 15px;
@@ -1039,7 +1039,7 @@ html:has(.portfolio) {
 }
 .portfolio-contact-form label {
   display: block;
-  font-size: 10px;
+  font-size: 13px;
   color: #b8c5cb;
   margin-bottom: 6px;
 }
@@ -1053,7 +1053,7 @@ html:has(.portfolio) {
   border-radius: 6px;
   padding: 11px 12px;
   font: inherit;
-  font-size: 11px;
+  font-size: 14px;
   outline: 0;
   transition:
     background-color 0.25s,
@@ -1086,7 +1086,7 @@ html:has(.portfolio) {
 }
 .form-field-error {
   color: #ffae9d;
-  font-size: 10px;
+  font-size: 13px;
   margin-top: 6px;
 }
 .form-feedback {
@@ -1095,7 +1095,7 @@ html:has(.portfolio) {
   align-items: flex-start;
   border-radius: 7px;
   padding: 11px;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.65;
 }
 .form-feedback > svg {
@@ -1151,14 +1151,14 @@ html:has(.portfolio) {
   display: block;
   color: #cbd5da;
   font-weight: 600;
-  font-size: 10px;
+  font-size: 13px;
   overflow-wrap: anywhere;
   line-height: 1.5;
 }
 .contact-links small {
   display: block;
   color: #8297a4;
-  font-size: 9px;
+  font-size: 12px;
   margin-top: 4px;
   line-height: 1.6;
 }
@@ -1175,10 +1175,10 @@ html:has(.portfolio) {
   font-size: 31px;
 }
 .portfolio-footer .brand-name {
-  font-size: 10px;
+  font-size: 13px;
 }
 .footer-inner p {
-  font-size: 9px;
+  font-size: 12px;
   color: #90a1ac;
 }
 .footer-top {
@@ -1186,7 +1186,7 @@ html:has(.portfolio) {
   align-items: center;
   gap: 10px;
   color: #c4d2d3;
-  font-size: 10px;
+  font-size: 13px;
   margin-left: auto;
 }
 .portfolio-modal {
@@ -1213,11 +1213,11 @@ html:has(.portfolio) {
 }
 .portfolio-modal [id$='description'] {
   color: #a4b5bf;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.8;
 }
 .portfolio-modal .portfolio-eyebrow {
-  font-size: 8px;
+  font-size: 11px;
   margin-bottom: 5px;
   color: var(--p-lime);
 }
@@ -1254,13 +1254,13 @@ html:has(.portfolio) {
   background: #142127;
 }
 .project-features h4 {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 .project-features p {
   margin-top: 6px;
   color: #a5b5bf;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.8;
 }
 .project-modal-links {
@@ -1271,7 +1271,7 @@ html:has(.portfolio) {
   border-top: 1px solid #2b3f48;
 }
 .project-modal-links .button-small {
-  font-size: 10px;
+  font-size: 13px;
 }
 .article-modal-body > section + section {
   margin-top: 25px;
@@ -1280,7 +1280,7 @@ html:has(.portfolio) {
   padding-left: 18px;
   color: #a5b5bf;
   list-style: disc;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.9;
 }
 .article-modal-body li + li {
@@ -1344,16 +1344,16 @@ html:has(.portfolio) {
     font-size: clamp(2rem, 4.3vw, 3rem);
   }
   .hero-description {
-    font-size: 13px;
+    font-size: 15px;
   }
   .hero-intro {
-    font-size: 7px;
+    font-size: 11px;
   }
   .hero-stack {
     gap: 15px;
   }
   .hero-stack > span {
-    font-size: 8px;
+    font-size: 11px;
     gap: 5px;
   }
   .hero-portrait {
@@ -1365,7 +1365,7 @@ html:has(.portfolio) {
     left: 12px;
   }
   .portrait-caption strong {
-    font-size: 12px;
+    font-size: 14px;
   }
   .portrait-avatar {
     display: none;
@@ -1376,7 +1376,7 @@ html:has(.portfolio) {
     padding: 10px;
   }
   .portrait-tech span {
-    font-size: 8px;
+    font-size: 11px;
   }
   .portrait-note {
     right: 14px;
@@ -1417,7 +1417,7 @@ html:has(.portfolio) {
     padding: 15px 10px;
   }
   .expertise-card h3 {
-    font-size: 11px;
+    font-size: 14px;
   }
   .journey-layout {
     grid-template-columns: 1fr;
@@ -1477,7 +1477,7 @@ html:has(.portfolio) {
     border-bottom: 1px solid #243238;
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
+    font-size: 15px;
     color: #c8d2d5;
   }
   .mobile-navigation > a[aria-current] {
@@ -1495,7 +1495,7 @@ html:has(.portfolio) {
     max-width: 500px;
   }
   .hero-intro {
-    font-size: 8px;
+    font-size: 11px;
     margin-bottom: 21px;
   }
   .hero-stack {
@@ -1503,7 +1503,7 @@ html:has(.portfolio) {
     gap: 22px;
   }
   .hero-stack > span {
-    font-size: 10px;
+    font-size: 13px;
   }
   .hero-portrait {
     height: 430px;
@@ -1522,7 +1522,7 @@ html:has(.portfolio) {
   }
   .portrait-caption div > span,
   .portrait-caption small {
-    font-size: 11px;
+    font-size: 14px;
   }
   .portrait-tech {
     right: 18px;
@@ -1531,7 +1531,7 @@ html:has(.portfolio) {
     padding: 14px;
   }
   .portrait-tech span {
-    font-size: 10px;
+    font-size: 13px;
   }
   .portrait-note {
     right: 25px;
@@ -1628,14 +1628,14 @@ html:has(.portfolio) {
     padding: 14px 12px 50px;
   }
   .article-copy h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .article-copy > p:last-of-type {
     padding-right: 0;
-    font-size: 10px;
+    font-size: 15px;
   }
   .article-category {
-    font-size: 6px;
+    font-size: 11px;
   }
   .contact-links {
     grid-template-columns: 1fr 1fr;
@@ -1648,14 +1648,14 @@ html:has(.portfolio) {
   .portfolio-header .button-outline {
     min-height: 34px;
     padding: 7px 13px;
-    font-size: 10px;
+    font-size: 13px;
     gap: 9px;
   }
   .brand-mark {
     font-size: 35px;
   }
   .brand-name {
-    font-size: 10px;
+    font-size: 13px;
   }
   .portfolio-brand {
     gap: 11px;
@@ -1668,7 +1668,7 @@ html:has(.portfolio) {
   }
   .hero-stack > span {
     gap: 6px;
-    font-size: 8px;
+    font-size: 11px;
   }
   .hero-stack svg {
     width: 20px;
@@ -1677,7 +1677,7 @@ html:has(.portfolio) {
     gap: 10px;
   }
   .hero-actions .portfolio-button {
-    font-size: 11px;
+    font-size: 14px;
     gap: 10px;
     padding-inline: 15px;
   }
@@ -1687,11 +1687,11 @@ html:has(.portfolio) {
     padding: 12px;
   }
   .portrait-caption strong {
-    font-size: 13px;
+    font-size: 15px;
   }
   .portrait-caption div > span,
   .portrait-caption small {
-    font-size: 9px;
+    font-size: 12px;
   }
   .portrait-tech {
     right: 13px;
@@ -1700,7 +1700,7 @@ html:has(.portfolio) {
     padding: 11px;
   }
   .portrait-tech span {
-    font-size: 9px;
+    font-size: 12px;
   }
   .portrait-note {
     font-size: 21px;
@@ -1723,7 +1723,7 @@ html:has(.portfolio) {
     font-size: 20px;
   }
   .project-text-link {
-    font-size: 11px;
+    font-size: 14px;
     min-height: 40px;
   }
   .project-filter {
@@ -1748,13 +1748,13 @@ html:has(.portfolio) {
     margin: 0;
   }
   .expertise-card h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .expertise-card .technology-tags {
     margin-top: 10px;
   }
   .expertise-card .technology-tags > span {
-    font-size: 9px;
+    font-size: 12px;
   }
   .journey-grid {
     grid-template-columns: 1fr;
@@ -1763,16 +1763,16 @@ html:has(.portfolio) {
     padding: 19px;
   }
   .journey-card h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .journey-card p:last-child {
-    font-size: 11px;
+    font-size: 15px;
   }
   .journey-company {
-    font-size: 11px;
+    font-size: 14px;
   }
   .journey-date {
-    font-size: 9px;
+    font-size: 12px;
   }
   .blog-heading-row {
     align-items: flex-start;
@@ -1799,11 +1799,11 @@ html:has(.portfolio) {
     font-size: 19px;
   }
   .article-copy > p:last-of-type {
-    font-size: 12px;
+    font-size: 15px;
     padding-right: 25px;
   }
   .article-category {
-    font-size: 8px;
+    font-size: 11px;
   }
   .contact-layout {
     grid-template-columns: 1fr;
@@ -1811,10 +1811,10 @@ html:has(.portfolio) {
   }
   .contact-copy > p:last-child {
     max-width: 400px;
-    font-size: 12px;
+    font-size: 15px;
   }
   .portfolio-contact-form label {
-    font-size: 11px;
+    font-size: 14px;
   }
   .portfolio-contact-form input,
   .portfolio-contact-form textarea {
@@ -1825,10 +1825,10 @@ html:has(.portfolio) {
     gap: 24px 18px;
   }
   .contact-links strong {
-    font-size: 9px;
+    font-size: 12px;
   }
   .contact-links small {
-    font-size: 8px;
+    font-size: 11px;
   }
   .contact-links svg {
     width: 19px;
@@ -1845,10 +1845,10 @@ html:has(.portfolio) {
   .footer-inner p {
     width: 100%;
     order: 3;
-    font-size: 8px;
+    font-size: 11px;
   }
   .footer-top {
-    font-size: 9px;
+    font-size: 12px;
   }
   .portfolio-modal {
     padding: 21px;

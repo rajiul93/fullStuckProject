@@ -13,20 +13,27 @@ import { Eyebrow } from './section-heading';
 
 const expertise = [
   {
-    title: 'Frontend',
+    title: 'Front-end (core focus)',
     Icon: Code2,
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML', 'CSS'],
+    skills: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'Zustand',
+      'TanStack Query',
+    ],
   },
   {
-    title: 'Backend & Data',
+    title: 'Back-end (MERN)',
     Icon: Database,
     skills: [
       'Node.js',
       'Express.js',
       'MongoDB',
+      'Mongoose',
       'REST APIs',
-      'TanStack Query',
-      'Zustand',
+      'JWT auth',
     ],
   },
   {
@@ -51,9 +58,11 @@ export function AboutSection() {
             Designed <span className="lime">to scale.</span>
           </h2>
           <p>
-            I turn complex requirements into clear, reliable interfaces. My
-            focus is thoughtful UX, reusable components and maintainable React
-            code.
+            I&apos;m a MERN stack developer who spends most of my time on the
+            front end — turning complex requirements into clear, accessible
+            interfaces with reusable React components and maintainable
+            TypeScript. Because I understand the Node.js, Express and MongoDB
+            side too, the UIs I build fit cleanly with the APIs behind them.
           </p>
           <a
             href="/resume?templete=frontend-cv"
