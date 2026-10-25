@@ -4,7 +4,13 @@ import { HardDriveDownload } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-const Resume = () => {
+const Resume = ({
+  label = 'Resume',
+  className = '',
+}: {
+  label?: string;
+  className?: string;
+}) => {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = async () => {
@@ -41,10 +47,13 @@ const Resume = () => {
         variant="default"
         onClick={handleDownload}
         disabled={isDownloading}
-        className="rounded-md bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors text-white px-4 py-2 shadow-sm"
+        className={
+          className ||
+          'rounded-md bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors text-white px-4 py-2 shadow-sm'
+        }
       >
         <HardDriveDownload />
-        {isDownloading ? 'Downloading...' : 'Resume'}
+        {isDownloading ? 'Downloading...' : label}
       </Button>
     </div>
   );

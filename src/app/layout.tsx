@@ -1,8 +1,16 @@
 import type { Metadata } from 'next';
-import { Barlow } from 'next/font/google';
+import { Barlow, Manrope } from 'next/font/google';
 import './globals.css';
+import './portfolio.css';
+import './admin.css';
 import { Toaster } from 'sonner';
 import Providers from '@/provider/providers';
+
+const manrope = Manrope({
+  variable: '--font-manrope',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const barlow = Barlow({
   variable: '--font-barlow',
@@ -64,7 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${barlow.variable} font-primary`}>
+      <body className={`${barlow.variable} ${manrope.variable} font-primary`}>
         <Providers>{children}</Providers>
         <Toaster position="top-right" richColors />
       </body>

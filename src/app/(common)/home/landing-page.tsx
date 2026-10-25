@@ -1,31 +1,25 @@
-import HeroSection from "./hero-section";
-import SkillsSection from "./skills-section";
-import ProjectSection from "./project-section";
-import BlogSection from "./blog-section";
-import ContactSection from "./contact-section";
+import PortfolioHero from '@/components/portfolio/hero';
+import PortfolioProjects from '@/components/portfolio/projects';
+import { AboutSection, JourneySection } from '@/components/portfolio/about';
+import PortfolioBlog from '@/components/portfolio/blog';
+import PortfolioContact from '@/components/portfolio/contact';
+import type { Project } from '@/type/front/project-data-type';
 
-export default function LandingPage() {
+export default function LandingPage({
+  projects,
+  error,
+}: {
+  projects?: Project[];
+  error?: boolean;
+}) {
   return (
-    <div className="flex w-full flex-col gap-0">
-      <section id="home">
-        <HeroSection />
-      </section>
-
-      <section id="skills">
-        <SkillsSection />
-      </section>
-
-      <section id="projects">
-        <ProjectSection />
-      </section>
-
-      <section id="blog">
-        <BlogSection />
-      </section>
-
-      <section id="contact">
-        <ContactSection />
-      </section>
-    </div>
+    <>
+      <PortfolioHero />
+      <PortfolioProjects initialProjects={projects} initialError={error} />
+      <AboutSection />
+      <JourneySection />
+      <PortfolioBlog />
+      <PortfolioContact />
+    </>
   );
 }

@@ -1,4 +1,7 @@
 import { Project } from "./type/front/project-data-type";
+import { kingstarProject } from "./content/kingstar-project";
+import { ezybussProject } from "./content/ezybuss-project";
+import { dreamTourismProjects } from "./content/dream-tourism-projects";
 
 export const projectsData: Project[] = [
   {
@@ -101,140 +104,8 @@ export const projectsData: Project[] = [
       },
     ],
   },
-  {
-    id: "3",
-    title: "Travel Booking Platform",
-    description:
-      "Single application for multiple OTA systems with role-based access and multi-payment integration.",
-    category: "large",
-    image: "/images/project/ota.png",
-    clientLink: "https://kingstartravel.com/",
-    serverLink: "https://github.com/example/ota",
-    tags: [
-      "Next.js",
-      "React.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Zustand",
-      "TanStack Query",
-      "TanStack Table",
-      "Axios",
-      "Stripe",
-      "WebSocket",
-      "Zod",
-      "React Hook Form",
-    ],
-    features: [
-      {
-        title: "Flight Search & Booking",
-        description:
-          "Supports end-to-end flight search and booking with origin, destination, date, traveler count, and cabin class selection.",
-      },
-      {
-        title: "Trip Types Support",
-        description:
-          "Provides booking flows for One Way, Round Trip, and Multi City journeys in a single booking experience.",
-      },
-      {
-        title: "Hotels, Tours & Multi-Service Discovery",
-        description:
-          "Expands beyond flights with discoverable travel services including hotels, tours, and related packages.",
-      },
-      {
-        title: "Global Destination Coverage",
-        description:
-          "Highlights wide inventory across 500+ worldwide destinations to increase traveler choice and route flexibility.",
-      },
-      {
-        title: "Fast & Secure Booking Flow",
-        description:
-          "Delivers a streamlined and secure booking process from initial search to final confirmation.",
-      },
-      {
-        title: "Expert-Guided Travel Experience",
-        description:
-          "Promotes guided tours with experienced travel professionals to improve planning confidence and service quality.",
-      },
-      {
-        title: "Travel Content & Inspiration",
-        description:
-          "Includes a blog module for travel tips, destinations, and budget travel stories to support user engagement.",
-      },
-      {
-        title: "Airline Partner Integration",
-        description:
-          "Leverages trusted airline partner connectivity for real-time inventory and global booking reliability.",
-      },
-    ],
-  },
-  {
-    id: "4",
-    title: "Multi-tenant Architecture",
-    description:
-      "Full-stack e-commerce platform with products, cart, checkout and order tracking.",
-    category: "large",
-    image: "/images/project/saas.png",
-    clientLink: "https://ezybuss.com/en",
-    serverLink: "https://github.com/example/ecommerce",
-    tags: [
-      "Next.js",
-      "React.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Lexical Editor",
-      "Zustand",
-      "TanStack Query",
-      "TanStack Table",
-      "Axios",
-      "Stripe",
-      "Next Intl",
-      "Recharts",
-      "Zod",
-      "React Hook Form",
-    ],
-    features: [
-      {
-        title: "Industry-Specific Templates",
-        description:
-          "Offers ready-to-launch templates for ecommerce, agencies, portfolios, booking platforms, and blogs.",
-      },
-      {
-        title: "Custom Domain Support",
-        description:
-          "Supports one-click custom domain connection with built-in SSL, DNS management, and subdomain routing.",
-      },
-      {
-        title: "Multi-Tenant Architecture",
-        description:
-          "Each tenant runs independently with separate branding, theme, data, and admin panel on a shared platform.",
-      },
-      {
-        title: "Powerful Admin Dashboard",
-        description:
-          "Provides centralized management for products, orders, pages, media, and analytics from a single dashboard.",
-      },
-      {
-        title: "SEO & Performance Built-in",
-        description:
-          "Uses server-rendered pages, automatic meta handling, and image optimization for fast, search-friendly websites.",
-      },
-      {
-        title: "Multilingual & RTL Ready",
-        description:
-          "Supports multilingual publishing including RTL languages for broader regional accessibility.",
-      },
-      {
-        title: "Go Live in Minutes",
-        description:
-          "Streamlines launch flow from template selection to domain setup and one-click publishing in minutes.",
-      },
-      {
-        title: "Scalable Business Platform",
-        description:
-          "Designed for growth with high uptime, global usage support, and a dashboard suitable for multi-site operations.",
-      },
-    ],
-  },
+  kingstarProject,
+  ezybussProject,
   {
     id: "5",
     title: "Services Marketplace",
@@ -556,7 +427,7 @@ export const projectsData: Project[] = [
     ],
   },
   {
-    id: "p-1",
+    id: "p-library",
     title: "Library Management (Personal)",
     description:
       "A library web app where users can manage books, browse categories, borrow/return books, and track their own listings with authentication.",
@@ -620,7 +491,7 @@ export const projectsData: Project[] = [
     ],
   },
   {
-    id: "p-1",
+    id: "p-craft",
     title: "Craft Corner — Art & Craft (Personal)",
     description:
       "Craft Corner is a React (Vite) art & craft listing app: browse crafts from a REST API, filter by category, and (when signed in) add, edit, and manage your own listings with Firebase auth and a polished marketing home experience.",
@@ -739,4 +610,5 @@ export const projectsData: Project[] = [
       },
     ],
   },
+  ...dreamTourismProjects,
 ];

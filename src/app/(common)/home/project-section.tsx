@@ -6,7 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProjectCard from './project-card';
 import EmptyState from './enpty-state';
 import CoustomTitle from '@/components/common-component/couston-title';
-import { projectsData } from '@/projectData';
+import { useQuery } from '@tanstack/react-query';
+import type { Project } from '@/type/front/project-data-type';
 
 // Project data structure
 
@@ -14,12 +15,21 @@ const tabStyle =
   'relative shrink-0 whitespace-nowrap px-4 py-3 data-[state=active]:text-primary text-white/60 rounded-lg transition-all duration-300 hover:text-white/80';
 
 const ProjectSection = () => {
+  const { data, isPending, isError, refetch } = useQuery({
+    queryKey: ['public-projects'],
+    queryFn: async (): Promise<Project[]> => {
+      const response = await fetch('/api/projects', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Projects are temporarily unavailable.');
+      return (await response.json()).projects;
+    },
+    refetchOnWindowFocus: true,
+  });
   const [activeTab, setActiveTab] = useState<
     'personal' | 'small' | 'medium' | 'large'
   >('personal');
 
   const filteredProjects =
-    projectsData.filter((project) => project.category === activeTab);
+    (data ?? []).filter((project) => project.category === activeTab);
 
   const tabVariants = {
     hidden: { opacity: 0 },
@@ -95,6 +105,8 @@ const ProjectSection = () => {
         </motion.div>
 
         {/* Tabs */}
+        {isPending && <p role="status" className="mb-6 text-center text-white/70">Loading projects…</p>}
+        {isError && <p role="alert" className="mb-6 text-center text-white/70">Projects are temporarily unavailable. <button type="button" className="text-blue-300 underline" onClick={() => refetch()}>Try again</button></p>}
         <Tabs
           value={activeTab}
           onValueChange={(value) =>
@@ -199,7 +211,7 @@ const ProjectSection = () => {
                         </motion.div>
                       ))}
                     </motion.div>
-                  ) : (
+                  ) : !isPending && !isError ? (
                     <motion.div
                       variants={cardVariants}
                       initial="hidden"
@@ -212,7 +224,7 @@ const ProjectSection = () => {
                         }
                       />
                     </motion.div>
-                  )}
+                  ) : null}
                 </motion.div>
               </AnimatePresence>
             </TabsContent>

@@ -4,6 +4,9 @@ export interface Project {
   description: string;
   category: 'small' | 'medium' | 'large' | 'personal';
   image: string;
+  images?: { id: string; url: string; name: string }[];
+  published?: boolean;
+  sortOrder?: number;
   githubFrontendLink?: string;
   githubBackendLink?: string;
   clientLink?: string;

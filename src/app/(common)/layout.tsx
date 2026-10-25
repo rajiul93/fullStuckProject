@@ -1,13 +1,10 @@
 import type { Metadata } from 'next';
-import Footer from '@/components/common-component/footer';
-import Navbar from '@/components/common-component/navbar';
 import React from 'react';
-import FloatingSocialBar from '@/components/common-component/floating-social-bar';
+import { PortfolioShell } from '@/components/portfolio/shell';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Rajiul Islam | MERN Developer',
-    template: '%s | Rajiul Islam',
+    absolute: 'Rajiul Islam | Front-End Developer',
   },
   description:
     'Portfolio of Rajiul Islam, a MERN Stack Developer focused on frontend engineering with React and Next.js.',
@@ -48,12 +45,9 @@ export const metadata: Metadata = {
 
 const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-teal-800 text-white">
-      <Navbar />
-      <FloatingSocialBar />
-      {children}
-      <Footer />
-    </main>
+    <PortfolioShell>
+      <main id="main-content">{children}</main>
+    </PortfolioShell>
   );
 };
 
