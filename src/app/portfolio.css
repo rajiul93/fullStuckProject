@@ -225,6 +225,24 @@ html:has(.portfolio) {
   opacity: 0.65;
   cursor: wait;
 }
+/* Space-themed cursors for mouse users. Scoped with :has() so modals portalled to <body> share them
+   and the admin area keeps system cursors; hotspots sit at the arrow tip and fingertip. */
+@media (pointer: fine) {
+  body:has(.portfolio) {
+    cursor:
+      url('/cursors/space-arrow.svg') 4 3,
+      auto;
+  }
+  body:has(.portfolio)
+    :is(a[href], button:not(:disabled), [role='tab'], summary, label[for], select) {
+    cursor:
+      url('/cursors/space-hand.svg') 12 2,
+      pointer;
+  }
+  body:has(.portfolio) :is(input, textarea) {
+    cursor: text;
+  }
+}
 .button-primary {
   background: var(--p-lime);
   color: #162005;
@@ -348,29 +366,27 @@ html:has(.portfolio) {
   border: inherit;
   border-radius: inherit;
 }
+/* Full-bleed studio photo; anchored near the top so the face stays in frame at every card height. */
 .portrait-image {
-  position: absolute;
-  width: auto;
-  height: 125%;
-  max-width: none;
-  bottom: -34%;
-  left: 50%;
-  transform: translateX(-50%);
-  object-fit: contain;
-  object-position: bottom;
-  filter: saturate(0.65);
+  object-fit: cover;
+  object-position: 50% 12%;
+  z-index: -1;
 }
 .portrait-note {
   position: absolute;
   z-index: 2;
   right: 24px;
   top: 27px;
-  color: #d8e5d39c;
+  color: #e6efe2;
   font-family: Georgia, serif;
   font-size: 22px;
   font-style: italic;
   transform: rotate(-12deg);
   line-height: 1.45;
+  /* Keeps the note legible over the bright smoke in the photo. */
+  text-shadow:
+    0 1px 3px #000c,
+    0 0 14px #000a;
 }
 .portrait-note span {
   display: block;
@@ -1507,10 +1523,6 @@ html:has(.portfolio) {
   }
   .hero-portrait {
     height: 430px;
-  }
-  .portrait-image {
-    height: 139%;
-    bottom: -43%;
   }
   .portrait-caption {
     left: 18px;

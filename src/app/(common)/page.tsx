@@ -25,7 +25,7 @@ function structuredData() {
         '@id': `${url}/#person`,
         name: site.name,
         url,
-        image: `${url}/images/rajiul.png`,
+        image: `${url}/images/rajiul-hero.jpg`,
         jobTitle: site.role,
         description: site.description,
         email: `mailto:${resumeData.contact.email}`,
