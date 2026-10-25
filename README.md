@@ -55,7 +55,7 @@ pnpm assets:kingstar
 pnpm project:kingstar:sync
 ```
 
-The sync preserves publishing status, display order, existing real source links and separately added gallery images. Content hashes allow uploaded captures to be reused on repeat runs. Previous generated captures move to unused uploads; rollback snapshots are stored under ignored `.portfolio-backups/kingstar/`. Regular `db:seed` continues to preserve existing project records and imports this three-image gallery only for a new record.
+The sync preserves publishing status, existing real source links and separately added gallery images. Content hashes allow uploaded captures to be reused on repeat runs. Previous generated captures move to unused uploads; rollback snapshots are stored under ignored `.portfolio-backups/kingstar/`. Regular `db:seed` continues to preserve existing project records and imports this three-image gallery only for a new record.
 
 ### Dream travel projects
 
@@ -66,7 +66,7 @@ pnpm assets:dream-uk
 pnpm project:dream:sync
 ```
 
-The sync uploads/reuses content-hashed R2 images, matches existing entries by stable ID or website hostname to avoid duplicates, preserves existing publishing status and ordering, and appends new projects. Only these three travel entries are affected; rollback snapshots are kept in ignored `.portfolio-backups/dream-projects/`. Public UI features were reviewed on 2026-10-25; no checkout, payments, reviews or private-account results are claimed as verified.
+The sync uploads/reuses content-hashed R2 images, matches existing entries by stable ID or website hostname to avoid duplicates, preserves existing publishing status, and moves refreshed/new projects to the front. Only these three travel entries are affected; rollback snapshots are kept in ignored `.portfolio-backups/dream-projects/`. Public UI features were reviewed on 2026-10-25; no checkout, payments, reviews or private-account results are claimed as verified.
 
 ### EzyBuss project refresh
 
@@ -77,7 +77,7 @@ pnpm assets:ezybuss
 pnpm project:ezybuss:sync
 ```
 
-The refresh keeps the Large category, publishing status, display order, real source links and custom gallery uploads. New images are stored in R2 and the existing Neon record is updated, without adding another project. Durable rollback snapshots use `.portfolio-backups/ezybuss/`. Existing-project image syncing is shared with the Kingstar utility in `scripts/lib/sync-existing-project.ts`.
+The refresh keeps the Large category, publishing status, real source links and custom gallery uploads. New images are stored in R2 and the existing Neon record is updated, without adding another project. Durable rollback snapshots use `.portfolio-backups/ezybuss/`. A refresh moves the project to the first position, following the same rule as admin saves. Existing-project image syncing is shared with the Kingstar utility in `scripts/lib/sync-existing-project.ts`.
 
 ## Backend setup (Neon)
 
@@ -127,7 +127,7 @@ Access keys are encrypted with AES-256-GCM and are never returned by the Setting
 - Manage description, technology tags, frontend/backend GitHub URLs, live/server URLs and repeatable feature fields.
 - Upload up to **12 images per project**, each up to **4 MB** (JPEG, PNG, WebP or GIF). Files upload one at a time to stay within common hosting request limits. Server validation checks MIME types and image signatures.
 - Reorder images with arrows. The first image becomes the cover. The public cards and details dialog have previous/next controls, slide indicators and touch swiping.
-- Save a project as a draft or publish it. Display order sorts from lowest to highest. The public API only returns published projects; database failures show an explicit retry state.
+- Save a project as a draft or publish it. New uploads and content updates move to the first position. Drag project rows in the admin collection to save a custom homepage order, or focus a handle and use Space → arrow keys → Space. Clear search/status filters and use display order before reordering. Saving a project later moves that project to the front again; everyone else keeps their relative order. All homepage category tabs share this order. Selected Work uses its curated order: Kingstar, EzyBuss, then Prep. The public API only returns published projects; database failures show an explicit retry state.
 - Removed images and images from cancelled edits/deleted projects appear under **Unused uploads**. They can be reused or permanently deleted from storage. Saving/deleting a project does not silently destroy its images.
 
 Admin access uses hashed database sessions in HttpOnly cookies, bcrypt password hashing, origin checks on writes, server-side authorization on every admin API, and login throttling (10 attempts per email per 15 minutes).
@@ -220,3 +220,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Deploy
 
 Deploy on Vercel (recommended) or any Node.js platform that supports Next.js.
+
+## Ekboi project replacement
+
+The former Large ecommerce entry (ID `6`) is replaced with [Ekboi](https://www.ekboi.com/). The description and eight features follow its public learning-platform overview, reviewed on 2026-10-25. Next.js/React and Tailwind are visible in the public frontend; unrelated ecommerce/backend tags and source links are removed. No private learner account or exam results were used.
+
+```bash
+pnpm assets:ekboi
+pnpm project:ekboi:sync
+```
+
+The capture command saves actual desktop, mobile and learning-overview screenshots and renders a browser/phone thumbnail. The sync command updates the same project in Neon, uploads assets to configured R2 storage and keeps a rollback snapshot in ignored `.portfolio-backups/ekboi`. Previous ecommerce media become unused uploads; they are not deleted from storage.
+
+## Prep project
+
+[Prep](https://ai-assistant-one-rouge.vercel.app/) is a separate Large project with a three-image gallery supplied by the owner. Public feature copy was reviewed on 2026-10-25; authenticated tools, AI responses and payments were not tested. The third supplied image is the cover, followed by the responsive showcase and the study-tools showcase. Artwork is displayed without cropping.
+
+```bash
+pnpm project:prep:sync
+```
+
+The importer creates or updates the same stable project ID (`prep-study-platform`) and also matches the website hostname to avoid duplicate entries. It uploads/reuses content-hashed assets in configured R2 storage and saves the project in Neon at the first position. Existing custom gallery images and real source links are retained. Rollback snapshots are kept under ignored `.portfolio-backups/prep/`. Normal seeding only imports new records and preserves existing ones.

@@ -5,6 +5,7 @@ import {
   serializeProject,
   withImages,
   saveProject,
+  projectOrder,
 } from '@/lib/server/projects';
 import { apiError } from '@/lib/server/http';
 
@@ -13,7 +14,7 @@ export async function GET() {
   try {
     await requireAdmin();
     const projects = await db.project.findMany({
-      orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
+      orderBy: projectOrder,
       include: withImages,
     });
     return NextResponse.json(

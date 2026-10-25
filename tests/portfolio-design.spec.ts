@@ -56,6 +56,21 @@ test('homepage preserves real projects, section order, every filter and same-pag
             category,
           ),
       ).toBe(true);
+    await expect
+      .poll(() =>
+        page
+          .locator('#project-grid article')
+          .evaluateAll((cards) =>
+            cards.map((card) => card.getAttribute('data-project-id')),
+          ),
+      )
+      .toEqual(
+        projects
+          .filter(
+            (project) => category === 'all' || project.category === category,
+          )
+          .map((project) => project.id),
+      );
   }
   const all = page.getByRole('tab', { name: 'All', exact: true });
   await all.focus();
@@ -246,9 +261,9 @@ test('reduced motion and disabled JavaScript preserve visible portfolio content'
   page,
   browser,
 }) => {
-  const publishedCount = (
-    await (await page.request.get('/api/projects')).json()
-  ).projects.length;
+  const projects = (await (await page.request.get('/api/projects')).json())
+    .projects as { category: string }[];
+  const publishedCount = projects.length;
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await openPortfolio(page);
   await expect(page.locator('html')).toHaveCSS('scroll-behavior', 'auto');
@@ -256,7 +271,9 @@ test('reduced motion and disabled JavaScript preserve visible portfolio content'
     .getByRole('link', { name: 'Browse all projects', exact: true })
     .click();
   await page.getByRole('tab', { name: 'Large', exact: true }).click();
-  await expect(page.locator('#project-grid article')).toHaveCount(3);
+  await expect(page.locator('#project-grid article')).toHaveCount(
+    projects.filter((project) => project.category === 'large').length,
+  );
   for (const card of await page.locator('#project-grid article').all())
     await expect(card).toHaveCSS('transform', 'none');
   const context = await browser.newContext({ javaScriptEnabled: false });

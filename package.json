@@ -21,7 +21,10 @@
     "assets:dream-uk": "node scripts/create-dream-uk-thumbnail.mjs",
     "project:dream:sync": "node --conditions=react-server --import tsx scripts/sync-dream-projects.ts",
     "assets:ezybuss": "node scripts/create-ezybuss-thumbnail.mjs",
-    "project:ezybuss:sync": "node --conditions=react-server --import tsx scripts/sync-ezybuss-project.ts"
+    "project:ezybuss:sync": "node --conditions=react-server --import tsx scripts/sync-ezybuss-project.ts",
+    "assets:ekboi": "node scripts/create-ekboi-thumbnail.mjs",
+    "project:ekboi:sync": "node --conditions=react-server --import tsx scripts/sync-ekboi-project.ts",
+    "project:prep:sync": "node --conditions=react-server --import tsx scripts/sync-prep-project.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1027.0",

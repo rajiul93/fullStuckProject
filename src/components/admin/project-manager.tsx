@@ -30,7 +30,6 @@ type Draft = {
   features: Project['features'];
   images: ImageItem[];
   published: boolean;
-  sortOrder: number;
 };
 const blank = (): Draft => ({
   title: '',
@@ -44,7 +43,6 @@ const blank = (): Draft => ({
   features: [],
   images: [],
   published: true,
-  sortOrder: 0,
 });
 const inputClass =
   'w-full rounded-lg border border-input bg-background p-3 text-sm outline-none focus:border-blue-400';
@@ -84,7 +82,6 @@ export default function ProjectManager() {
       tags: project.tags.join(', '),
       images: project.images || [],
       published: project.published ?? true,
-      sortOrder: project.sortOrder ?? 0,
     });
   }
   function update<K extends keyof Draft>(key: K, value: Draft[K]) {
@@ -185,6 +182,30 @@ export default function ProjectManager() {
       await load();
     } catch (error) {
       toast.error((error as Error).message);
+    } finally {
+      setBusy('');
+    }
+  }
+  async function reorder(ids: string[]) {
+    if (busy) return;
+    const previous = projects;
+    const byId = new Map(projects.map((project) => [project.id, project]));
+    setProjects(ids.map((id, sortOrder) => ({ ...byId.get(id)!, sortOrder })));
+    setBusy('Saving project order…');
+    try {
+      const result = await adminApi<{ projects: Project[] }>(
+        '/api/admin/projects/order',
+        {
+          method: 'PUT',
+          body: JSON.stringify({ ids }),
+        },
+      );
+      setProjects(result.projects);
+      toast.success('Project order saved.');
+    } catch (error) {
+      setProjects(previous);
+      toast.error((error as Error).message);
+      await load().catch(() => undefined);
     } finally {
       setBusy('');
     }
@@ -331,20 +352,6 @@ export default function ProjectManager() {
                   value={draft.tags}
                   onChange={(event) => update('tags', event.target.value)}
                   placeholder="Next.js, TypeScript, PostgreSQL"
-                />
-              </label>
-              <label className="space-y-2">
-                <span>Display order (lowest first)</span>
-                <input
-                  type="number"
-                  min="0"
-                  max="100000"
-                  required
-                  className={inputClass}
-                  value={draft.sortOrder}
-                  onChange={(event) =>
-                    update('sortOrder', Number(event.target.value))
-                  }
                 />
               </label>
             </div>
@@ -573,6 +580,7 @@ export default function ProjectManager() {
             busy={!!busy}
             onEdit={edit}
             onDelete={remove}
+            onReorder={reorder}
           />
           {!projects.length && !error && (
             <p className="rounded-xl border border-dashed border-input p-8 text-center text-muted-foreground">

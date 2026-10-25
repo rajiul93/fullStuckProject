@@ -24,7 +24,7 @@ async function main() {
       create: {
         ...data,
         id,
-        sortOrder,
+        sortOrder: projectsData.length - 1 - sortOrder,
         images: {
           create: gallery?.length
             ? gallery.map(({ url, name }, sortOrder) => ({

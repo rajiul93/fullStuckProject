@@ -36,7 +36,17 @@ export const projectSchema = z.object({
       'Images must be unique.',
     ),
   published: z.boolean(),
-  sortOrder: z.number().int().min(0).max(100000),
+  sortOrder: z.number().int().min(0).max(100000).optional(),
+});
+
+export const projectOrderSchema = z.object({
+  ids: z
+    .array(z.string().min(1))
+    .max(100000)
+    .refine(
+      (ids) => new Set(ids).size === ids.length,
+      'Projects must be unique.',
+    ),
 });
 
 export const storageSchema = z.object({

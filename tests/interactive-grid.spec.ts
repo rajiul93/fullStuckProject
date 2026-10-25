@@ -242,6 +242,8 @@ test('touch devices use a static grid and the drawing buffer caps high pixel rat
 test('a CSS grid remains available when Canvas cannot initialize', async ({
   page,
 }) => {
+  const projects = (await (await page.request.get('/api/projects')).json())
+    .projects as { category: string }[];
   await page.addInitScript(() => {
     const getContext = HTMLCanvasElement.prototype.getContext;
     HTMLCanvasElement.prototype.getContext = function (
@@ -263,5 +265,7 @@ test('a CSS grid remains available when Canvas cannot initialize', async ({
   ).toContain('radial-gradient');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await page.getByRole('tab', { name: 'Large', exact: true }).click();
-  await expect(page.locator('#project-grid article')).toHaveCount(3);
+  await expect(page.locator('#project-grid article')).toHaveCount(
+    projects.filter((project) => project.category === 'large').length,
+  );
 });

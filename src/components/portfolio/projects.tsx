@@ -43,7 +43,7 @@ export default function PortfolioProjects({
   const [filteredOnce, setFilteredOnce] = useState(false);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const reduced = useReducedMotion();
-  const curated = ['3', '4', '6'].flatMap(
+  const curated = ['3', '4', 'prep-study-platform'].flatMap(
     (id) => projects.find((project) => project.id === id) || [],
   );
   const visible = projects.filter(

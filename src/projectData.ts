@@ -1,3 +1,5 @@
+import { ekboiProject } from './content/ekboi-project';
+import { prepProject } from './content/prep-project';
 import { Project } from "./type/front/project-data-type";
 import { kingstarProject } from "./content/kingstar-project";
 import { ezybussProject } from "./content/ezybuss-project";
@@ -175,95 +177,7 @@ export const projectsData: Project[] = [
       },
     ],
   },
-  {
-    id: "6",
-    title: "Full-stack e-commerce platform",
-    description:
-      "Full-stack e-commerce platform with products, cart, checkout and order tracking.",
-    category: "large",
-    image: "/images/project/ecommerce-home.png",
-    clientLink: "https://myecom.ezybuss.com",
-    serverLink: "https://github.com/example/ecommerce",
-    tags: [
-      "Next.js",
-      "React.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Zustand",
-      "TanStack Query",
-      "React Hook Form",
-      "Zod",
-      "Axios",
-      "Recharts",
-      "Google OAuth",
-      "JWT",
-      "mongoose",
-      "express",
-      "node.js",
-    ],
-    features: [
-      {
-        title: "Modern Storefront Experience",
-        description:
-          "Responsive, conversion-focused storefront with product discovery, promotions, and smooth mobile-first browsing.",
-      },
-      {
-        title: "Advanced Product Catalog",
-        description:
-          "Supports category hierarchy, product variants, stock status, pricing rules, and rich product detail pages.",
-      },
-      {
-        title: "Smart Search & Filters",
-        description:
-          "Fast search with multi-criteria filters, sorting options, and pagination to improve product findability.",
-      },
-      {
-        title: "Cart, Checkout & Payments",
-        description:
-          "Complete purchase flow including cart management, secure checkout, coupon support, and payment integration.",
-      },
-      {
-        title: "Order & Customer Accounts",
-        description:
-          "Users can manage profiles, track orders, view order history, and receive status updates post-purchase.",
-      },
-      {
-        title: "Admin Product Management",
-        description:
-          "Admin dashboard includes product CRUD, category setup, inventory control, and media uploads from one panel.",
-      },
-      {
-        title: "Admin Order Operations",
-        description:
-          "Enables order monitoring, status transitions, fulfillment handling, refund workflow, and customer issue tracking.",
-      },
-      {
-        title: "Sales Analytics & Content Control",
-        description:
-          "Dashboard provides revenue/order insights plus CMS-style control for banners, pages, and promotional campaigns.",
-      },
-      {
-        title: "Fully Dynamic Content Management",
-        description:
-          "All homepage sections, category pages, campaign blocks, and policy pages are configurable from the admin dashboard without redeploy.",
-      },
-      {
-        title: "SEO-Friendly Architecture",
-        description:
-          "Implements SEO-ready URLs, meta title/description control, structured content support, and optimized indexing across product and category pages.",
-      },
-      {
-        title: "Offline Service & Order Capture",
-        description:
-          "Supports offline service requests and manual order creation so staff can process phone, walk-in, or low-connectivity customer orders.",
-      },
-      {
-        title: "Staff Management & Access Control",
-        description:
-          "Role-based staff management enables secure access levels for admins, managers, support agents, and fulfillment teams.",
-      },
-    ],
-  },
+  ekboiProject,
   {
     id: "7",
     title: "Meriton Signatur Hotel",
@@ -611,4 +525,5 @@ export const projectsData: Project[] = [
     ],
   },
   ...dreamTourismProjects,
+  prepProject,
 ];

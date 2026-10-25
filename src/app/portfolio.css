@@ -538,6 +538,8 @@ html:has(.portfolio) {
     .portfolio-project-card,
     .portfolio-modal
   )[data-project-id='dream-tourism-italy']
+  .project-image,
+:is(.portfolio-project-card, .portfolio-modal)[data-project-id='prep-study-platform']
   .project-image {
   object-fit: contain;
   object-position: center;
