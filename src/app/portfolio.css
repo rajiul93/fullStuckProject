@@ -570,8 +570,8 @@ html:has(.portfolio) {
 .project-description {
   margin-top: 8px;
   color: #a6b3bd;
-  font-size: 12px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.7;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -694,7 +694,8 @@ html:has(.portfolio) {
 }
 .project-count {
   color: #81959e;
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 .project-filters {
   display: flex;
@@ -707,10 +708,10 @@ html:has(.portfolio) {
   color: #b1bec5;
   border: 1px solid #30414a;
   border-radius: 22px;
-  min-height: 37px;
+  min-height: 44px;
   min-width: 69px;
   padding: 8px 17px;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   transition:
     border-color 0.25s,
@@ -803,9 +804,6 @@ html:has(.portfolio) {
 }
 .project-collection .project-card-copy {
   padding: 16px;
-}
-.project-collection .project-description {
-  font-size: 11px;
 }
 .project-collection .project-visual {
   margin: 10px 10px 0;
@@ -1572,9 +1570,6 @@ html:has(.portfolio) {
   .project-selected .project-card-copy {
     padding: 14px;
   }
-  .project-selected .project-description {
-    font-size: 11px;
-  }
   .project-selected .project-circle-link {
     width: 34px;
     height: 34px;
@@ -1708,17 +1703,13 @@ html:has(.portfolio) {
   .project-selected h3 {
     font-size: 20px;
   }
-  .project-description {
-    font-size: 12px !important;
-  }
   .project-text-link {
     font-size: 11px;
     min-height: 40px;
   }
   .project-filter {
     min-width: 0;
-    padding: 9px 14px;
-    font-size: 10px;
+    padding: 9px 10px;
   }
   .project-filters {
     width: 100%;
