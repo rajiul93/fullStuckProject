@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProjectImage from './project-image';
 
@@ -12,16 +12,31 @@ export default function ProjectGallery({
 }) {
   const [active, setActive] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [paused, setPaused] = useState(false);
   const index = Math.min(active, Math.max(images.length - 1, 0));
   function move(direction: number) {
     setActive((index + direction + images.length) % images.length);
   }
+  // Auto-advance; the timer restarts whenever the slide changes so manual navigation gets a full interval.
+  useEffect(() => {
+    if (paused || images.length < 2) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer = setTimeout(
+      () => setActive((index + 1) % images.length),
+      4500,
+    );
+    return () => clearTimeout(timer);
+  }, [index, paused, images.length]);
   return (
     <div
       className="project-gallery relative"
       role="region"
       aria-roledescription="carousel"
       aria-label={`${title} images`}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
       onTouchStart={(event) => setTouchStart(event.changedTouches[0].clientX)}
       onTouchEnd={(event) => {
         if (touchStart !== null && images.length > 1) {
@@ -31,11 +46,14 @@ export default function ProjectGallery({
         setTouchStart(null);
       }}
     >
-      <ProjectImage
-        key={images[index]}
-        src={images[index] || ''}
-        alt={`${title} — image ${index + 1}`}
-      />
+      {images.map((src, slide) => (
+        <ProjectImage
+          key={`${slide}-${src}`}
+          src={src || ''}
+          alt={`${title} — image ${slide + 1}`}
+          className={`gallery-slide ${slide === index ? 'is-active' : ''}`}
+        />
+      ))}
       {images.length > 1 && (
         <>
           <button

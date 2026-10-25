@@ -7,13 +7,15 @@ import { useState } from 'react';
 export default function ProjectImage({
   src,
   alt,
+  className = '',
 }: {
   src: string;
   alt: string;
+  className?: string;
 }) {
   const [error, setError] = useState(false);
   return (
-    <div className="project-thumbnail">
+    <div className={`project-thumbnail ${className}`}>
       {error || !src ? (
         <div className="project-image-error">
           <ImageOff size={22} aria-hidden="true" />

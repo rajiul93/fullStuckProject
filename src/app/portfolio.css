@@ -544,6 +544,25 @@ html:has(.portfolio) {
   object-fit: contain;
   object-position: center;
 }
+/* Slides share one grid cell and crossfade, so the gallery keeps the thumbnail's aspect ratio. */
+.project-gallery {
+  display: grid;
+}
+.gallery-slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.8s ease-in-out,
+    visibility 0s linear 0.8s;
+}
+.gallery-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.8s ease-in-out,
+    visibility 0s;
+}
 .project-image-error {
   position: absolute;
   inset: 0;
