@@ -75,8 +75,8 @@ export default function PortfolioHero() {
             <span />
           </div>
           <Image
-            src="/images/rajiul-hero.jpg"
-            alt="Rajiul Islam, MERN stack developer, wearing a black code-print T-shirt"
+            src="/images/rajiul-hero-cutout.png"
+            alt="Portrait of Rajiul Islam wearing a black blazer"
             fill
             priority
             sizes="(min-width: 1024px) 440px, (min-width: 640px) 480px, 85vw"

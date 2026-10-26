@@ -366,10 +366,10 @@ html:has(.portfolio) {
   border: inherit;
   border-radius: inherit;
 }
-/* Full-bleed studio photo; anchored near the top so the face stays in frame at every card height. */
+/* Keep the supplied square portrait fully visible within each responsive frame. */
 .portrait-image {
-  object-fit: cover;
-  object-position: 50% 12%;
+  object-fit: contain;
+  object-position: 50% 0%;
   z-index: -1;
 }
 .portrait-note {
@@ -383,7 +383,7 @@ html:has(.portfolio) {
   font-style: italic;
   transform: rotate(-12deg);
   line-height: 1.45;
-  /* Keeps the note legible over the bright smoke in the photo. */
+  /* Keeps the decorative note legible over the portrait background. */
   text-shadow:
     0 1px 3px #000c,
     0 0 14px #000a;
@@ -1348,6 +1348,11 @@ html:has(.portfolio) {
     transform: translateX(2px);
   }
 }
+@media (max-width: 1279px) {
+  .portrait-note {
+    display: none;
+  }
+}
 @media (max-width: 1023px) {
   .portfolio-container {
     width: calc(100% - 48px);
@@ -1873,6 +1878,11 @@ html:has(.portfolio) {
   }
   .project-modal .project-thumbnail {
     aspect-ratio: 1.35;
+  }
+}
+@media (max-width: 379px) {
+  .portrait-tech {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
