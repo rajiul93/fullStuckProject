@@ -24,7 +24,8 @@
     "project:ezybuss:sync": "node --conditions=react-server --import tsx scripts/sync-ezybuss-project.ts",
     "assets:ekboi": "node scripts/create-ekboi-thumbnail.mjs",
     "project:ekboi:sync": "node --conditions=react-server --import tsx scripts/sync-ekboi-project.ts",
-    "project:prep:sync": "node --conditions=react-server --import tsx scripts/sync-prep-project.ts"
+    "project:prep:sync": "node --conditions=react-server --import tsx scripts/sync-prep-project.ts",
+    "project:aplinto:sync": "node --conditions=react-server --import tsx scripts/sync-aplinto-project.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1027.0",
