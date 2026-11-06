@@ -31,9 +31,11 @@ export default function PortfolioHero() {
           Full-stack <span>ready.</span>
         </h1>
         <p data-reveal-item className="hero-description">
-          I&apos;m Rajiul Islam — a MERN stack developer who specialises in the
-          front end. I build fast, accessible React &amp; Next.js interfaces in
-          TypeScript, and connect them to Node.js, Express &amp; MongoDB APIs.
+          I&apos;m Rajiul Islam — a Full-stack developer who starts with your
+          business, not the code. I take the time to understand what you or
+          your team really need, then design and build the product around it:
+          fast, accessible React &amp; Next.js interfaces backed by Node.js,
+          Express &amp; MongoDB APIs.
         </p>
         <div data-reveal-item className="hero-actions">
           <a href="#selected-work" className="portfolio-button button-primary">

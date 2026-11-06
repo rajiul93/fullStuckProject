@@ -82,9 +82,10 @@ export default function PortfolioProjects({
           >
             <div className="selected-heading-aside">
               <p>
-                Production React and Next.js work across travel booking,
-                multi-tenant SaaS and commerce platforms. Front-end first,
-                built on REST APIs and the MERN stack.
+                Full-stack work for travel booking, multi-tenant SaaS and
+                commerce businesses. Each project started with understanding
+                what the client needed, then became a production React &amp;
+                Next.js product on REST APIs and the MERN stack.
               </p>
               <a href="#projects" className="portfolio-text-link">
                 Browse all projects <ArrowDown size={15} />
