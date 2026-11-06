@@ -7,7 +7,7 @@ import {
 } from '@/lib/server/projects';
 import { apiError } from '@/lib/server/http';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 300;
 export async function GET() {
   try {
     const projects = await db.project.findMany({
@@ -15,10 +15,7 @@ export async function GET() {
       orderBy: projectOrder,
       include: withImages,
     });
-    return NextResponse.json(
-      { projects: projects.map(serializeProject) },
-      { headers: { 'Cache-Control': 'no-store' } },
-    );
+    return NextResponse.json({ projects: projects.map(serializeProject) });
   } catch (error) {
     return apiError(error);
   }

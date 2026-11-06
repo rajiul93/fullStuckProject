@@ -14,6 +14,13 @@ export default function ProjectGallery({
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [paused, setPaused] = useState(false);
   const index = Math.min(active, Math.max(images.length - 1, 0));
+  // Only mount slides that have been shown, plus the next one so it is ready to crossfade.
+  // Mounting every slide made each card download all of its full-size images up front.
+  const [seen, setSeen] = useState<Set<number>>(() => new Set([0]));
+  const upcoming = (index + 1) % Math.max(images.length, 1);
+  if (!seen.has(index) || !seen.has(upcoming)) {
+    setSeen((previous) => new Set(previous).add(index).add(upcoming));
+  }
   function move(direction: number) {
     setActive((index + direction + images.length) % images.length);
   }
@@ -46,14 +53,16 @@ export default function ProjectGallery({
         setTouchStart(null);
       }}
     >
-      {images.map((src, slide) => (
-        <ProjectImage
-          key={`${slide}-${src}`}
-          src={src || ''}
-          alt={`${title} — image ${slide + 1}`}
-          className={`gallery-slide ${slide === index ? 'is-active' : ''}`}
-        />
-      ))}
+      {images.map((src, slide) =>
+        seen.has(slide) ? (
+          <ProjectImage
+            key={`${slide}-${src}`}
+            src={src || ''}
+            alt={`${title} — image ${slide + 1}`}
+            className={`gallery-slide ${slide === index ? 'is-active' : ''}`}
+          />
+        ) : null,
+      )}
       {images.length > 1 && (
         <>
           <button

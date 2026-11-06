@@ -2,14 +2,15 @@ import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/server/auth';
 import { saveProject, deleteProject } from '@/lib/server/projects';
 import { apiError } from '@/lib/server/http';
+import { revalidatePublicProjects } from '@/lib/server/revalidate';
 
 type Context = { params: Promise<{ id: string }> };
 export async function PUT(request: Request, { params }: Context) {
   try {
     await requireAdmin(request);
-    return NextResponse.json({
-      project: await saveProject(await request.json(), (await params).id),
-    });
+    const project = await saveProject(await request.json(), (await params).id);
+    revalidatePublicProjects();
+    return NextResponse.json({ project });
   } catch (error) {
     return apiError(error);
   }
@@ -18,6 +19,7 @@ export async function DELETE(request: Request, { params }: Context) {
   try {
     await requireAdmin(request);
     await deleteProject((await params).id);
+    revalidatePublicProjects();
     return NextResponse.json({
       success: true,
       message:

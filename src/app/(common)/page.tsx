@@ -65,7 +65,8 @@ function structuredData() {
   };
 }
 
-export const dynamic = 'force-dynamic';
+// Cached and regenerated in the background; admin changes revalidate it immediately.
+export const revalidate = 300;
 async function loadProjects() {
   try {
     const projects = await db.project.findMany({

@@ -4,6 +4,16 @@ import Image from 'next/image';
 import { ImageOff } from 'lucide-react';
 import { useState } from 'react';
 
+// Hosts allowed in next.config.ts images.remotePatterns; anything else is served as-is.
+function canOptimize(src: string) {
+  if (!/^https?:\/\//.test(src)) return true;
+  try {
+    return new URL(src).hostname.endsWith('.r2.dev');
+  } catch {
+    return false;
+  }
+}
+
 export default function ProjectImage({
   src,
   alt,
@@ -28,7 +38,7 @@ export default function ProjectImage({
           fill
           sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
           className="project-image"
-          unoptimized={src.startsWith('https://') || src.startsWith('http://')}
+          unoptimized={!canOptimize(src)}
           onError={() => setError(true)}
           loading="lazy"
         />

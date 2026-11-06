@@ -8,6 +8,7 @@ import {
   projectOrder,
 } from '@/lib/server/projects';
 import { apiError } from '@/lib/server/http';
+import { revalidatePublicProjects } from '@/lib/server/revalidate';
 
 export const dynamic = 'force-dynamic';
 export async function GET() {
@@ -28,10 +29,9 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     await requireAdmin(request);
-    return NextResponse.json(
-      { project: await saveProject(await request.json()) },
-      { status: 201 },
-    );
+    const project = await saveProject(await request.json());
+    revalidatePublicProjects();
+    return NextResponse.json({ project }, { status: 201 });
   } catch (error) {
     return apiError(error);
   }
