@@ -16,14 +16,17 @@ const Resume = ({
   const handleDownload = async () => {
     setIsDownloading(true);
     try {
-      const [{ pdf }, templateOneModule] = await Promise.all([
-        import('@react-pdf/renderer'),
-        import('@/app/(common)/resume/template-one'),
-      ]);
+      // The site's download is the Frontend CV (same as /resume?templete=frontend-cv).
+      const [{ pdf }, { FrontendCvDocument }, { frontendCvData }] =
+        await Promise.all([
+          import('@react-pdf/renderer'),
+          import('@/app/(common)/resume/template-frontend-cv'),
+          import('@/app/(common)/resume/frontend-cv-data'),
+        ]);
       // Snapshot data at click time so latest template updates are downloaded.
-      const currentResumeData = structuredClone(templateOneModule.resumeData);
+      const currentResumeData = structuredClone(frontendCvData);
       const blob = await pdf(
-        <templateOneModule.TemplateOneDocument data={currentResumeData} />,
+        <FrontendCvDocument data={currentResumeData} />,
       ).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');

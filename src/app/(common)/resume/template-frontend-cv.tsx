@@ -7,8 +7,10 @@ import {
   Image,
   Link,
   Page,
+  Path,
   PDFViewer,
   StyleSheet,
+  Svg,
   Text,
   View,
 } from '@react-pdf/renderer';
@@ -142,11 +144,18 @@ const styles = StyleSheet.create({
   projectBlock: {
     marginTop: 8,
   },
+  projectHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 1,
+  },
   projectTitle: {
     fontSize: 11.5,
     fontWeight: 700,
     color: '#1a1a1a',
-    marginBottom: 1,
+    flexShrink: 1,
+    marginRight: 10,
   },
   projectDesc: {
     fontSize: 10.5,
@@ -200,7 +209,8 @@ const styles = StyleSheet.create({
   liveLinkRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 3,
+    justifyContent: 'flex-end',
+    flexShrink: 0,
   },
   techLine: {
     fontSize: 10,
@@ -234,7 +244,7 @@ const styles = StyleSheet.create({
 });
 
 const Bullet = ({ text }: { text: string }) => (
-  <View style={styles.bulletRow}>
+  <View style={styles.bulletRow} wrap={false}>
     <View style={styles.bulletIconBox}>
       <Image src={LIST_ICON} style={styles.bulletIcon} />
     </View>
@@ -250,7 +260,9 @@ const Section = ({
   children: React.ReactNode;
 }) => (
   <View style={styles.section}>
-    <Text style={styles.sectionTitle}>{title}</Text>
+    <Text style={styles.sectionTitle} minPresenceAhead={60}>
+      {title}
+    </Text>
     {children}
   </View>
 );
@@ -270,22 +282,39 @@ const ContactRow = ({
   </View>
 );
 
+// GitHub mark (no PNG icon exists for it in /images/resume).
+const GitHubIcon = () => (
+  <Svg viewBox="0 0 16 16" style={styles.icon}>
+    <Path
+      fill="#1a1a1a"
+      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+    />
+  </Svg>
+);
+
 const displayUrl = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 const ProjectBlock = ({ project }: { project: FrontendCvData['projects'][number] }) => (
-  <View style={styles.projectBlock} wrap={false}>
-    <Text style={styles.projectTitle}>{project.title}</Text>
-    <Text style={styles.projectDesc}>{project.description}</Text>
-    <View style={styles.liveLinkRow}>
-      <Image src="/images/resume/world.png" style={styles.linkIcon} />
-      {[project.liveUrl].flat().map((url, j) => (
-        <View key={url} style={styles.liveLinkItem}>
-          {j > 0 && <Text style={styles.linkSeparator}>|</Text>}
-          <Link src={url} style={styles.liveLink}>
-            {displayUrl(url)}
-          </Link>
+  // The block may flow onto the next page (a fixed block left a big gap on page 1),
+  // but its title + description are kept together with at least the first bullet.
+  <View style={styles.projectBlock}>
+    <View wrap={false} minPresenceAhead={40}>
+      {/* Title on the left, live links aligned right on the same line. */}
+      <View style={styles.projectHeader}>
+        <Text style={styles.projectTitle}>{project.title}</Text>
+        <View style={styles.liveLinkRow}>
+          <Image src="/images/resume/world.png" style={styles.linkIcon} />
+          {[project.liveUrl].flat().map((url, j) => (
+            <View key={url} style={styles.liveLinkItem}>
+              {j > 0 && <Text style={styles.linkSeparator}>|</Text>}
+              <Link src={url} style={styles.liveLink}>
+                {displayUrl(url)}
+              </Link>
+            </View>
+          ))}
         </View>
-      ))}
+      </View>
+      <Text style={styles.projectDesc}>{project.description}</Text>
     </View>
     {project.responsibilities.map((item) => (
       <Bullet key={item} text={item} />
@@ -325,6 +354,14 @@ export function FrontendCvDocument({ data }: { data: FrontendCvData }) {
                   LinkedIn
                 </Link>
               </ContactRow>
+              <View style={styles.contactItem}>
+                <View style={styles.iconBox}>
+                  <GitHubIcon />
+                </View>
+                <Link src={d.contact.githubUrl} style={styles.contactLink}>
+                  {displayUrl(d.contact.githubUrl)}
+                </Link>
+              </View>
               <ContactRow icon="/images/resume/world.png">
                 <Link src={d.contact.portfolioUrl} style={styles.contactLink}>
                   {displayUrl(d.contact.portfolioUrl)}
@@ -332,7 +369,10 @@ export function FrontendCvDocument({ data }: { data: FrontendCvData }) {
               </ContactRow>
             </View>
           </View>
-          <Image src={d.profileImage} style={styles.profileImage} />
+          {/* Empty profileImage = no-photo version (UK/US/EU applications). */}
+          {d.profileImage ? (
+            <Image src={d.profileImage} style={styles.profileImage} />
+          ) : null}
         </View>
 
         <Section title="Summary">
@@ -351,13 +391,15 @@ export function FrontendCvDocument({ data }: { data: FrontendCvData }) {
         <Section title="Experience">
           {d.experiences.map((exp, i) => (
             <View key={exp.company} style={i > 0 ? { marginTop: 12 } : undefined}>
-              <View style={styles.companyRow}>
-                <Text style={styles.jobTitle}>
-                  {exp.jobTitle} <Text style={styles.companyName}>— {exp.company}</Text>
-                </Text>
-                <Text style={styles.periodText}>{exp.period}</Text>
+              <View wrap={false} minPresenceAhead={80}>
+                <View style={styles.companyRow}>
+                  <Text style={styles.jobTitle}>
+                    {exp.jobTitle} <Text style={styles.companyName}>— {exp.company}</Text>
+                  </Text>
+                  <Text style={styles.periodText}>{exp.period}</Text>
+                </View>
+                <Text style={styles.muted}>{exp.location}</Text>
               </View>
-              <Text style={styles.muted}>{exp.location}</Text>
               {exp.projects.map((project) => (
                 <ProjectBlock key={project.id} project={project} />
               ))}
@@ -365,13 +407,11 @@ export function FrontendCvDocument({ data }: { data: FrontendCvData }) {
           ))}
         </Section>
 
-        <View wrap={false}>
-          <Section title="Projects">
-            {d.projects.map((project) => (
-              <ProjectBlock key={project.id} project={project} />
-            ))}
-          </Section>
-        </View>
+        <Section title="Projects">
+          {d.projects.map((project) => (
+            <ProjectBlock key={project.id} project={project} />
+          ))}
+        </Section>
 
         <Section title="Education">
           {d.education.map((edu) => (
@@ -381,14 +421,6 @@ export function FrontendCvDocument({ data }: { data: FrontendCvData }) {
               </Text>
               <Text style={styles.periodText}>{edu.period}</Text>
             </View>
-          ))}
-        </Section>
-
-        <Section title="Certifications">
-          {d.certifications.map((cert) => (
-            <Text key={cert.id} style={styles.eduLine}>
-              <Text style={styles.eduDegree}>{cert.name}</Text> — {cert.issuer}
-            </Text>
           ))}
         </Section>
 
