@@ -46,3 +46,6 @@ yarn-error.log*
 next-env.d.ts
 
 /.portfolio-backups/
+
+# generated CV (npm run cv:export)
+/Rajiul-Islam-Full-Stack-Developer.pdf

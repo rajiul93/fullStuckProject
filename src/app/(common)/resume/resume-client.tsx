@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { frontendCvData } from './frontend-cv-data';
+import { fullstackCvData } from './fullstack-cv-data';
 
 const TemplateFrontendCv = dynamic(() => import('./template-frontend-cv'), {
   ssr: false,
@@ -20,7 +21,12 @@ const TemplateElectricalOne = dynamic(
   },
 );
 
-const templates = ['frontend-cv', 'mern-cv', 'electrical'] as const;
+const templates = [
+  'fullstack-cv',
+  'frontend-cv',
+  'mern-cv',
+  'electrical',
+] as const;
 
 const ResumePageClient = () => {
   const searchParams = useSearchParams();
@@ -48,10 +54,30 @@ const ResumePageClient = () => {
 
       <Tabs className="" value={templete} onValueChange={handleTabChange}>
         <TabsList className="mb-6">
+          <TabsTrigger value="fullstack-cv">Full-Stack CV</TabsTrigger>
           <TabsTrigger value="frontend-cv">Frontend CV</TabsTrigger>
           <TabsTrigger value="mern-cv">MERN CV</TabsTrigger>
           <TabsTrigger value="electrical">Electrical</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="fullstack-cv">
+          <label className="mb-4 flex w-fit cursor-pointer items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={showPhoto}
+              onChange={togglePhoto}
+              className="h-4 w-4"
+            />
+            Include photo
+          </label>
+          <TemplateFrontendCv
+            data={
+              showPhoto
+                ? fullstackCvData
+                : { ...fullstackCvData, profileImage: '' }
+            }
+          />
+        </TabsContent>
 
         <TabsContent value="frontend-cv">
           <label className="mb-4 flex w-fit cursor-pointer items-center gap-2 text-sm">

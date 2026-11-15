@@ -14,7 +14,7 @@ export const projectsData: Project[] = [
     category: "personal",
     image: "/images/project/portfolio.png",
     githubFrontendLink: "https://github.com/rajiul93/fullStuckProject",
-    clientLink: "https://rajiul-portfolio.vercel.app",
+    clientLink: "https://rajiul-portfolio.netlify.app",
     serverLink: "https://github.com/example/portfolio",
     tags: [
       "Next.js",

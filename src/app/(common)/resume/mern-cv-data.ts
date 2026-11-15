@@ -7,7 +7,7 @@ export const mernCvData = {
     phone: '+880 1986570093',
     email: 'developer.rajiul@gmail.com',
     linkedInUrl: 'https://www.linkedin.com/in/rajiul-islam-rayhan',
-    portfolioUrl: 'https://rajiul-portfolio.vercel.app',
+    portfolioUrl: 'https://rajiul-portfolio.netlify.app',
     githubUrl: 'https://github.com/rajiul-islam-rayhan',
     location: 'Khulna, Bangladesh',
   },

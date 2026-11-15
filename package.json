@@ -15,6 +15,7 @@
     "db:seed": "tsx prisma/seed.ts",
     "db:studio": "prisma studio",
     "test:e2e": "playwright test",
+    "cv:export": "node --import tsx scripts/export-cv.mts",
     "test:storage": "node --conditions=react-server --import tsx --test tests/storage.node.mts",
     "assets:kingstar": "node scripts/create-kingstar-thumbnail.mjs",
     "project:kingstar:sync": "node --conditions=react-server --import tsx scripts/sync-kingstar-project.ts",

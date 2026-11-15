@@ -9,7 +9,7 @@ export const resumeData = {
     email: 'developer.rajiul@gmail.com',
     linkedInUrl: 'https://www.linkedin.com/in/rajiul-islam-rayhan',
     linkedInLabel: 'LinkedIn Profile',
-    portfolioUrl: 'https://rajiul-portfolio.vercel.app',
+    portfolioUrl: 'https://rajiul-portfolio.netlify.app',
     portfolioLabel: 'Portfolio',
     location: 'Khulna, Bangladesh',
   },
