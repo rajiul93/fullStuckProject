@@ -26,7 +26,7 @@ export const prepProject: Project = {
       name: 'Prep — practice, planner and AI assistant showcase',
     },
   ],
-  clientLink: 'https://ai-assistant-one-rouge.vercel.app/',
+  clientLink: 'https://exam-preparation-360.netlify.app/',
   tags: ['Next.js', 'React', 'Tailwind CSS'],
   features: [
     {

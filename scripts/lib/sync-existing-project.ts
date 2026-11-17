@@ -21,6 +21,8 @@ export async function syncExistingProject(
     legacyImageUrls: string[];
     replaceExisting?: boolean;
     createIfMissing?: boolean;
+    /** Former live URLs, so a project that moved domain still matches itself. */
+    previousClientLinks?: string[];
   },
 ) {
   const hostname = (url?: string | null) => {
@@ -39,10 +41,14 @@ export async function syncExistingProject(
         }),
       ];
   const targetHost = hostname(definition.clientLink);
+  const knownHosts = [
+    targetHost,
+    ...(options.previousClientLinks || []).map(hostname),
+  ].filter(Boolean);
   const matches = candidates.filter(
     (project) =>
       project.id === definition.id ||
-      (targetHost && hostname(project.clientLink) === targetHost),
+      knownHosts.includes(hostname(project.clientLink)),
   );
   if (matches.length > 1)
     throw new Error('Multiple matching projects require review before import.');
@@ -50,7 +56,7 @@ export async function syncExistingProject(
   if (
     options.createIfMissing &&
     current &&
-    hostname(current.clientLink) !== targetHost
+    !knownHosts.includes(hostname(current.clientLink))
   )
     throw new Error('Project ID belongs to a different website.');
   if (!(await latestStorage()))

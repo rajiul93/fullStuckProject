@@ -109,7 +109,7 @@ export const fullstackCvData = {
     {
       id: 1,
       title: 'Prep — AI Study Platform for Job-Exam Candidates',
-      liveUrl: 'https://ai-assistant-one-rouge.vercel.app/',
+      liveUrl: 'https://exam-preparation-360.netlify.app/',
       description:
         'Bangla-first study platform with study planning, question banks and exams, vocabulary and typing labs, an AI assistant with voice, group chat and paid plans — built and run solo.',
       responsibilities: [

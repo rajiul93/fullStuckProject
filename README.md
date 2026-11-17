@@ -234,7 +234,7 @@ The capture command saves actual desktop, mobile and learning-overview screensho
 
 ## Prep project
 
-[Prep](https://ai-assistant-one-rouge.vercel.app/) is a separate Large project with a three-image gallery supplied by the owner. Public feature copy was reviewed on 2026-10-25; authenticated tools, AI responses and payments were not tested. The third supplied image is the cover, followed by the responsive showcase and the study-tools showcase. Artwork is displayed without cropping.
+[Prep](https://exam-preparation-360.netlify.app/) is a separate Large project with a three-image gallery supplied by the owner. Public feature copy was reviewed on 2026-10-25; authenticated tools, AI responses and payments were not tested. The third supplied image is the cover, followed by the responsive showcase and the study-tools showcase. Artwork is displayed without cropping.
 
 ```bash
 pnpm project:prep:sync

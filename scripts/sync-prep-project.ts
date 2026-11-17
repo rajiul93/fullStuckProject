@@ -8,6 +8,7 @@ syncExistingProject(prepProject, {
   mediaPrefix: 'prep-',
   legacyImageUrls: [],
   createIfMissing: true,
+  previousClientLinks: ['https://ai-assistant-one-rouge.vercel.app/'],
 })
   .then((project) =>
     console.log(
